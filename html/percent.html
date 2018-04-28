@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css百分比取值问题</title>
+</head>
+<body>
+    <div class="main">
+        <div class="relative">
+
+        </div>
+        <div class="position">
+
+        </div>
+    </div>
+</body>
+<style>
+    .main {
+        width: 100px;
+        height: 200px;
+        background: blue;
+        padding: 10px;
+        position: relative;
+    }
+    .main .relative {
+        position: relative;
+        background: red;
+        left: 100%;
+        top: 100%;
+        height: 10%;
+        width: 10%;
+        padding-bottom: 10%;
+    }
+    .main .position {
+        position: absolute;
+        background: yellow;
+        left: 100%;
+        top: 100%;
+        height: 10%;
+        width: 10%;
+        padding-bottom: 10%;
+    }
+</style>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css绘制基本图形</title>
+</head>
+<body>
+    <div class="sanjiao"></div>
+
+    <div class="sanjiao1"></div>
+
+    <div class="sibianxing"></div>
+
+    <div class="tixing"></div>
+
+    <div class="liujiao"></div>
+
+    <div class="wubian"></div>
+
+    <div class="liubian"></div>
+</body>
+<style>
+    .sanjiao {
+        width: 0;
+        height: 0;
+        border-top: 100px solid red;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+    }
+
+    .sanjiao1 {
+        width: 0;
+        height: 0;
+        border-top: 100px solid red;
+        border-right: 100px solid transparent;
+    }
+
+    .sibianxing {
+        width: 150px;
+        height: 100px;
+        background: deeppink;
+        transform: skew(20deg);
+        margin-left: 20px;
+    }
+
+    .tixing {
+        margin-top: 20px;
+        height: 0;
+        width: 100px;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid red;
+    }
+
+    .liujiao {
+        position: relative;
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid yellow;
+    }
+    .liujiao:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 30px;
+        left: -50px;
+        border-top: 100px solid yellow;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+    }
+
+    .wubian {
+        position: relative;
+        width: 50px;
+        height: 0;
+        margin-top: 80px;
+        border-width: 40px 15px 0;
+        border-style: solid;
+        border-color: red transparent;
+    }
+    .wubian:before {
+        content: "";
+        position: absolute;
+        left: -16px;
+        top: -70px;
+        width: 0;
+        height: 0;
+        border-width: 0 40px 30px;
+        border-color: red transparent;
+        border-style: solid;
+    }
+
+    .liubian {
+        margin-top: 300px;
+        width: 160px;
+        height: 100px;
+        position: relative;
+        background: red;
+    }
+    .liubian:before {
+        position: absolute;
+        content: "";
+        top: -60px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-width: 0 80px 60px;
+        border-style: solid;
+        border-color: red transparent;
+    }
+    .liubian:after {
+        position: absolute;
+        content: "";
+        top: 100px;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-width: 60px 80px 0;
+        border-style: solid;
+        border-color: red transparent;
+    }
+</style>
+</html>
