@@ -46,20 +46,20 @@
 			<td colspan="3" class='clus'><input type="text"/></td>
 		</tr>
 		<tr>
-			<td><input class="rule5" type="button" id="guoxin" value="添加内容"/></td>
+			<td><input class="rule5" type="button" id="guoxin" value="添加内容" onclick="text()"/></td>
 		</tr>
 	</table>
 </div>
 <script type="text/javascript">
+    function text() {
+        console.log(2222);
+    }
 $(function(){
 	/*给未创建的元素添加事件*/
 	$("body").on("click",".rule6",function(e){
 		alert(this.tagName);
-	})
-	$("#guoxin").click(function(){
-		$('<input class="rule6" type="button" value="新增加的">').insertAfter($("#guoxin"));
-	})
-	
+	});
+
 })
 
 

@@ -1,87 +1,92 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html >
+<html>
 
 	<head>
-		<title></title>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		
-		<meta http-equiv="Page-Enter" content="revealTrans(Duration=1.0,Transition=6)">
-		<!--   引入jQuery -->
-		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-		<script src="js/jquery-1.9.1.min.js" type="text/javascript"></script>
+		<meta charset="utf-8" />
+		<title>图片动态旋转</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.wrapper1 {
+				width: 200px;
+				height: 200px;
+				border: #eee 1px solid;
+				border-radius: 10px;
+				padding: 2px;
+				float: left;
+				margin: 200px 0 0 50px;
+				-moz-perspective: 800px;
+				-moz-transform-style: preserve-3d;
+				-webkit-perspective: 800px;
+				-webkit-transform-style: preserve-3d;
+				-moz-backface-visibility: ;
+				-webkit-backface-visibility: hidden;
+			}
+			
+			.box1 {
+				width: 200px;
+				height: 200px;
+				background: url(img/ex.jpg);
+				border-radius: 10px;
+				-webkit-animation-name: wobble;
+				-webkit-animation-duration: 10s;
+				-webkit-animation-timing-function: linear;
+				-webkit-animation-delay: 0;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-animation-direction: ;
+				-moz-animation-name: wobble;
+				-moz-animation-duration: 5s;
+				-moz-animation-timing-function: linear;
+				-moz-animation-delay: 0;
+				-moz-animation-iteration-count: infinite;
+				-moz-animation-direction: ;
+			}
+			
+			@-webkit-keyframes wobble {
+				0% {
+					-webkit-transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				25% {
+					-webkit-transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				50% {
+					-webkit-transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				75% {
+					-webkit-transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				100% {
+					-webkit-transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+			}
+			
+			@-moz-keyframes wobble {
+				0% {
+					-moz-transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				25% {
+					-moz-transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				50% {
+					-moz-transform: rotateY(180deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				75% {
+					-moz-transform: rotateY(90deg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+				100% {
+					-moz-transform: rotateY(0eg) rotateX(0deg) rotateZ(0deg) translateZ(0px);
+				}
+			}
+		</style>
 	</head>
 
 	<body>
-		<div>
-			<table>
-				<tr>
-					<td colspan="4" class="data1">第一个数字<input type="text" onkeyup="if(!(/^-?\d+(\.\d)?$/.test(this.value))){alert('只能输入数字');this.value='';}"></td>
-				</tr>
-				<tr>
-					<td><input class="rule1" type="button" value="+"></td>
-					<td><input class="rule2" type="button" value="-"></td>
-					<td><input class="rule3" type="button" value="*"></td>
-					<td><input class="rule4" type="button" value="/"></td>
-				</tr>
-				<tr>
-					<td colspan="4" class="data1">第一个数字<input type="text" onchange="if(!(/^-?\d+(\.\d)?$/.test(this.value))){alert('只能输入数字');this.value='';}"></td>
-				</tr>
-				<tr>
-					<td><input class="rule1" type="button" value="+" /></td>
-					<td><input class="rule2" type="button" value="-" /></td>
-					<td><input class="rule3" type="button" value="*" /></td>
-					<td><input class="rule4" type="button" value="/" /></td>
-				</tr>
-				<tr>
-					<td colspan="4" class="data1">第一个数字<input type="text" onchange="if(!(/^-?\d+(\.\d)?$/.test(this.value))){alert('只能输入数字');this.value='';}"></td>
-				</tr>
-				<tr>
-					<td><input class="rule1" type="button" value="+"></td>
-					<td><input class="rule2" type="button" value="-"></td>
-					<td><input class="rule3" type="button" value="*"></td>
-					<td><input class="rule4" type="button" value="/"></td>
-				</tr>
-				<tr>
-					<td colspan="4" class="data2">第二个数字<input type="text" onchange="if(!(/^-?\d+(\.\d)?$/.test(this.value))){alert('只能输入数字');this.value='';}"></td>
-				</tr>
-				<tr>
-					<td><input class="rule5 gu_o" type="button" value="=guo" /></td>
-					<td colspan="3" class='clus'><input type="text" /></td>
-				</tr>
-				<tr>
-					<td><input class="rule5" type="button" id="guoxin" value="添加内容" /></td>
-				</tr>
-			</table>
+		<div class="wrapper1">
+			<div class="box1"></div>
 		</div>
-		<script type="text/javascript">
-			$(function() {
-				/*给未创建的元素添加事件*/
-				$("body").on("click", ".rule6", function(e) {
-					alert(this.tagName);
-				})
-				$("#guoxin").click(function() {
-					$('<input class="rule6" type="button" value="新增加的">').insertAfter($("#guoxin"));
-				})
-
-
-				//递归算法
-				function factorial(num) {
-					if(num <= 1) {
-						return 1;
-					} else {
-						return num * arguments.callee(num - 1);
-					}
-					
-				}
-				
-				console.log(factorial(3));
-
-			});
-			/*window.onbeforeunload = function(event) {
-				return ("数据可能会丢失!");
-				
-			}*/
-		</script>
 	</body>
 
 </html>

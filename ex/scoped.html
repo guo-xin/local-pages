@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js闭包</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    // 自执行函数，执行完毕销毁
+    (function () {
+        for(var i = 0; i < 10; i++) {
+            console.log(i, 666);
+        }
+    })();
+    // console.log(i); // i is not defined
+
+    //    function outer() {
+    //        var result = [];
+    //        for(var i = 0; i<10; i++) {
+    //            result[i] = function () {
+    //                console.log(i); // 执行时上下文环境为10
+    //            }
+    //        }
+    //        return result;
+    //    }
+    //    var r = outer();
+    //    console.log(r, 3); // r是长度为10的数组，里面10个方法，i都为10
+    //    r[0](); // 10
+    //    r[1](); // 10
+
+    function outer() {
+        var result = [];
+        for(var i = 0; i<10; i++) {
+            result[i] = function () {
+                console.log(i);
+            }() // 自执行函数，执行时i为当前值
+        }
+        return result;
+    }
+    outer();// 0 1 2 3 4 5 6 7 8 9
+
+</script>
+</html>

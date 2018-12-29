@@ -80,13 +80,13 @@ a:focus {
 	text-align: center;
 	width: 100%;
 	box-shadow: 0 0 4px rgba(0, 0, 0, .2);
-	padding: 0 5%;
 }
 
 .icon {
 	float: left;
 	height: 50px;
 	line-height: 50px;
+	padding-left: 5%;
 }
 
 .icon a {
@@ -101,6 +101,7 @@ a:focus {
 
 .nav {
 	float: right;
+    height: 50px;
 }
 
 .button {
@@ -268,10 +269,18 @@ a:focus {
 		font-size: 12px;
 	}
 	.nav {
-		width: 90%;
+		width: 100%;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        height: 0;
+        transition: height 2s;
+        overflow: hidden;
 	}
 	.nav ul {
-		display: none;
+        padding: 0;
+        display: block;
+        height: 100%;
 	}
 	.button {
 		display: block;
@@ -283,8 +292,9 @@ a:focus {
 		border-radius: 4px;
 		vertical-align: middle;
 	}
-	.nav .isShow {
-		display: block;
+	.nav.isShow {
+        height: 200px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, .2);
 	}
 	.icon-bar {
 		background: #888;
@@ -296,10 +306,14 @@ a:focus {
 		background: #fff;
 		padding: 0 20px;
 		float: none;
+        border-top: #ddd 1px solid;
+        line-height: 50px;
+        height: 50px;
 	}
-	.nav li {
-		border-top: #ddd 1px solid;
-	}
+
+    .nav li a {
+        display: block;
+    }
 	.care p {
 		font-size: 36px;
 		margin: 15px auto;
