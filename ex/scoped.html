@@ -42,4 +42,33 @@
     outer();// 0 1 2 3 4 5 6 7 8 9
 
 </script>
+<script>
+    var a = 100;
+    function ac() {
+        console.log(a);
+        var a = 10;
+        console.log(a);
+    }
+    ac();
+    console.log(a);
+    console.error('------------');
+    function dubble(arr) {
+        var len = arr.length;
+        var tmp;
+        for(var i = 0; i < len; i++) {
+            console.log(i, len, 666);
+            for(var j = 0; j < len - i -1; j++) {
+                console.log(j, 777, i);
+                if(arr[j] > arr[j + 1]) {
+                    tmp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+        return arr;
+    }
+    var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+    dubble(arr);
+</script>
 </html>
