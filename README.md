@@ -1,2 +1,2 @@
 # personal
-local h5
+local pages
