@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+</head>
+<body>
+    <div>
+        <img src="../img/part.png" alt="">
+        <label for="a">3333</label>
+        <input type="text">
+        <span>2222 &copy;</span>
+        <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
+
+        <button type="button" style="height: 100px">重置</button>
+    </div>
+    <style>
+        img {
+            transition: all 2s;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        div {
+            width: 400px;
+            height: 100px;
+            background-color: red;
+            animation: first 4s linear 1s infinite;
+        }
+        @keyframes first {
+            from {
+                background-color: yellow;
+            }
+            to {
+                background-color: green;
+            }
+        }
+    </style>
+</body>
+<script>
+    var a = [2, 4, 3, 8, 6, 7, 1];
+    var minIndex, temp;
+
+    for (var i = 0; i < a.length; i++) {
+        var key = a[i];
+        var j = i - 1;
+        while (j >= 0 && a[j] > key) {
+            a[j + 1] = a[j];
+            j--
+        }
+        a[j + 1] = key;
+    }
+
+    console.log(a, 66)
+</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css选择器</title>
+</head>
+<body>
+    <ul id="guoxin">
+        <li>aouoaas1</li>
+        <li>aouoaas2</li>
+        <li>aouoaas3</li>
+        <li>aouoaas4</li>
+        <li>aouoaas5</li>
+        <li>aouoaas6</li>
+    </ul>
+</body>
+<script>
+    var u = document.querySelector("#guoxin");
+    u.addEventListener("click", function(e) {
+        console.log(e.target.textContent, 999)
+    });
+
+    var arr = [1, 2, 3, 4, 5, 6];
+    var newArr = arr.map((item) => {
+        return item % 2 ? item * 2 : item / 2;
+    });
+    console.log(newArr, 888)
+</script>
+</html>
