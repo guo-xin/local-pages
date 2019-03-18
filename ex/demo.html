@@ -14,11 +14,11 @@
         <span>2222 &copy;</span>
         <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
 
-        <button type="button" style="height: 100px">重置</button>
+        <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
     </div>
     <style>
         img {
-            transition: all 2s;
+            transition: all 10s;
         }
 
         img:hover {
@@ -55,6 +55,11 @@
         a[j + 1] = key;
     }
 
+    function getClick(e) {
+        console.log(e.target.textContent, 888)
+    };
+    console.log.apply(this, [1, 2, 3, 4])
     console.log(a, 66)
+
 </script>
 </html>

@@ -64,4 +64,17 @@
         border-radius: 100% 0 0;
     }
 </style>
+<script>
+
+    var p=new Promise(function(resolve,reject) {
+        console.log("create new promise");
+        resolve("success");
+    });
+    console.log("after new  promise");
+
+    p.then(function(value){
+        console.log(value);
+    });
+
+</script>
 </html>
