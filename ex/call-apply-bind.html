@@ -12,9 +12,11 @@
     var min = Math.min.apply(null, arr); // 2
     console.log(min, 4);
 
+    let a = new Array(1, 2, 3, 4);  //[1, 2, 3, 4]
 
     function log(){
-        console.log.call(this, arguments);
+        console.log.apply(this, arguments);
+        // console.log.call(this, ...arguments);
     }
     log(1, 2, 3); //1 2 3
 

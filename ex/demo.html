@@ -9,57 +9,46 @@
 <body>
     <div>
         <img src="../img/part.png" alt="">
-        <label for="a">3333</label>
         <input type="text">
-        <span>2222 &copy;</span>
+        <span>2222 &reg; &copy;</span>
         <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
 
         <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
     </div>
-    <style>
-        img {
-            transition: all 10s;
-        }
 
-        img:hover {
-            transform: scale(1.1);
-        }
-
-        div {
-            width: 400px;
-            height: 100px;
-            background-color: red;
-            animation: first 4s linear 1s infinite;
-        }
-        @keyframes first {
-            from {
-                background-color: yellow;
-            }
-            to {
-                background-color: green;
-            }
-        }
-    </style>
 </body>
 <script>
-    var a = [2, 4, 3, 8, 6, 7, 1];
-    var minIndex, temp;
-
-    for (var i = 0; i < a.length; i++) {
-        var key = a[i];
-        var j = i - 1;
-        while (j >= 0 && a[j] > key) {
-            a[j + 1] = a[j];
-            j--
+    let i = 1;
+    while(i <= 100) {
+        if(i%2) {
+            document.write(i + ' | ');
         }
-        a[j + 1] = key;
+        i++;
     }
 
-    function getClick(e) {
-        console.log(e.target.textContent, 888)
-    };
-    console.log.apply(this, [1, 2, 3, 4])
-    console.log(a, 66)
+    let arr = [];
+    let a = 100;
+    while(a <= 999) {
+        // 取个位数
+        let b = a % 10;
+        // 取十位数
+        let c = parseInt(a / 10) % 10;
+        // 取百位数
+        let d = parseInt(a / 100);
+        let val = Math.pow(b, 3) + Math.pow(c, 3) + Math.pow(d, 3);
+        if(val == a) {
+            arr.push(a);
+        }
+        a++;
+    }
+    document.write('100到999之间的水仙花数有' + arr.join(' '));
 
+    let [sum, month, day] = [0, 2, 1];
+    switch (month) {
+        case 2: sum += 31;
+        case 1: sum += day;
+        case 0: sum += 10;
+    }
+    console.log(sum, 888)
 </script>
 </html>

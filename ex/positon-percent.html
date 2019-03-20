@@ -6,12 +6,12 @@
 </head>
 <body>
     <div class="main">
-        <div class="relative">
-
-        </div>
-        <div class="position">
-
-        </div>
+        <div class="relative"></div>
+        <div class="position"></div>
+        <div class="fiexed"></div>
+    </div>
+    <div class="normal">
+        <div class="sec"></div>
     </div>
 </body>
 <style>
@@ -22,6 +22,7 @@
         padding: 10px;
         position: relative;
     }
+    /*百分比相对于父元素*/
     .main .relative {
         position: relative;
         background: red;
@@ -31,6 +32,7 @@
         width: 10%;
         padding-bottom: 10%;
     }
+    /*百分比相对于定位元素*/
     .main .position {
         position: absolute;
         background: yellow;
@@ -39,6 +41,27 @@
         height: 10%;
         width: 10%;
         padding-bottom: 10%;
+    }
+    /*百分比相对于窗口*/
+    .fiexed {
+        position: fixed;
+        background: green;
+        left: 50%;
+        top: 50%;
+        height: 10%;
+        width: 10%;
+        padding-bottom: 10%;
+    }
+    .normal {
+        background: orange;
+        width: 200px;
+        height: 100px;
+        padding: 20px;
+    }
+    .sec {
+        width: 10%;
+        height: 10%;
+        background-color: red;
     }
 </style>
 </html>

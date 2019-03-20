@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面水平竖直居中</title>
+</head>
+<body>
+    <div class="fl">flex实现</div>
+    <!--<div class="ps1">position+transform实现</div>-->
+    <!--<div class="ps">-->
+        <!--<div>position+left+top实现</div>-->
+    <!--</div>-->
+    <!--<div class="pagination1">-->
+        <!--<ul>-->
+            <!--<li><a href="#">Prev</a></li>-->
+            <!--<li><a href="#">1</a></li>-->
+            <!--<li><a href="#">2</a></li>-->
+            <!--<li><a href="#">3</a></li>-->
+            <!--<li><a href="#">4</a></li>-->
+            <!--<li><a href="#">5</a></li>-->
+            <!--<li><a href="#">Next</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="pagination2">-->
+        <!--<ul>-->
+            <!--<li><a href="#">Prev</a></li>-->
+            <!--<li><a href="#">1</a></li>-->
+            <!--<li><a href="#">2</a></li>-->
+            <!--<li><a href="#">3</a></li>-->
+            <!--<li><a href="#">4</a></li>-->
+            <!--<li><a href="#">5</a></li>-->
+            <!--<li><a href="#">Next</a></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+</body>
+<style type="text/css">
+    html {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    .fl {
+        height: 100px;
+        width: 100px;
+        background-color: green;
+    }
+
+    .ps1 {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        background-color: blue;
+    }
+    .ps {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 200px;
+        height: 100px;
+        text-align: center;
+    }
+    .ps div {
+        background-color: red;
+        position: relative;
+        right: 50%;
+        bottom: 50%;
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+    }
+    .pagination1 {
+        margin: auto;
+    }
+    .pagination1 ul {
+        text-align: center;
+        padding: 0;
+    }
+    .pagination1 li {
+        line-height: 25px;
+        display: inline-block;
+    }
+    .pagination1 a {
+        display: block;
+        color: #f2f2f2;
+        text-shadow: 1px 0 0 #101011;
+        padding: 0 10px;
+        border-radius: 2px;
+        box-shadow: 0 1px 0 #5a5b5c inset,0 1px 0 #080808;
+        background: linear-gradient(top,#434345,#2f3032);
+    }
+    .pagination1 a:hover {
+        text-decoration: none;
+        box-shadow: 0 1px 0 #f9bd71 inset,0 1px 0 #0a0a0a;
+        background: linear-gradient(top,#f48b03,#c87100);
+    }
+
+    .pagination2 {
+        float: left;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+    .pagination2 ul {
+        padding: 0;
+        clear: left;
+        float: left;
+        position: relative;
+        left: 50%;/*整个分页向右边移动包裹元素宽度的50%*/
+        text-align: center;
+    }
+    .pagination2 li {
+        line-height: 25px;
+        margin: 0 5px;
+        display: block;
+        float: left;
+        position: relative;
+        right: 50%;/*将每个分页项向左边移动父宽度的50%*/
+    }
+    .pagination2 a {
+        display: block;
+        color: #f2f2f2;
+        text-shadow: 1px 0 0 #101011;
+        padding: 0 10px;
+        border-radius: 2px;
+        box-shadow: 0 1px 0 #5a5b5c inset,0 1px 0 #080808;
+        background: linear-gradient(top,#434345,#2f3032);
+    }
+    .pagination2 a:hover {
+        text-decoration: none;
+        box-shadow: 0 1px 0 #f9bd71 inset,0 1px 0 #0a0a0a;
+        background: linear-gradient(top,#f48b03,#c87100);
+    }
+
+</style>
+</html>

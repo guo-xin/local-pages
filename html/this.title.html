@@ -7,50 +7,12 @@
     <!--   引入jQuery -->
     <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        //<![CDATA[
         $(function () {
             $("body").children().mouseover(function (e) {
-                this.title = $(this).text();
+                this.title = e.target.innerHTML;
                 //$(this).attr("title",$(this).text());
             })
         })
-
-        //]]>
-    </script>
-    <script>
-        (function repeat() {
-            var a = [1, 4, 2, 3, 2, 5, 0, 8, 6, 7];
-            var [max, min] = [a[0], a[0]];
-            for(var i = 1; i < a.length; i++) {
-                if(a[i] > max) {
-                    max = a[i];
-                }
-                if(a[i] < min) {
-                  min = a[i];
-                }
-            }
-            console.log(max, min, 666);
-
-            var len = max - min + 1;
-            console.log(len, 222)
-            var arr = new Array(len);
-            console.log(arr, 44444)
-
-            for(var j = 0; j < a.length; j++) {
-                console.log(arr[a[j]], 555)
-                arr[a[j]] = arr[a[j]] ? arr[a[j]] + 1 : 1;
-            }
-            console.log(arr, 777)
-            var newArr = [];
-
-            for(var k = 0; k < arr.length; k++) {
-                for(var l = 0; l < arr[k]; l ++ ) {
-                    newArr.push(k);
-                }
-            }
-
-            console.log(newArr, 888)
-        })()
     </script>
 </head>
 <body>
@@ -59,8 +21,16 @@
     <li>苹果</li>
     <li class="ad">橘子</li>
     <li>菠萝</li>
+    <li>香蕉</li>
+    <li>荔枝</li>
+    <li>西瓜</li>
 </ul>
 </body>
+<style>
+    ul {
+        list-style: none;
+    }
+</style>
 </html>
 
  

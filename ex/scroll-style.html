@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动条样式</title>
+</head>
+<body>
+    <div class="inner1">
+        <div class="scroll">
+            <p>滚动条样式</p>
+            <p>这里是内容wweeww</p>
+            <p>这里是内容2ddddddddddd</p>
+        </div>
+    </div>
+    <div class="inner">
+        <div class="innerbox">
+            <p>隐藏滚动条</p>
+            <p>这里是内容222</p>
+            <p>这里是内容333</p>
+        </div>
+    </div>
+
+</body>
+<style>
+    .inner, .inner1 {
+        width: 150px;
+        height: 200px;
+        margin-top: 100px;
+        background: pink;
+        /*cursor: pointer;*/
+        overflow-y: scroll;
+    }
+
+    .scroll {
+        height: 500px;
+    }
+    .innerbox {
+        color: #000;
+        font-size: .7rem;
+        height: 500px;
+    }
+
+    /*隐藏滚动条样式*/
+    .inner::-webkit-scrollbar {
+        opacity: 0;
+        /*display: none;*/
+    }
+
+    /*滚动条宽度*/
+    .inner1::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    /*滚动条里面可以拖动的那部分，滚动按钮颜色,圆角特效*/
+    .inner1::-webkit-scrollbar-thumb {
+        background: #FFA711;
+        border-radius: 4px;
+        /*控制滚动条最小高度*/
+        min-height: 30px;
+    }
+
+    /*滚动条两端的按钮颜色*/
+    .inner1::-webkit-scrollbar-button {
+        background-color: #FF7677;
+    }
+
+    /*外层轨道。可以用display:none让其不显示*/
+    .inner1::-webkit-scrollbar-track {
+        background: #FF66D5;
+    }
+
+    /*内层轨道，滚动条中间部分*/
+    .inner1::-webkit-scrollbar-track-piece {
+        background: #0552FF;
+    }
+
+    /*边角*/
+    .inner1::-webkit-scrollbar-corner {
+        background: #82AFFF;
+    }
+
+    /*定义右下角拖动块的样式*/
+    .inner1::-webkit-scrollbar-resizer {
+        background: green;
+    }
+
+
+</style>
+
+</html>
