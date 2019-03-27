@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>margin重叠问题及解决办法</title>
+</head>
+<body>
+    <div class="content">
+        <div class="f1">1</div>
+        <div class="f2">2</div>
+        <div class="f3">3</div>
+        <div class="f4">4</div>
+    </div>
+
+</body>
+<style type="text/css">
+   .content {
+
+   }
+    .f1 {
+        margin-bottom: 20px;
+        height: 100px;
+        background-color: rebeccapurple;
+
+    }
+   .f2 {
+       margin-top: 30px;
+       margin-bottom: 10px;
+       display: inline-block;
+       width: 100%;
+       background-color: red;
+   }
+   .f3 {
+       margin-top: 40px;
+       background-color: green;
+   }
+</style>
+</html>
