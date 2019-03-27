@@ -8,12 +8,10 @@
     <div class="a">
         <div class="fl">1</div>
         <div class="fl1">2</div>
-        <span class="fl2">3</span>
+
         <div></div>
     </div>
-    <div>
-        <p>ssssddddd</p>
-    </div>
+
 </body>
 <style type="text/css">
     .fl {
@@ -22,6 +20,7 @@
         width: 100px;
     }
     .fl1 {
+        float: left;
         height: 40px;
         width: 200px;
     }
@@ -29,8 +28,11 @@
         /*clear: both;*/
     /*}*/
     /*解决浮动坍塌*/
-    /*.a {
-        overflow: hidden;
-    }*/
+    .a {
+        /*overflow: hidden;*/
+        /*float: left;*/
+        /*position: absolute;*/
+        display: flex;
+    }
 </style>
 </html>

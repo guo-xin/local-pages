@@ -25,25 +25,33 @@
 
 </style>
 <script>
-    var content = {some: 'content'};
-    fetch('https://api.github.com/users/chriscoyier/repos', {
-        method: 'get',
+    var max = 3;
+    var i = max;
+    while (i > 0) {
+        var j = max;
+        while (j > 0) {
+            // 个位十位数不同并且是奇数
+            if(i !== j && j % 2 !== 0) {
+                document.write(' ' + (i * 10 + j));
+            }
+            j--;
+        }
+        i--;
+    }
+
+    var url = 'https://example.com/profile';
+    var data = {username: 'example'};
+
+    fetch(url, {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
         headers: {
             'Content-Type': 'application/json'
         },
-        // body: JSON.stringify(content)
-    }).then(res => {
-        if(res.ok) {
-            console.log(res, 666)
-        }else {
-            return Promise.reject({
-                status: res.status,
-                statusText: res.statusText
-            })
-        }
-
-    }).catch(res => {
-        console.log(res, 888)
-    })
+        mode: 'cors',
+        credentials: 'include'
+    }).then(res => {return res.json()})
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
 </script>
 </html>

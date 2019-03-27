@@ -5,11 +5,22 @@
     <title>页面水平竖直居中</title>
 </head>
 <body>
-    <div class="fl">flex实现</div>
-    <!--<div class="ps1">position+transform实现</div>-->
-    <!--<div class="ps">-->
-        <!--<div>position+left+top实现</div>-->
+    <!--<div class="fl">flex实现</div>-->
+
+    <!--<div class="line-height">-->
+        <!--line-height居中-->
     <!--</div>-->
+
+    <!--<div class="ps-margin">-->
+        <!--<div>position+margin实现</div>-->
+    <!--</div>-->
+
+    <!--<div class="ps1">position+transform实现</div>-->
+
+    <div class="ps">
+        <div>position+left+top实现</div>
+    </div>
+
     <!--<div class="pagination1">-->
         <!--<ul>-->
             <!--<li><a href="#">Prev</a></li>-->
@@ -32,13 +43,30 @@
             <!--<li><a href="#">Next</a></li>-->
         <!--</ul>-->
     <!--</div>-->
+    <!--<div class="line-center">-->
+        <!--<p>块元素不设置宽度，默认是100%，内容水平居中</p>-->
+        <!--<div>块元素设置宽度，内容水平居中，本身位置没有水平居中，可用margin水平居中</div>-->
+        <!--<span>行内元素可以text-align实现水平居中</span>-->
+    <!--</div>-->
+    <!--<div class="line">-->
+        <!--<a>line-height</a>-->
+        <!--<span>vertical-align</span>-->
+    <!--</div>-->
 </body>
 <style type="text/css">
-    html {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+    /*html {*/
+        /*display: flex;*/
+        /*align-items: center;*/
+        /*justify-content: center;*/
+        /*height: 100%;*/
+    /*}*/
+
+    /*html {*/
+        /*line-height: 100vh;*/
+    /*}*/
+    .line-height {
+        text-align: center;
+        background-color: yellow;
     }
     .fl {
         height: 100px;
@@ -46,6 +74,19 @@
         background-color: green;
     }
 
+    .ps-margin {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        background-color: pink;
+    }
+    .ps-margin div{
+        margin: auto;
+        width: 200px;
+        transform: translateY(-50%);
+        background-color: yellow;
+    }
     .ps1 {
         position: absolute;
         left: 50%;
@@ -69,6 +110,30 @@
         height: 100%;
         width: 100%;
         display: inline-block;
+    }
+
+    .line-center {
+        text-align: center;
+        background-color: pink;
+    }
+    .line-center p {
+        background-color: #2c63ff;
+    }
+    .line-center div {
+        background-color: deeppink;
+        width: 200px;
+        margin: auto;
+    }
+    .line-center span {
+        background-color: darkgoldenrod;
+    }
+
+    .line {
+        height: 50px;
+        background-color: darkgray;
+    }
+    .line span {
+
     }
     .pagination1 {
         margin: auto;
