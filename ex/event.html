@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js中事件绑定，事件监听，事件委托或事件代理</title>
+</head>
+<body>
+    <div>
+        <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
+        <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
+        <button type="button" id="eve" style="background-color: red">事件监听</button>
+    </div>
+    <ul>
+        <li>1111</li>
+        <li>22222</li>
+        <li>3333</li>
+        <li>4444</li>
+        <li>55555</li>
+    </ul>
+</body>
+<script>
+    // 标签上事件绑定
+    function getClick(e){
+        this.name = 'guoxin';
+        // this指向window，event是点击事件对象
+        console.log(this, 555, e, 6666);
+        // this.close();
+    }
+
+    // js代码中事件绑定，匿名函数
+    document.querySelector('input[type=button]').onmouseover = function(e) {
+        // 此时this指向button
+        console.log(this, 7777, e, 8888);
+    };
+
+    // 事件监听， 匿名函数
+    document.querySelector("#eve").addEventListener('click', function(e) {
+        // this指向点击标签，e是点击事件对象
+        console.log(this, 111, e, 2222);
+    });
+    // onload事件
+    window.onload = function(e) {
+        // e是窗口事件对象，this是指向window
+        console.log(e, 3333, this, 444)
+    }
+
+    // 事件代理，事件监听
+    document.querySelector("ul").addEventListener('click', function(e) {
+        // e是点击的事件对象，this指向ul
+        console.log(e.target.textContent, 5555, this, 666);
+    });
+
+    var li = document.createElement("li");
+    li.textContent = '5555';
+    // 动态添加的li，也有事件
+    document.querySelector("ul").appendChild(li);
+
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器indexedDB相关操作</title>
+</head>
+<body>
+    <div>浏览器indexedDB相关操作</div>
+</body>
+<script>
+    var request = window.indexedDB.open('testDB', 1);
+    var db;
+    request.onerror = (e) => {
+        console.log('数据库打开报错');
+    };
+    request.onsuccess = (e) => {
+        db = request.result;
+        console.log('数据库打开成功');
+    };
+    request.onupgradeneeded = function(event) {
+        console.log(event, '数据库更新');
+
+    }
+
+    function add() {
+        var request1 = db.transaction(['person'], 'readwrite')
+            .objectStore('person')
+            .add({ id: 1, name: '张三', age: 24, email: 'zhangsan@example.com' });
+
+        request1.onsuccess = function (event) {
+            console.log('数据写入成功');
+        };
+
+        request1.onerror = function (event) {
+            console.log('数据写入失败');
+        }
+    }
+
+</script>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js中数据类型及相关判断方法</title>
+</head>
+<body>
+    <div style="font-size: 20px">js中数据类型及相关判断方法</div>
+</body>
+<script>
+    console.log('%cObject.prototype.toString.call-----------', "font-size: 20px; color: red;");
+    console.log('symbol:', Object.prototype.toString.call(Symbol())); // "[object Symbol]"
+    console.log('Math:', Object.prototype.toString.call(Math)); // "[object Math]"
+    console.log('string:', Object.prototype.toString.call('')); // "[object String]"
+    console.log('[]:', Object.prototype.toString.call([])); // "[object Array]"
+    console.log('{}:', Object.prototype.toString.call({})); // "[object Object]"
+    console.log('true:', Object.prototype.toString.call(true)); // "[object Boolean]"
+    console.log('undefined:', Object.prototype.toString.call(undefined)); // "[object Undefined]"
+    console.log('null:', Object.prototype.toString.call(null)); // "[object Null]"
+    console.log('NaN:', Object.prototype.toString.call(NaN)); // "[object Number]"
+    console.log('number:', Object.prototype.toString.call(22)); // "[object Number]"
+
+    console.log('new Number:', Object.prototype.toString.call(new Number())); // "[object Number]"
+    console.log('new Function', Object.prototype.toString.call(new Function())); // "[object Function]"
+    console.log('new RegExp', Object.prototype.toString.call(new RegExp())); // "[object Regexp]"
+    console.log('new Date', Object.prototype.toString.call(new Date())); // "[object Date]"
+    console.log('new Error', Object.prototype.toString.call(new Error())); // "[object Error]"
+
+    console.log('String:', Object.prototype.toString.call(String)); // "[object Function]"
+    console.log('Number:', Object.prototype.toString.call(Number)); // "[object Function]"
+    console.log('Date:', Object.prototype.toString.call(Date)); // "[object Function]"
+    console.log('RegExp:', Object.prototype.toString.call(RegExp)); // "[object Function]"
+    console.log('Array:', Object.prototype.toString.call(Array)); // "[object Function]"
+    console.log('Object:', Object.prototype.toString.call(Object)); // "[object Function]"
+
+    console.log('%ctypeof---------', 'font-size: 20px; color: red;');
+    console.log('number:', typeof 2); // "number"
+    console.log('NaN:', typeof NaN); // "number"
+    console.log('string:', typeof ''); // "string"
+    console.log('undefined:', typeof undefined); // "undefined"
+    console.log('symbol:', typeof Symbol()); // "symbol"
+    console.log('boolean:', typeof true); // "boolean"
+    console.log('null:', typeof null); // "object" 不准确
+    console.log('[]:', typeof []); // "object"
+    console.log('{}:', typeof {}); // "object"
+    console.log('new Boolean:', typeof new Boolean()); // "object"
+    console.log('new Number:', typeof new Number()); // "object"
+    console.log('new Array:',typeof new Array()); // "object"
+    console.log('new Date:', typeof new Date()); // "object"
+    console.log('new RegExp:', typeof new RegExp()); // "object"
+    console.log('new Function:', typeof new Function()); // "function"
+
+    console.log('Date:', typeof Date); // "function"
+    console.log('Number:', typeof Number); // "function"
+
+    console.log('%cinstanceof----------', 'font-size: 20px; color: red;');
+    console.log('[]:', [] instanceof Array); // true
+    console.log('[]:', [] instanceof Object); // true
+    console.log('{}:', {} instanceof Object); // true
+    console.log('new Date:', new Date() instanceof Date); // true
+    console.log('new String:', new String() instanceof String); // true
+    console.log('string:', '' instanceof String); // false
+    console.log('new Number:', new Number() instanceof Number); // true
+    console.log('number:', Number(2) instanceof Number); // false
+    console.log('new Boolean:', new Boolean() instanceof Boolean); // true
+    console.log('true:', true instanceof Boolean); // false
+    console.log('new Error:', new Error() instanceof Error); // true
+
+    console.log('new Array:', new Array() instanceof Array); // true
+    console.log('new Array:', new Array() instanceof Object); // true
+    console.log('new RegExp:', new RegExp() instanceof RegExp); // true
+    console.log('new RegExp:', new RegExp() instanceof Object); // true
+
+    console.log('Array:', Array instanceof Function); // true
+
+    console.log('%cconstructor---------', 'font-size: 20px; color: red;');
+    console.log('[]', [].constructor === Array); // true
+    console.log('{}', [].constructor === Object); // true
+    console.log('new Array', (new Array()).constructor === Array); // true
+    console.log('new Object', (new Object()).constructor === Object); // true
+    console.log('new Number', (new Number()).constructor === Number); // true
+    console.log('new Error', (new Error()).constructor === Error); // true
+    console.log('new Date', (new Date()).constructor === Date); // true
+    console.log('number', Number(2).constructor === Number); // true
+    console.log('string', String(2).constructor === String); // true
+    console.log('String', String.constructor === Function); // true
+    console.log('Error', Error.constructor === Function); // true
+</script>
+</html>

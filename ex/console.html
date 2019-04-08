@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>console打印技巧</title>
+</head>
+<body>
+<div>
+    <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
+</div>
+
+</body>
+<script>
+    var stu = [
+            {
+                name: "Bob", age: 13, hobby: "playing"
+            }, {
+                name: "Lucy", age: 14, hobby: "reading"
+            }, {
+                name: "Jane", age: 11, hobby: "shopping"
+            }
+        ];
+    console.time('计时');
+    console.profile('性能分析');
+    console.table(stu);
+    console.timeEnd('计时');
+    console.profileEnd('性能分析');
+
+    // js断言
+    console.assert(true, '这个是真的');
+    console.assert(false, '这个是假的');
+
+    // 添加样式
+    console.log('%c分开添加样式%c第二段', 'font-size: 18px;color: red;', 'font-size: 20px; color: blue;');
+</script>
+</html>

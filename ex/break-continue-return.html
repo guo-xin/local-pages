@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>break, continue, return的区别</title>
+</head>
+<body>
+    <div>break, continue, return的区别</div>
+</body>
+<script>
+    (function a(b) {
+        console.log(b, 888)
+        for(var i = 1; i < 10; i++) {
+            if(i === 5) {
+                console.log(1111);
+                // return;
+                // break;
+                continue;
+                console.log(22222);
+            }
+            console.log(3333);
+        }
+        console.log(4444);
+    })(10)
+</script>
+</html>

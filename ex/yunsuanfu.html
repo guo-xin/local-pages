@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js中的运算符</title>
+</head>
+<body>
+<div>js中常见的运算符</div>
+</body>
+<script>
+    var i = 12;
+    var b = i++ + ++i + ++i*2 + i-- + i--;
+    // i 13 14 15   14 13
+    // b 12 14 15*2 14 13
+    console.log(b, i, 888); //83 13
+
+    var a = 3,c = 7;
+    var d = a & 7;
+    console.log(d, '&'); // 3
+
+    console.log(a && c, '&&'); // 3
+
+    console.log(!a, '!'); // false
+    console.log(!!a, '!!'); // true
+
+    console.log(a | 10, '|'); // 11
+
+</script>
+</html>

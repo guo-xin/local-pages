@@ -12,12 +12,13 @@
 		<div id="guo" class="guo">
 			<table>
 				<tr>
-					<td colspan="4" class="data1"><select type="text" onchange="checktype(this)">
-				<option value="1">111</option>
-				<option value="2">2222</option>
-				<option value="3">333</option>
-				<option value="4">444</option>
-			</select>
+					<td colspan="4" class="data1">
+                        <select type="text" onchange="checktype(this)">
+                            <option value="1">111</option>
+                            <option value="2">2222</option>
+                            <option value="3">333</option>
+                            <option value="4">444</option>
+			            </select>
 					</td>
 				</tr>
 				<tr>
@@ -30,10 +31,9 @@
 		</div>
 		<script>
 			function checktype(obj) {
-				if (confirm("确认点击？")) {
-					alert(obj.tagName);
-				}
-				//console.log(obj.tagName);
+			    // obj是select， this指向窗口
+                console.log(obj, 111, this, 222)
+				console.log(obj.tagName);
 				//console.info(obj.options[obj.options.selectedIndex].value);
 			}
 

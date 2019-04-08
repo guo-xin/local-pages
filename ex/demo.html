@@ -7,66 +7,21 @@
     <title>demo</title>
 </head>
 <body>
-    <div>
-        <img src="../img/part.png" alt="">
-        <input type="text">
-        <span>2222 &reg; &copy;</span>
-        <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
-
-        <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
-    </div>
+<div>
+    <button type="button" style="height: 100px" ondblclick="" click="getClick(event)">重置</button>
+    <span>222</span>
+    <input type="text">
+</div>
 
 </body>
 <script>
-    function findIndex(arr, num) {
-        var index = arr.length;
-
-        for(var i = 0; 1 < arr.length; i++) {
-            if(arr[i] > num) {
-               index = i;
-                console.log(arr[i], index)
-               break;
-            }
-            console.log(11111)
-        }
-        console.log(index, 999)
-        arr.splice(index, 0, num);
-        console.log(arr, 666)
+    function a() {
+        console.log(3333)
     }
 
-    findIndex([1, 3, 8, 7, 10], 5);
+    a();
+    a = 4;
+    console.log(a, 777)
 
-    let i = 1;
-    while(i <= 100) {
-        if(i%2) {
-            document.write(i + ' | ');
-        }
-        i++;
-    }
-
-    let arr = [];
-    let a = 100;
-    while(a <= 999) {
-        // 取个位数
-        let b = a % 10;
-        // 取十位数
-        let c = parseInt(a / 10) % 10;
-        // 取百位数
-        let d = parseInt(a / 100);
-        let val = Math.pow(b, 3) + Math.pow(c, 3) + Math.pow(d, 3);
-        if(val == a) {
-            arr.push(a);
-        }
-        a++;
-    }
-    document.write('100到999之间的水仙花数有' + arr.join(' '));
-
-    let [sum, month, day] = [0, 2, 1];
-    switch (month) {
-        case 2: sum += 31;
-        case 1: sum += day;
-        case 0: sum += 10;
-    }
-    console.log(sum, 888)
 </script>
 </html>
