@@ -2,26 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>demo</title>
 </head>
 <body>
 <div>
-    <button type="button" style="height: 100px" ondblclick="" click="getClick(event)">重置</button>
-    <span>222</span>
-    <input type="text">
+    <button type="button" onclick="getClick(event)">重置</button>
 </div>
 
 </body>
-<script>
-    function a() {
-        console.log(3333)
+<style>
+    button, button:link, button:visited, button:visited {
+        width: 80px;
+        height: 36px;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 16px;
+        color: blue;
+        outline: none;
     }
-
-    a();
-    a = 4;
-    console.log(a, 777)
-
+    button:hover {
+        background-color: #F5F5F5;
+    }
+</style>
+<script>
+    for(var i = 1; i <= 5; i++) {
+        setTimeout(function() {
+            console.log(i, 1111)
+        }, 10)
+    }
+    i = 2;
+    console.log(i, 222)
 </script>
 </html>

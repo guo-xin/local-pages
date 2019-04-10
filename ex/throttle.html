@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js事件节流</title>
+</head>
+<body>
+<div>
+    <span>js事件节流</span>
+    <button type="button" onclick="getClick()">重置</button>
+</div>
+
+</body>
+<style>
+    div {
+        height: 1000px;
+    }
+    button, button:link, button:visited, button:visited {
+        width: 80px;
+        height: 36px;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 16px;
+        color: blue;
+        outline: none;
+    }
+    button:hover {
+        background-color: #F5F5F5;
+    }
+</style>
+<script>
+    // 事件节流，使用定时器实现
+    var get = function (fn, delay) {
+        var flag;
+        return function () {
+            let self = this, args = arguments;
+            if(!flag) {
+                flag = setTimeout(function () {
+                    fn.apply(self,args);
+                    flag = null;
+                    console.log(8888);
+                }, delay)
+            }
+        }
+    }
+    // 频繁点击
+    var getClick = get(function () {
+        console.log('点击', 222)
+    }, 1000);
+
+    // 滚动事件
+    window.onscroll = get(function () {
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        console.log('滚动条位置：' + scrollTop);
+        console.log(new Date())
+    }, 2000);
+
+
+    // 时间戳实现
+    var getTime = function(fn, delay) {
+        var start = Date.now();
+        return function () {
+            console.log(2222);
+            let self = this, args = arguments;
+            if(Date.now()  - start >= delay) {
+                start = Date.now();
+                fn.apply(self,args);
+                console.log(8888);
+            }
+        }
+    };
+
+    window.onresize = getTime(function () {
+        let width = document.body.clientWidth || document.documentElement.clientWidth;
+        console.log('宽口宽度：' + width);
+    }, 1500);
+
+    // 综合使用定时器和时间戳
+    var getEvent = function(fn, delay) {
+        var timeOut, start = Date.now();
+
+        return function () {
+            var self = this, args = arguments;
+            var now = Date.now();
+            console.log(timeOut, 44444);
+
+            var timeGap = delay - (now - start);
+            console.log(timeGap, 9999)
+            if(timeGap <= 0) {
+                console.log(1111);
+                start = Date.now();
+                fn.apply(self,args);
+            }else {
+                timeOut && clearTimeout(timeOut);
+                timeOut = setTimeout(function () {
+                    fn.apply(self,args);
+                    // 释放一下，减少clear
+                    timeOut = null;
+                    start = Date.now();
+                    console.log(2222);
+                }, timeGap)
+            }
+
+        }
+    };
+
+    window.onkeyup = getEvent(function () {
+        console.log('keyup事件', 3333)
+    }, 2000)
+</script>
+</html>

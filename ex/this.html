@@ -9,11 +9,11 @@
 <body>
     <div>
         <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
-
         <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
         <button type="button" id="eve" style="background-color: red">事件监听</button>
     </div>
-
+    <span>箭头函数的指向</span>
+    <p>普通函数的指向</p>
 </body>
 <script>
     // 事件绑定
@@ -25,15 +25,39 @@
     }
 
     // 事件绑定
-    document.querySelector('input[type=button]').onmouseover = function(e) {
-        // 此时this指向button
+    document.querySelector('div').onmouseover = function(e) {
+        // 此时this指向事件绑定标签div
         console.log(this, 7777, e, 8888);
     }
 
     // 事件监听
-    document.querySelector("#eve").addEventListener('click', function(e) {
-        // this指向点击标签，e是点击事件对象
+    document.querySelector("div").addEventListener('click', function(e) {
+        // this指向事件绑定标签div，e是点击事件对象
         console.log(this, 111, e, 2222);
     })
+
+    let span = document.querySelector('span');
+    let obj = {
+        name: 'kobe',
+        age: 39,
+        getName: function () {
+            span.onclick = () => {
+                console.log(this, 9999);//指向obj，obj调用getName
+            };
+        }
+    };
+    obj.getName();
+
+    let p = document.querySelector('p');
+    let obj1 = {
+        name: 'kobe',
+        age: 39,
+        getName: function () {
+            p.onclick = function() {
+                console.log(this, 1111);//指向触发事件标签p
+            };
+        }
+    };
+    obj1.getName();
 </script>
 </html>

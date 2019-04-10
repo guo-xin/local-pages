@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js事件防抖</title>
+</head>
+<body>
+<div>
+    <span>js事件防抖</span>
+    <button type="button" onclick="getClick()">重置</button>
+</div>
+
+</body>
+<style>
+    div {
+        height: 1000px;
+    }
+    button, button:link, button:visited, button:visited {
+        width: 80px;
+        height: 36px;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 16px;
+        color: blue;
+        outline: none;
+    }
+    button:hover {
+        background-color: #F5F5F5;
+    }
+</style>
+<script>
+    // 事件防抖
+    var get = function (fn, delay) {
+        var timeIn;
+        return function () {
+            let self = this, args = arguments;
+
+            timeIn && clearTimeout(timeIn);
+            timeIn = setTimeout(function () {
+                fn.apply(self,args);
+                // 释放
+                timeIn = null;
+                console.log(8888);
+            }, delay)
+        }
+    }
+    // 频繁点击
+    var getClick = get(function () {
+        console.log('鼠标点击2s', 222)
+    }, 2000);
+
+    // 滚动事件
+    window.onscroll = get(function () {
+        let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+        console.log('滚动条位置：' + scrollTop);
+        console.log(new Date())
+    }, 1000);
+</script>
+</html>

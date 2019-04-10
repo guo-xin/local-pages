@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js var变量，函数提示</title>
+</head>
+<body>
+<div>
+    js中变量提示，函数提示，变量函数重名
+</div>
+
+</body>
+<script>
+    console.log(a, 111); // undefined 111
+    var a = 2;
+    console.log(a, 222); // 2 222
+    var a = function() { // 函数表达式不会被提升
+        console.log(a, 333); // undefined 333
+        a = 3; // 变成了局部变量
+        console.log(a, 444); // 3 444
+        var a = 4; // 变量提升
+    }
+    a();
+    console.log(a, 555); // function(){} 555
+    var a = 5;
+    console.log(a, 666); // 5 666
+
+
+    console.log(b, 111); // function(){} 111
+    var b = 2;
+    console.log(b, 222); // 2 222
+    function b() { // 函数声明被提升
+        console.log(b, 333); // undefined 333
+        b = 3; // 变成了局部变量
+        console.log(b, 444); // 3 444
+        var b = 4; // 变量提升
+    }
+    // b(); // 报错，不是方法了，是变量
+    console.log(b, 555); // 2 555
+    var b = 5;
+    console.log(b, 666); // 5 666
+</script>
+</html>

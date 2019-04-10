@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>js中事件绑定，事件监听，事件委托或事件代理</title>
 </head>
@@ -36,8 +35,8 @@
     };
 
     // 事件监听， 匿名函数
-    document.querySelector("#eve").addEventListener('click', function(e) {
-        // this指向点击标签，e是点击事件对象
+    document.querySelector("div").addEventListener('click', function(e) {
+        // this指向绑定事件标签div，e是点击事件对象
         console.log(this, 111, e, 2222);
     });
     // onload事件
@@ -48,7 +47,7 @@
 
     // 事件代理，事件监听
     document.querySelector("ul").addEventListener('click', function(e) {
-        // e是点击的事件对象，this指向ul
+        // e是点击的事件对象，this指向绑定事件标签ul
         console.log(e.target.textContent, 5555, this, 666);
     });
 
