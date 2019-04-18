@@ -28,7 +28,7 @@ class Vue{
         });
     }
     observer(data){
-        console.log(444)
+        console.log(1233443)
         let that = this
         Object.keys(data).forEach(key=>{
             let value = data[key]
@@ -37,6 +37,7 @@ class Vue{
             configurable: false,
             enumerable: true,
             get(){
+                console.log(444)
                 return value
             },
             set(newValue){

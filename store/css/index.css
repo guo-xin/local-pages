@@ -1,0 +1,151 @@
+a {
+    text-decoration: none;
+}
+body {
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #666;
+    background: #fff;
+}
+.main {
+    width: 990px;
+    margin: 0 auto;
+}
+
+.cart-thead{
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 0 10px;
+    padding: 5px 0;
+    background: #f3f3f3;
+    border: 1px solid #e9e9e9;
+    border-top: 0;
+    position: relative;
+}
+.column {
+    float: left;
+}
+.t-checkbox {
+    height: 18px;
+    line-height: 18px;
+    padding-top: 7px;
+    width: 122px;
+    padding-left: 11px;
+}
+.cart-checkbox {
+    position: relative;
+    z-index: 3;
+    float: left;
+    margin-right: 5px;
+}
+.t-goods {
+    width: 208px;
+}
+.t-props{
+    width: 140px;
+    height: 32px;
+    padding: 0 10px 0 20px;
+}
+.t-price {
+    width: 120px;
+    padding-right: 40px;
+    text-align: right;
+}
+.t-quantity {
+    width: 80px;
+    text-align: center;
+}
+.t-sum {
+    width: 100px;
+    padding-right: 40px;
+    text-align: right;
+}
+.t-action {
+    width: 75px;
+}
+
+.toolbar-right .normal .comm-right {
+    float: right;
+    width: 650px;
+}
+.toolbar-wrap .btn-area {
+    float: right;
+}
+.btn-area .submit-btn {
+    display: block;
+    position: relative;
+    width: 94px;
+    height: 52px;
+    line-height: 52px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    font-family: "Microsoft YaHei";
+    background: #e54346;
+    overflow: hidden;
+    border-radius: 4px;
+}
+.submit-btn:hover{
+    background: #b92e31;
+}
+.toolbar-wrap .price-sum {
+    float: right;
+    height: 43px;
+    line-height: 20px;
+    margin: 7px 20px 0 10px;
+    color: #666;
+    width: auto;
+    position: relative;
+}
+.toolbar-wrap .price-sum .txt-new {
+    width: 50px;
+}
+.toolbar-wrap .price-sum .txt {
+    float: left;
+    width: 50px;
+    text-align: right;
+}
+.toolbar-wrap .price-sum .price {
+    display: inline-block;
+    text-align: right;
+}
+.toolbar-wrap .price-sum .price em {
+    font-size: 16px;
+    color: #E2231A;
+    font-weight: 700;
+}
+.toolbar-wrap .amount-sum {
+    float: right;
+    height: 44px;
+    line-height: 20px;
+    margin: 7px 0 0;
+    cursor: pointer;
+}
+.toolbar-wrap .amount-sum em {
+    color: #E2231A;
+    font-weight: 700;
+    margin: 0 3px;
+}
+.content .t-goods img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eee;
+    margin-right: 10px;
+    background: #fff;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.content .list {
+    clear: both;
+}
+.add, .reduce, .remove {
+    color: #000;
+    cursor: pointer;
+}
+input[type='checkbox'] {
+    cursor: pointer;
+}

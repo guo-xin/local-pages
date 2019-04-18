@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>XMLHttpRequest</title>
+</head>
+<body>
+<div>XMLHttpRequest原生ajax写法</div>
+
+<button onclick="get()">同步get</button>
+
+<button onclick="post()">异步post</button>
+<div id="myDiv"></div>
+</body>
+<style>
+    button, button:link, button:visited, button:visited {
+        width: 80px;
+        height: 36px;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 16px;
+        color: blue;
+        outline: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #F5F5F5;
+    }
+</style>
+<script>
+    var xhr;
+    if(XMLHttpRequest) {
+        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xhr = new XMLHttpRequest();
+    } else {
+        // IE6, IE5 浏览器执行代码
+        xhr=new ActiveXObject("Microsoft.XMLHTTP");
+    };
+
+    function get() {
+        // open(method,url,async)
+        xhr.open('get', '../json/info.json', false);
+        // 设置请求头setRequestHeader(header,value)
+        xhr.setRequestHeader('Cache-Control', 'private');
+        xhr.setRequestHeader('lang', 'en');
+        xhr.send();
+        document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText).name;
+    };
+
+    function post() {
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200)
+            {
+                document.getElementById("myDiv").innerHTML = xhr.responseText;
+            }
+        };
+        xhr.open('post', '../json/info.json', true);
+        // 设置请求头setRequestHeader(header,value)
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send('name=guo&value=666');
+    };
+</script>
+</html>

@@ -50,10 +50,10 @@
     }, 1000);
 
     // 滚动事件
-    window.onscroll = get(function () {
+    window.onscroll = get(function (e) {
         let scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
         console.log('滚动条位置：' + scrollTop);
-        console.log(new Date())
+        console.log(e, 999)
     }, 2000);
 
 

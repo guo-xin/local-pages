@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/common.js" type="text/javascript"></script>
+    <title>购物车页面</title>
+</head>
+<body>
+    <div class="main">
+        <div class="cart-thead">
+            <div class="column t-checkbox">
+                <div class="cart-checkbox">
+                    <input type="checkbox" name="all" onchange="checkAll(event)" class="jdcheckbox">
+                </div>
+                全选
+            </div>
+            <div class="column t-goods">商品</div>
+            <div class="column t-props"></div>
+            <div class="column t-price">单价</div>
+            <div class="column t-quantity">数量</div>
+            <div class="column t-sum">小计</div>
+            <div class="column t-action">操作</div>
+        </div>
+        <div class="content">
+        </div>
+        <div class="toolbar-wrap">
+            <div class="t-checkbox">
+                <div class="cart-checkbox">
+                    <input type="checkbox" onchange="checkAll(event)" name="all" class="jdcheckbox">
+                </div>
+                全选
+            </div>
+            <div class="toolbar-right">
+                <div class="normal">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        addStore();
+        reflow();
+    }
+</script>
+</html>

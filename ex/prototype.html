@@ -26,21 +26,18 @@
     }
 </style>
 <script>
-    var name = 'global';
-    var obj = {
-        name: 'obj',
-        dose: function() {
-            this.name = 'dose';
-            return () => {
-                return this;
-            }
-        }
-    };
-    console.log(obj.dose.call(this)(), 99)
-
-    var a = function b(){
-        console.log(3333)
+    function Dog(name) {
+        this.name = name;
+        this.special = 'gggg'
     }
-    a()
+    var cat = new Dog('cat');
+    // Dog.prototype.special = 'big';
+    // cat.__proto__.special = 'big';
+    var dog = new Dog('dog');
+    cat.name = 'new Cat';
+    console.dir(dog, 888);
+
+    var arr = new Array();
+    console.dir(Array, 999)
 </script>
 </html>
