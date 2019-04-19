@@ -12,10 +12,12 @@
 
 <button onclick="post()">异步post</button>
 <div id="myDiv"></div>
+输入姓名：<input type="text" onkeyup="checkName(this.value)">
+提示信息：<div class="tip"></div>
 </body>
 <style>
     button, button:link, button:visited, button:visited {
-        width: 80px;
+        width: 100px;
         height: 36px;
         border: 1px solid red;
         border-radius: 5px;
@@ -38,27 +40,59 @@
         xhr=new ActiveXObject("Microsoft.XMLHTTP");
     };
 
-    function get() {
-        // open(method,url,async)
-        xhr.open('get', '../json/info.json', false);
-        // 设置请求头setRequestHeader(header,value)
-        xhr.setRequestHeader('Cache-Control', 'private');
-        xhr.setRequestHeader('lang', 'en');
-        xhr.send();
-        document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText).name;
-    };
+//    function get() {
+//        // open(method,url,async)
+//        xhr.open('get', '../json/info.json', false);
+//        // 设置请求头setRequestHeader(header,value)
+//        xhr.setRequestHeader('Cache-Control', 'private');
+//        xhr.setRequestHeader('lang', 'en');
+//        xhr.send();
+//        console.log(xhr, 8888)
+//        document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText).name;
+//    };
 
-    function post() {
+    function get() {
         xhr.onreadystatechange = function() {
+            console.log(xhr, 9999)
             if (xhr.readyState === 4 && xhr.status === 200)
             {
                 document.getElementById("myDiv").innerHTML = xhr.responseText;
             }
         };
-        xhr.open('post', '../json/info.json', true);
+        xhr.open('get', 'https://oasbp.qa.qfpay.net/org/tools/qudao/list?status=3&format=cors', true);
+        xhr.withCredentials = true;
+        xhr.send();
+    };
+
+
+    function post() {
+        xhr.onreadystatechange = function() {
+            console.log(xhr, 9999)
+            if (xhr.readyState === 4 && xhr.status === 200)
+            {
+                document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText);
+            }
+        };
+        xhr.open('post', 'https:oasbp.qa.qfpay.net/org/user/login', true);
         // 设置请求头setRequestHeader(header,value)
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xhr.send('name=guo&value=666');
+        xhr.send('username=qfhk001&password=qfhk001&format=cors');
     };
+
+    function checkName(val) {
+        var tip = document.querySelector('tip');
+        if(val.length === 0) {
+            tip.innerHTML = '请输入姓名';
+        }
+        xhr.onreadystatechange = function() {
+            console.log(xhr, 9999)
+            if (xhr.readyState === 4 && xhr.status === 200)
+            {
+                tip.innerHTML = xhr.responseText;
+            }
+        };
+        xhr.open('get', '../php/info.php?name=' + val, true);
+        xhr.send();
+    }
 </script>
 </html>

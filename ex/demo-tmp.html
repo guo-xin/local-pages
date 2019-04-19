@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>本地demo记录</title>
+</head>
+<body>
+<div>
+    <button type="button" onclick="getClick(event)">重置</button>
+</div>
+<span id="guo">3333</span>
+</body>
+<style>
+    button, button:link, button:visited, button:visited {
+        width: 80px;
+        height: 36px;
+        border: 1px solid red;
+        border-radius: 5px;
+        font-size: 16px;
+        color: blue;
+        outline: none;
+    }
+    button:hover {
+        background-color: #F5F5F5;
+    }
+</style>
+<script>
+    var a = new Promise(function(resolve, reject) {
+        console.log(7777)
+        setTimeout(function() {
+            resolve();
+            console.log(22222)
+        }, 2000)
+    })
+    console.log(111)
+    setTimeout(function() {
+        console.log(3333)
+    }, 2000)
+    a.then(() => {
+        console.log(4444)
+    })
+    console.log(555)
+
+    function foo() {
+        console.log(bar, 11);
+        var bar = 20;
+        function bar() {
+            return 10;
+        }
+
+        console.log(bar, 22)
+        var bar = function() {
+            return 30;
+        }
+        console.log(bar, 333)
+    }
+    var c = foo();
+
+    console.log(c, 444)
+</script>
+</html>
