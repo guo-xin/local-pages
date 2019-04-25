@@ -8,6 +8,7 @@
 <body>
 <div>
     <button type="button" onclick="getClick(event)">重置</button>
+    <p>222</p>
 </div>
 <span id="guo">3333</span>
 </body>
@@ -26,38 +27,27 @@
     }
 </style>
 <script>
-    (function repeat() {
-        var a = [4, 2, 3, 2, 5, 9, 6, 7, 39];
-        var [max, min] = [a[0], a[0]];
-        for(var i = 1; i < a.length; i++) {
-            if(a[i] > max) {
-                max = a[i];
-            }
-            if(a[i] < min) {
-                min = a[i];
-            }
-        }
-        console.log(max, min, 666);
+function Father(name, age, tel, money) {
+    this.name = name;
+    this.age = age;
+    this.tel = tel;
+    this.money = '444';
+    this.dance = function() {
+        return '8888'
+    }
+    console.log(this.name, 9999)
+}
 
-        var len = max - min + 1;
-        console.log(len, 222)
-        var arr = new Array(len);
-        console.log(arr, 44444)
+Father.prototype.sing = function () {
+    return '7777'
+}
 
-        for(var j = 0; j < a.length; j++) {
-            console.log(arr[a[j]], 555)
-            arr[a[j]] = arr[a[j]] ? arr[a[j]] + 1 : 1;
-        }
-        console.log(arr, 777)
-        var newArr = [];
+function Son(name, age, tel) {
+    // Father.call(this, name, age, tel);
 
-        for(var k = 0; k < arr.length; k++) {
-            for(var l = 0; l < arr[k]; l ++ ) {
-                newArr.push(k);
-            }
-        }
-
-        console.log(newArr, 888)
-    })()
+}
+Son.prototype = new Father('guoxin1', 120, 13744101731)
+// var son = new Son('guoxin', 18, 13744101731);
+console.log(Son.prototype, 22222)
 </script>
 </html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>递归函数</title>
+</head>
+<body>
+<div>
+    js中递归函数的使用
+</div>
+</body>
+<script>
+    // 递归，普通写法
+    function fn(n) {
+        if(n === 1) {
+            return 1;
+        }else {
+            return n * fn(n-1);
+        }
+    }
+
+    console.log(fn(4), 111); // 24
+
+    // 推荐递归写法，函数名称改变也可以正常执行
+    function fn1(n) {
+        if(n == 1) {
+            return 1;
+        }else {
+            return n * arguments.callee(n-1);
+        }
+    }
+
+    console.log(fn1(5), 2222); // 120
+</script>
+</html>

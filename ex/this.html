@@ -53,11 +53,23 @@
         name: 'kobe',
         age: 39,
         getName: function () {
+            console.log(this, 222); // obj1
             p.onclick = function() {
                 console.log(this, 1111);//指向触发事件标签p
             };
         }
     };
     obj1.getName();
+</script>
+<script>
+    var x = 0;
+    function test() {
+        console.log(this.x);
+    }
+
+    var obj2 = {};
+    obj2.x = 1;
+    obj2.m = test;
+    obj2.m() // 0
 </script>
 </html>

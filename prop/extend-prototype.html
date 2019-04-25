@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链继承通过prototype</title>
+</head>
+<body>
+<div>
+    <p>原型链继承通过prototype</p>
+</div>
+
+</body>
+<style>
+
+</style>
+<script>
+    function Parent() {
+        // 不能继承
+        this.value = '111'
+    };
+    // 可以继承
+    Parent.prototype.sp = 555;
+    function Children(name) {
+        this.name = name;
+        this.getName = function () {
+            console.log(this.name, 666)
+        }
+
+    };
+    // 继承关键，缺点是Parent方法里面的属性和方法不能继承
+    Children.prototype = Parent.prototype;
+    Children.prototype.constructor = Children;
+
+    let ch = new Children('guoxin', 777);
+
+    console.dir(ch, 99)
+    console.dir(Children, 99)
+    console.dir(Parent, 99)
+
+</script>
+</html>

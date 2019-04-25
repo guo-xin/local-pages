@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型链构造函数</title>
+</head>
+<body>
+<div>
+    <p>原型链构造函数</p>
+    <p>通过原型链修改共有属性</p>
+</div>
+
+</body>
+<style>
+
+</style>
+<script>
+    function Parent(name, val) {
+        this.name = name;
+        this.value = val;
+        this.sp = '这个优先级高一些';
+        this.say = function () {
+            console.log(this.name, 555)
+        }
+    };
+    // 动态修改属性
+    // Parent.prototype.sp = '555';
+
+    let p1 = new Parent('guoxin', '777');
+    let p2 = new Parent('hanmengqi', '222');
+
+    console.log(p1, 88);
+    console.log(p2, 99);
+
+</script>
+</html>

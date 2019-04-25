@@ -55,9 +55,10 @@
     console.log('Number:', typeof Number); // "function"
 
     console.log('%cinstanceof----------', 'font-size: 20px; color: red;');
-    console.log('[]:', [] instanceof Array); // true
-    console.log('[]:', [] instanceof Object); // true
-    console.log('{}:', {} instanceof Object); // true
+    console.log('[]Array:', [] instanceof Array); // true
+    console.log('[]Object:', [] instanceof Object); // true
+    console.log('{}Object:', {} instanceof Object); // true
+    console.log('{}Array:', {} instanceof Array); // false
     console.log('new Date:', new Date() instanceof Date); // true
     console.log('new String:', new String() instanceof String); // true
     console.log('string:', '' instanceof String); // false
@@ -73,6 +74,8 @@
     console.log('new RegExp:', new RegExp() instanceof Object); // true
 
     console.log('Array:', Array instanceof Function); // true
+    console.log('Object:', Object instanceof Function); // true
+    console.log('Function:', Function instanceof Object); // true
 
     console.log('%cconstructor---------', 'font-size: 20px; color: red;');
     console.log('[]', [].constructor === Array); // true

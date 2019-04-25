@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+</head>
+<body>
+<div>
+    <p></p>
+</div>
+
+</body>
+<style>
+
+</style>
+<script>
+    function Dog(name) {
+        this.name = name;
+        // this.special = 'gggg'
+    }
+    var cat = new Dog('cat');
+    Dog.special = 'big';
+
+    var dog = new Dog('dog');
+    cat.name = 'new Cat';
+    // cat.__proto__.special = 'big';
+    console.dir(cat, 888);
+
+</script>
+</html>
