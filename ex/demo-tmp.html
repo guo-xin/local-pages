@@ -95,4 +95,85 @@
         console.log(newArr, 888)
     })()
 </script>
+
+<script>
+    var c = 10
+    function fn() {
+        b = 20;
+        function bar() {
+            console.log(b, 666)
+            console.log(c + b) //210
+        }
+        return bar
+    }
+
+    var x = fn();
+    var b = 200;
+    x(); //bar()
+</script>
+<script>
+    // 实现Array.of功能
+    function ArrayOf(){
+        console.log(arguments, 888);
+        return [].slice.call(arguments);
+        // return [].slice.apply(arguments);
+    }
+
+    console.log(ArrayOf(1, 3, 4, 6), 999); // [1, 3, 4, 6]
+
+    // 实现Array.from功能
+    function arrayFrom() {
+        return [].slice.call(...arguments);
+        // return Array.prototype.slice.call(...arguments);
+    }
+
+    console.log(arrayFrom('12312'), 666); // ['1', '2', '3', '1', '2']
+
+    var a = '123';
+    function f() {
+        console.log(a, 22); //undefined
+        if(false) {
+            var a = '345';
+        }
+    }
+    f();
+
+    var b = 3, c = b;
+    console.log(c, 3333)
+
+    const arr = [1];
+    arr.push(3); // [1, 2]
+    arr[2] = 3; // [1, 2, 3]
+
+
+    // 实现console.log的功能
+    function log(){
+        console.log(this, 666); // window
+        console.log.apply([], arguments);
+        // console.log.call(this, ...arguments);
+    }
+    log(1, 2, 3); //1 2 3
+</script>
+<script>
+    function Person(_age, _address) {
+        console.log(this, 1111)
+        this.age = _age;
+        this.address = _address;
+        console.log(this, 2222)
+        console.log(this.name, 333);//north
+        console.log(this.age, 4444); // 23
+    }
+
+    var north = {name: "north"};
+    var northBind = Person.bind(north, 24);
+    console.log(northBind(), 666);
+
+    var num = 4;
+    function a() {
+        console.log(num, 777);
+        num = 7;
+    }
+
+    console.log(num, 88); // 4
+</script>
 </html>

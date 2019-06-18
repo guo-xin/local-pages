@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>js var变量，函数提示</title>
+    <title>js var变量，函数提升</title>
 </head>
 <body>
 <div>
-    js中变量提示，函数提示，变量函数重名
+    js中变量提升，函数提升，变量函数重名
 </div>
 
 </body>
 <script>
+    // 变量和函数表达式
     console.log(a, 111); // undefined 111
     var a = 2;
     console.log(a, 222); // 2 222
@@ -20,11 +21,29 @@
         a = 3; // 变成了局部变量
         console.log(a, 444); // 3 444
         var a = 4; // 变量提升
+        console.log(a, 777); // 4 777
     }
     a();
     console.log(a, 555); // function(){} 555
     var a = 5;
     console.log(a, 666); // 5 666
+
+
+    // 变量和函数声明
+    console.log(c, 111); // function 111
+    var c = 2;
+    console.log(c, 222); // 2 222
+    function c() { // 函数声明被提升
+        console.log(c, 333); // undefined 333
+        c = 3; // 变成了局部变量
+        console.log(c, 444); // 3 444
+        var c = 4; // 变量提升
+        console.log(c, 777); // 4 777
+    }
+    c();
+    console.log(c, 555); // function(){} 555
+    var c = 5;
+    console.log(c, 666); // 5 666
 
 
     console.log(b, 111); // function(){} 111
@@ -40,5 +59,27 @@
     console.log(b, 555); // 2 555
     var b = 5;
     console.log(b, 666); // 5 666
+</script>
+<script>
+    // 函数需要执行里面的代码才会起作用
+    var num = 4;
+    function a() {
+        console.log(num, 777); // 不打印
+        num = 7;
+    }
+
+    // 没有执行函数，里面代码也没有生效
+    console.log(num, 888); // 4 888
+
+    var num1 = 4;
+    function a1() {
+        console.log(num1, 777); // 4 777
+        num1 = 7;
+        console.log(num1, 888); // 7 888
+    }
+
+    // 执行函数，里面代码生效
+    a1();
+    console.log(num1, 999); // 7 999
 </script>
 </html>

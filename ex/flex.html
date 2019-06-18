@@ -12,7 +12,8 @@
 <style>
     body {
         display: flex;
-        width: 400px;
+        /*width: 400px;*/
+        width: 200px;
     }
     .first {
         /*flex默认0 1 auto*/
@@ -21,9 +22,10 @@
     }
     .second {
         /*flex: 1;*/
-        /*flex: 1 0 200px;*/
+        /*内容宽度，可伸不可缩，所以最小为200px*/
+        flex: 1 0 200px;
         /*内容宽度，可伸缩，所以最小为100px*/
-        flex:auto;
+        /*flex:auto;*/
         background: blue;
     }
     .third {

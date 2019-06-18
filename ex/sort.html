@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js算法</title>
+</head>
+<body>
+<div>
+    <div id="div">div</div>
+    <p>js算法</p>
+</div>
+</body>
+
+<script>
+    var name = 'window';
+    var obj = {
+        name: 'obj',
+        getName: function () {
+
+            console.log(this, 888);
+            this.name = '2222';
+            return () => {
+                console.log(this, 999)
+            }
+        }
+    }
+
+    obj.getName('s')();
+    // 快排
+    function quickSort() {
+
+    }
+    quickSort();
+</script>
+</html>

@@ -27,27 +27,12 @@
     }
 </style>
 <script>
-function Father(name, age, tel, money) {
-    this.name = name;
-    this.age = age;
-    this.tel = tel;
-    this.money = '444';
-    this.dance = function() {
-        return '8888'
+    for(let i = 0; i < 10; i++) {
+        console.log(i, 8888);
+        setTimeout(() => {
+            console.log(i, 999);
+        }, 0)
     }
-    console.log(this.name, 9999)
-}
-
-Father.prototype.sing = function () {
-    return '7777'
-}
-
-function Son(name, age, tel) {
-    // Father.call(this, name, age, tel);
-
-}
-Son.prototype = new Father('guoxin1', 120, 13744101731)
-// var son = new Son('guoxin', 18, 13744101731);
-console.log(Son.prototype, 22222)
+    console.log(i, 6666);
 </script>
 </html>

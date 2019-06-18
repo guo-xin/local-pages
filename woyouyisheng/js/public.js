@@ -146,3 +146,6 @@ function getPIN(val) {
 		countTime(val);
 	}
 }
+
+// http://www.2277cao.com/
+// http://www.datangwg.com/   https://github.com/sefu8/dizhi/wiki

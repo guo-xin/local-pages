@@ -16,7 +16,8 @@
 </style>
 <script>
     function Parent(name, value) {
-        this.name = name;
+        // 动态值没有传值
+        this.name = name + '777';
         // 优先级高
         this.sp = '222';
         this.value = value;
@@ -42,7 +43,7 @@
     let ch1 = new Children('guoxin', 777);
     let ch2 = new Children('hanemngqi', 888);
 
-    console.dir(ch1, 88);
+    console.dir(ch1.say(), 88);
     console.dir(ch2, 88);
     console.dir(Children, 88);
     console.dir(Parent, 99);

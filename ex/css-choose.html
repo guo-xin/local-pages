@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css选择器</title>
+</head>
+<body>
+<div>
+    <span>css选择器</span>
+    <span>sewwe</span>
+    <span>sewwe</span>
+    <span>sewwe</span>
+</div>
+
+</body>
+<style>
+    span:not(:last-child)::after {
+        content: '|';
+        padding-left: 10px;
+    }
+</style>
+
+</html>

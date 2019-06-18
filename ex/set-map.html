@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js中set和map数据类型</title>
+</head>
+<body>
+<div>
+    <p>js中set和map数据类型</p>
+</div>
+</body>
+
+<script>
+    // Set结构
+    let s1 = new Set('assdfrws'); // {a, s, d, f, r, w}
+
+    let s2 = new Set([1, 2, 2, 3, 4, 4]); // {1, 2, 3, 4}
+
+    let set1 = new Set([1, 2, 3]);
+    set = new Set([...set1].map(x => x * 2));// 返回Set结构：{2, 4, 6}
+
+    let set2 = new Set([1, 2, 3, 4, 5]);
+    set = new Set([...set2].filter(x => (x % 2) === 0));// 返回Set结构：{2, 4}
+
+    // Map结构
+    let m1 = new Map();
+    console.log(m1); // {}
+
+    m1.set('name', 'guoxin').set('value', '66666');
+    console.log(m1); // {'name' => 'guoxin', 'value => '66666''}
+
+    console.log(m1.get('name')); // 'guoxin'
+    console.log(m1.has('name')); // true
+
+    // Map结构转为数组,使用扩展运算符,entries结构
+    console.log([...m1]); // [['name', 'guoxin'], ['value', '66666']]
+
+    // Map结构转对象，for of两个参数
+    let obj1 = {};
+    for(let [key, value] of m1) {
+        obj1[key] = value;
+    }
+    console.log(obj1); // {name: "guoxin", value: "66666"}
+
+</script>
+</html>

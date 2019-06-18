@@ -72,4 +72,19 @@
     obj2.m = test;
     obj2.m() // 0
 </script>
+<script>
+    var name = 'window';
+    var obj = {
+        name: 'obj',
+        getName: function () {
+            console.log(this, 888);
+            this.name = '2222';
+            return () => {
+                console.log(this, 999)
+            }
+        }
+    }
+
+    obj.getName('s')();
+</script>
 </html>

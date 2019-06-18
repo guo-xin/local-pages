@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js作用域</title>
+</head>
+<body>
+<p>js作用域</p>
+</body>
+<script type="text/javascript">
+    // 重复声明如果不赋值，不会被覆盖
+    var c = 4;
+    var c;
+    console.log(c, 666); // 4
+
+    // 参数与变量名一样时，在变量赋值之前使用参数值，赋值之后使用变量值
+    function a(b) {
+        console.log(b, 22222); // 2
+        var b = 3;
+        console.log(b, 3333); // 3
+    }
+    a(2);
+
+    // 参数与函数名一样时，函数名覆盖参数
+    function d(b) {
+        console.log(b, 1111); // function
+
+        var b = 3;
+        console.log(b, 3333); // 3
+        function b() {
+            console.log(b, 4444);
+        }
+
+        console.log(b, 2222); // 3
+    }
+    d(2);
+
+    // 函数的作用域是定义时决定的
+    var a = 2;
+    function s() {
+        a = 1;
+        console.log(a, 111);
+    }
+    a = 3;
+    s(); // 1 1111
+</script>
+</html>

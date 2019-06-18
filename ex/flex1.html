@@ -5,27 +5,61 @@
     <title>flex测试</title>
 </head>
 <body>
-    <div class="first">1</div>
-    <div class="second">2</div>
-    <div class="third">3</div>
-    <div class="third">3</div>
-    <div class="third">3</div>
-    <div class="third">3</div>
-    <div class="third">3</div>
-    <div class="third">3</div>
-    <div class="third">3</div>
+    <div class="flex1">
+        <div class="first">1</div>
+        <div class="second">2</div>
+        <div class="third">3</div>
+        <div class="third">3</div>
+        <div class="third">3</div>
+        <div class="third">3</div>
+        <div class="third">3</div>
+        <div class="third">3</div>
+        <div class="third">3</div>
+    </div>
+    <div class="flex2">
+        <div>
+            <div class="green">1</div>
+        </div>
+        <div>
+            <div class="green">2</div>
+        </div>
+        <div>
+            <div class="green">3</div>
+        </div>
+        <div>
+            <div class="green">4</div>
+        </div>
+        <div>
+            <div class="green">5</div>
+        </div>
+        <div>
+            <div class="green">6</div>
+        </div>
+    </div>
 </body>
 <style>
-    body {
+    .flex1 {
         display: flex;
         width: 500px;
         justify-content: space-between;
         flex-wrap: wrap;
     }
 
-    div {
+    .flex2 {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 20px;
+    }
+    .flex1 div {
         width: 32%;
         background-color: red;
+    }
+    .flex2>div {
+        flex: 33%;
+    }
+    .green {
+        background-color: green;
+        margin-right: 20px;
     }
 </style>
 </html>

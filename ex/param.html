@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js函数参数问题</title>
+</head>
+<body>
+<div>
+    <p>js函数参数问题</p>
+</div>
+</body>
+<script>
+    function a(...a) {
+        console.log(arguments); // [1, 2, 3]
+        console.log(a); // [1, 2, 3]
+    }
+    a(1, 2, 3);
+
+</script>
+</html>
