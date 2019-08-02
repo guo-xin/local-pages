@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>es6不定参数</title>
+</head>
+<body>
+    es6不定参数，默认参数，解构
+</body>
+<script>
+    // 不定参数
+    function a(...val) {
+        console.log(val, 888); // [1, 2, 3]
+    }
+    a(1, 2, 3);
+
+    // 默认参数
+    function b(val = 3) {
+        console.log(val, 999); // 3
+    }
+    b();
+
+    // 解构
+    function c({a}) {
+        console.log(a, 777); // 1
+    }
+    c({a: 1, b: 2, c: 3});
+</script>
+</html>

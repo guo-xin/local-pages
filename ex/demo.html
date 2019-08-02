@@ -7,32 +7,40 @@
 </head>
 <body>
 <div>
-    <button type="button" onclick="getClick(event)">重置</button>
-    <p>222</p>
+    <!--<iframe src="../static/教育部学籍在线验证报告_郭鑫.pdf" width="800" height="600"></iframe>-->
 </div>
-<span id="guo">3333</span>
+<div>姓名</div>
+<div>手机号码</div>
+<div>账号</div>
+<div>密码</div>
 </body>
 <style>
-    button, button:link, button:visited, button:visited {
-        width: 80px;
-        height: 36px;
+    /*css*/
+    div {
+        margin: 10px 0;
+        width: 100px;
         border: 1px solid red;
-        border-radius: 5px;
-        font-size: 16px;
-        color: blue;
-        outline: none;
-    }
-    button:hover {
-        background-color: #F5F5F5;
+        text-align-last: justify;
     }
 </style>
 <script>
-    for(let i = 0; i < 10; i++) {
-        console.log(i, 8888);
-        setTimeout(() => {
-            console.log(i, 999);
-        }, 0)
+    var user = { name: "John"};
+    var admin = user;
+    user = {value: 333};
+    console.log(admin, 111, user, 222);
+
+    let students = [
+        {name: 'Lucy', age: 20, sex: 'female'},
+        {name: 'LiLei', age: 21, sex: 'male'},
+        {name: 'Jim', age: 18, sex: 'male'}
+    ];
+
+    let a = 'ceshi';
+    let ls = {
+        [students[0]['name']]: 6666,
+        a,
+        value: 9999
     }
-    console.log(i, 6666);
+    console.log(ls, 888); // {Lucy: 6666, value: 9999}
 </script>
 </html>

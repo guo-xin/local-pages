@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js页面跳转</title>
+</head>
+<body>
+    <input type=button value='刷新' onclick="history.go(0)">
+    <input type=button value='跳转' onclick="self.location='页面跳转.html'">
+    <input type=button value='后退3步' onclick="window.history.go(-3)">
+    <input type=button value='前进' onclick="window.history.forward()">
+    <input type=button value='后退' onclick="window.history.back()">
+    <input type=button value='后退+刷新' onclick="window.history.go(-1);window.location.reload()">
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js事件循环</title>
+</head>
+<body>
+ <p>js是单线程，所以存在事件循环和事件队列</p>
+ <span style="color:red; border: 1px solid red; border-radius: 10px; padding: 2px 5px">紧急</span>
+
+</body>
+<script>
+    Promise.resolve().then(() => {
+        console.log(11111);
+        setTimeout(() => {
+            console.log(2222);
+        }, 0);
+        console.log(6666);
+    });
+
+    setTimeout(() => {
+        console.log(33333);
+        Promise.resolve().then(() => {
+            console.log(4444);
+        });
+        console.log(5555);
+    }, 0);
+    // 1 6 3 5 4 2
+</script>
+<script>
+//    var a = new Promise(function(resolve, reject) {
+//        console.log(7777)
+//        setTimeout(function() {
+//            resolve();
+//            console.log(22222)
+//        }, 2000)
+//    })
+//    console.log(111)
+//    setTimeout(function() {
+//        console.log(3333)
+//    }, 2000)
+//    a.then(() => {
+//        console.log(4444)
+//    })
+//    console.log(555)
+//    // 7 1 5 2 4 3
+</script>
+</html>

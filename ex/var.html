@@ -82,4 +82,16 @@
     a1();
     console.log(num1, 999); // 7 999
 </script>
+<script>
+    /**
+     * @Description: 函数表达式var
+     * @author guoxin
+     * @date 2019/7/12
+    */
+    console.log(des, 666); // 这里des不会报错，而是undefined
+    // 函数表达式的变量申明会提升
+    var des = function() {
+
+    }
+</script>
 </html>

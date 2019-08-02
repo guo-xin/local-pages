@@ -147,5 +147,5 @@ function getPIN(val) {
 	}
 }
 
-// http://www.2277cao.com/
-// http://www.datangwg.com/   https://github.com/sefu8/dizhi/wiki
+// http://xxxxdyw28.vip/
+// https://github.com/sefu8/dizhi/wiki

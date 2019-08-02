@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery的on和bind</title>
+</head>
+<body>
+    <p>jquery的on和bind</p>
+    <input type="button" value="动态添加元素" id="foo"/>
+    <p class="on-some">用on绑定多个事件相同函数</p>
+    <p class="on-every">用on绑定多个事件不同函数</p>
+    <input type="button" value="解除on事件" id="off">
+    <hr/>
+    <p class="bind-some">用bind绑定多个事件相同函数</p>
+    <p class="bind-every">用bind绑定多个事件不同函数</p>
+</body>
+<style type="text/css">
+    input[type='button'] {
+        cursor: pointer;
+    }
+</style>
+<script>
+    $(function(){
+        // on给动态添加的元素添加事件并传递值
+        $("body").on("click",".rule6", '新添加的按钮', function(event){
+            console.log(this.tagName, 111, event, event.data);
+        });
+
+        // 动态创建标签
+        $("#foo").click(function(){
+            $(`<input class="rule6" type="button" value='新添加的按钮'>`).insertAfter(this);
+        })
+
+        // on绑定多个事件相同函数
+        $(".on-some").on('click mouseover mouseenter', function() {
+            console.log('多个事件相同函数');
+        })
+
+        // on绑定多个事件不同函数
+        $(".on-every").on({
+            mouseover: function() {
+                console.log('多个事件不同函数1');
+            },
+            click: function() {
+                console.log('多个事件不同函数2');
+            }
+        })
+
+        $("#off").click(function () {
+            // 移除on-some上所有的click事件函数
+            // $(".on-some").off('click');
+
+            // 移除on-some上所有的事件函数
+            $(".on-some").off();
+        })
+
+        // bind绑定多个事件相同函数并传递参数
+        $(".bind-some").bind('click mouseover mouseenter', '传递参数', function(event) {
+            console.log('多个事件相同函数', 2222, event.data);
+        })
+
+        // bind绑定多个事件不同函数
+        $(".bind-every").bind({
+            mouseover: function() {
+                console.log('多个事件不同函数1');
+            },
+            click: function() {
+                console.log('多个事件不同函数2');
+            }
+        })
+    })
+</script>
+</html>
