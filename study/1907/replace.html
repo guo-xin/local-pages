@@ -8,6 +8,9 @@
     <p>js中replace的相关操作</p>
 </body>
 <script>
+    /**
+     * @desc: 获取url的参数
+    */
     let url = 'http://xinche-operate-rest.guazi-cloud.com' +
         '/server/api/opera/sms/v2/list?' +
         'brand_id=&chexi_id=&year=&chekuan_id=&begin_time=&end_time=&approval_status=' +
@@ -19,5 +22,13 @@
         param[s1] = s2;
      });
     console.log(param, 888);
+
+
+    /**
+     * @desc: 正则的匹配顺序，从左往右
+    */
+    let b = 'https://gray-ims.qfpay.com/'.replace(/(gray-ims|ims|oasbp)/, 'o');
+    // https://o.qfpay.com/
+    console.log(b, 1111111);
 </script>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height">
+    <title>setTimeout和setInterval</title>
+</head>
+<body>
+<div>
+    setTimeout和setInterval
+</div>
+</body>
+<script>
+    const ACTIVITY_RULE_OPTIONS = [
+        { label: '默认不叠加', value: 0 },
+        { label: '可叠加', value: 1 },
+        { label: '绝对互斥', value: 2 }
+    ]
+//    let list = ACTIVITY_RULE_OPTIONS.filter((item) => {
+//        return item.value === 1;
+//    })[0]['label']
+
+    let list = ACTIVITY_RULE_OPTIONS.find((item) => {
+        return item.value === 1;
+    })['label']
+    console.log(list, 7777);
+
+    let obj = {
+        test: {
+            name: 'guoxin',
+            value: 6666,
+            location: 'beijng'
+        },
+        demo: '111'
+    }
+    const { test: {name, value,} } = obj;
+    console.log(name, 222, value, 333);
+</script>
+</html>

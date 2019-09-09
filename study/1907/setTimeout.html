@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height">
+    <title>setTimeout和setInterval</title>
+</head>
+<body>
+<div>
+    setTimeout和setInterval
+</div>
+</body>
+<script>
+// 函数传参的方式，取的是调用的时候的值
+for(var i = 0; i < 10; i++) {
+    setTimeout((() => {
+        console.log(i, 1111) // 0 1 2 3 4 5 6 7 8 9
+    })(i), 1000)
+}
+// 取的是执行的时候的值
+for(var i = 0; i < 10; i++) {
+    setTimeout((() => {
+        console.log(i, 1111) // 9 9 9 9 9 9 9 9 9 9
+    }), 1000)
+}
+console.error(i, 11)
+
+// setTimeout传参的方式，函数调用时的值
+for(var i = 0; i < 10; i++) {
+    var se = setTimeout(function(index){
+        console.log(index, 3333) // 0 1 2 3 4 5 6 7 8 9
+    }, 1000, i)
+    console.log(se, 4444) // id随机数
+}
+console.error(i, 33)
+
+for(var i = 0; i < 10; i++) {
+    setTimeout((function(){
+        console.log(i, 2222)
+    })(i), 1000)
+}
+console.error(i, 22)
+
+</script>
+</html>
