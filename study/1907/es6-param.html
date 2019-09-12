@@ -10,7 +10,7 @@
 <script>
     // 不定参数
     function a(...val) {
-        console.log(val, 888); // [1, 2, 3]
+        console.log(val, 888); // [1, 2, 3]数组
     }
     a(1, 2, 3);
 
@@ -20,10 +20,22 @@
     }
     b();
 
-    // 解构
-    function c({a}) {
+    // 解构，使用对象中的部分值
+    function c({a} = {}) {
         console.log(a, 777); // 1
     }
     c({a: 1, b: 2, c: 3});
+
+    // 结构赋值
+    let obj = {
+        list: {
+            value: 'test',
+            location: 'beijing'
+        },
+        name: 'guoxin'
+    }
+    // 定义的是value,list里面有多个值，需加逗号
+    const { list: { value, } } = obj;
+    console.log(value, 1111); // 'test'
 </script>
 </html>

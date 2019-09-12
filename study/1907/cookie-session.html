@@ -3,37 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height">
-    <title>setTimeout和setInterval</title>
+    <title>cookie,sessionStorage,localStorage的一些操作</title>
 </head>
 <body>
 <div>
-    setTimeout和setInterval
+    cookie,sessionStorage,localStorage的一些操作
 </div>
 </body>
 <script>
-    const ACTIVITY_RULE_OPTIONS = [
-        { label: '默认不叠加', value: 0 },
-        { label: '可叠加', value: 1 },
-        { label: '绝对互斥', value: 2 }
-    ]
-//    let list = ACTIVITY_RULE_OPTIONS.filter((item) => {
-//        return item.value === 1;
-//    })[0]['label']
+    //session操作，localStorage与session操作基本一样
+    // 设置单个session
+    sessionStorage.setItem('test', 111);
+    sessionStorage['test1'] = 22222;
+    // 设置对象
+    let obj = {name: 'guoxin', value: 6666};
+    sessionStorage.setItem('test2', JSON.stringify(obj));
 
-    let list = ACTIVITY_RULE_OPTIONS.find((item) => {
-        return item.value === 1;
-    })['label']
-    console.log(list, 7777);
+    // 获取所有session window.sessionStorage
+    // 获取单个session sessionStorage.getItem(name)
+    // 获取单个session sessionStorage[name]
+    // 获取session个数 sessionStorage.length
+    // 清除单个session
+    sessionStorage.removeItem('test1');
+    // 清除所有session
+    // sessionStorage.clear();
 
-    let obj = {
-        test: {
-            name: 'guoxin',
-            value: 6666,
-            location: 'beijng'
-        },
-        demo: '111'
+    // cookie操作
+    // 查看浏览器是否启用cookie  navigator.cookieEnabled
+    // 简单设置cookie document.cookie = 'name=value', encodeURI转码
+    document.cookie = 'testCookie=' + encodeURI('33333');
+    // 设置域名path，有效期 max-age是秒，expires是毫秒
+    function setCookie (name, value, day) {
+        var exp = new Date();
+        exp.setTime(exp.getTime() + day * 24 * 60 * 60 * 1000 );
+        document.cookie = name + "=" + encodeURI(value) + ";path=\/;expires=" + exp.toGMTString();
     }
-    const { test: {name, value,} } = obj;
-    console.log(name, 222, value, 333);
+    setCookie("testCookie2", "path/expires", 30);
+    // 查看所有cookie（字符串形式,分号分隔）document.cookie
+    // 获取单个cookie，封装方法
+    function GetCookie(name){
+        var item = document.cookie;
+        let reg = new RegExp(name + '=([^=;]*)', 'g');
+        let val = '';
+        item.replace(reg, function(res, res1) {
+            val = res1;
+        });
+        return val;
+    }
+    let va = GetCookie('testCookie');
+    console.log(va, 8888);
+
+    // 删除cookie document.cookie = name + "=''; expires=" + new Date(0).toUTCString()
+    document.cookie = "testCookie='';expires=" + new Date(0).toUTCString();
+    // 删除，即设置过期
+    function deleteCookie(name){
+        document.cookie = name + "='';path=\/;expires=" + new Date(0).toUTCString();
+    }
+    deleteCookie('popped');
 </script>
 </html>

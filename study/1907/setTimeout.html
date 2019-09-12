@@ -23,23 +23,23 @@ for(var i = 0; i < 10; i++) {
         console.log(i, 1111) // 9 9 9 9 9 9 9 9 9 9
     }), 1000)
 }
-console.error(i, 11)
+console.error(i, 11) // 10
 
 // setTimeout传参的方式，函数调用时的值
 for(var i = 0; i < 10; i++) {
     var se = setTimeout(function(index){
         console.log(index, 3333) // 0 1 2 3 4 5 6 7 8 9
     }, 1000, i)
-    console.log(se, 4444) // id随机数
+    console.log(se, 4444) // 10
 }
 console.error(i, 33)
 
 for(var i = 0; i < 10; i++) {
     setTimeout((function(){
-        console.log(i, 2222)
+        console.log(i, 2222) // 0 1 2 3 4 5 6 7 8 9
     })(i), 1000)
 }
-console.error(i, 22)
+console.error(i, 22) // 10
 
 </script>
 </html>
