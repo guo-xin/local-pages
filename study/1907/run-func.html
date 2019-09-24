@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height">
-    <title>setTimeout和setInterval</title>
+    <title>自执行函数</title>
 </head>
 <body>
 <div>
@@ -18,5 +18,13 @@
     var map = document.querySelector("#my-map");
     map.style.height = "600px";
     }();
+
+    /**
+     * @desc: 等价于
+    */
+//    (function () {
+//        var map = document.querySelector("#my-map");
+//        map.style.height = "600px";
+//    })();
 </script>
 </html>
