@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regexp</title>
+</head>
+<body>
+    <div>正则表达式的相关应用</div>
+</body>
+</html>
+<script>
+    /**
+     * @desc: 反向引用$，表达式外
+    */
+    let res1 = `2019-09-18 14:23:12`.replace(/(\d{4}-(\d){2}-(\d){2})/g, '$3/$2/$1');
+    console.log(res1, 1111); // '18-09-2019 12:23:12'
+
+    /**
+     * @desc: 后向引用\，表达式中
+    */
+    let reg1 = /^\d{4}(-|\/|\.)\d{2}\1\d{2}$/;
+    let res2 = reg1.test('2019-09-18'); // true
+    let res3 = reg1.test('2019-09/12'); // false
+    console.log(res2, 222, res3, 3333);
+
+    /**
+     * @desc: 贪婪模式，非贪婪模式
+    */
+    let res4 = `12345678`.replace(/\d{3,6}/, '-'); // '-78'
+    let res5 = '12345678'.replace(/\d{3,6}?/, '-'); // '-45678'
+
+    /**
+     * @desc:
+    */
+
+</script>
