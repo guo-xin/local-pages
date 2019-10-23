@@ -70,7 +70,7 @@
             console.log(xhr, 9999)
             if (xhr.readyState === 4 && xhr.status === 200)
             {
-                document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText);
+                document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText).respmsg;
             }
         };
         xhr.open('post', 'https:oasbp.qa.qfpay.net/org/user/login', true);
