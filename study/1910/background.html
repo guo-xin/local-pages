@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>background相关属性</title>
+</head>
+<style type="text/css">
+    div {
+        height: 300px;
+        margin-bottom: 20px;
+        background-image: url("../../img/01.png");
+        background-color: pink;
+        background-repeat: no-repeat;
+    }
+    .cover {
+       background-size: cover;
+    }
+    .contain {
+        background-size: contain;
+    }
+    .percent {
+        background-size: 50% 50%;
+    }
+    .length {
+        background-size: 500px;
+    }
+    .auto1 {
+        width: 500px;
+    }
+</style>
+<body>
+    <div class="auto">auto，图片只会缩小不会放大，图片可能会被裁剪，图片不会变形</div>
+    <div class="auto1">auto，两个auto，图片显示本身大小，图片可能会被裁剪，图片不会变形</div>
+    <div class="cover">cover， 图片可能会被裁剪，图片不会变形</div>
+    <div class="contain">contain，图片不会被裁剪，图片不会变形</div>
+    <div class="percent">percent， 图片可能会被裁剪，图片可能会变形</div>
+    <div class="length">length，图片可能会被裁剪，图片可能会变形</div>
+</body>
+</html>

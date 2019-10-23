@@ -11,7 +11,24 @@
 </div>
 </body>
 <script>
-    // test git
+    /**
+     * @desc: forEach、map、some等函数的return跟普通的有些不一样
+    */
+    let arr = [1, 3, 4, 5, 6, 7];
+    let obj = {name: 'guo', value: '6666'};
+    let flag = false;
+    arr.forEach((item) => {
+        arr.forEach((i) => {
+            console.log(item, 777)
+            if(i === 3) {
+                flag = true;
+                return;
+            }
+            console.log(i, 11111);
+        })
+        console.log(item, 888)
+    })
+
     /**
      * @desc: 自执行函数
     */

@@ -20,11 +20,13 @@
     }
     b();
 
+
     // 解构，使用对象中的部分值
-    function c({a} = {}) {
-        console.log(a, 777); // 1
+    function c({a} = {a: '默认值'}) {
+        console.log(a, 777);
     }
-    c({a: 1, b: 2, c: 3});
+    c({a: 1, b: 2, c: 3}); // 1 777
+    c(); // '默认值' 777
 
     // 结构赋值
     let obj = {
@@ -32,10 +34,38 @@
             value: 'test',
             location: 'beijing'
         },
-        name: 'guoxin'
+        name: 'guoxin',
+        phone: 13520992621,
+        address: '北京',
+        age: 28,
+        sex: '男'
     }
-    // 定义的是value,list里面有多个值，需加逗号
-    const { list: { value, } } = obj;
-    console.log(value, 1111); // 'test'
+    // 定义的是value
+    const { list: { value } } = obj;
+    console.log(value, 1111); // 'test' 1111
+
+    // 解构赋值，定义对象
+    const { name, ...other } = obj;
+    console.log(name, 11, other); // 'guoxin' 11 {list: {}, phone: 13520992, address: ''}
+
+    // 数组的解构
+    let [head, ...tail] = [1, 2, 3, 4];
+    console.log(head); // 1
+    console.log(tail); // [2, 3, 4]
+
+
+    // 字符串解构
+    const [b, c, d] = 'hello';
+    console.log(b, c, d); // h e l
+</script>
+
+<script>
+    let [name, values] = ['guo', 666];
+    let lists = {
+        name,
+        values
+    };
+    // {name: 'guo', value: 666}
+    console.log(lists.name === {name}.name, 5555);
 </script>
 </html>

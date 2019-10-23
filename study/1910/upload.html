@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传upload</title>
+</head>
+<body>
+<!--accept限制选择文件的路径及类型，没有svg类型-->
+<input type="file" accept=".jpg,.jpeg,.png,.gif" onchange="chooseFile(event, 'imgs')" multiple>
+<!--限制文件夹，image下面-->
+<input type="file" accept="image/png, image/jpeg" onchange="chooseFile(event, 'imgs')">
+<!--excel,xls或xlsx`-->
+<input type="file" accept=".xls,.xlsx" onchange="chooseFile(event, 'imgs')">
+<!--或者-->
+<input type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="chooseFile(event, 'imgs')">
+</body>
+<script type="text/javascript">
+function chooseFile(e, type) {
+    console.log(e, type, 111);
+}
+</script>
+</html>

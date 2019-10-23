@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user-select</title>
+</head>
+<style type="text/css">
+    body {
+        user-select: all;
+    }
+    .all {
+        user-select: all;
+    }
+    .none {
+        /*不会被选中*/
+        user-select: none;
+    }
+    .element {
+        /*会受父元素的样式的影响*/
+        user-select: element;
+    }
+</style>
+<body>
+    <div class="all">select test all</div>
+    <div class="none">select test1 none</div>
+    <div class="element">select test2 element</div>
+</body>
+
+</html>
