@@ -12,6 +12,18 @@
 
 </body>
 <script>
+    // 函数表达式
+    console.log(f, '函数表达式'); // undefined，函数表达式跟普通变量一样，定义提前
+    var f = function () {
+        console.log(f, '打印f');
+    };
+    // 函数声明
+    console.log(f1, '函数声明'); // function(){},函数声明会被提升到作用域最前面
+    function f1() {
+        console.log(f1, '打印f1');
+    }
+</script>
+<script>
     // 变量和函数表达式
     console.log(a, 111); // undefined 111
     var a = 2;
