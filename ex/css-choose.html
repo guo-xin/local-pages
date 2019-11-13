@@ -6,18 +6,45 @@
     <title>css选择器</title>
 </head>
 <body>
-<div>
-    <span>css选择器</span>
-    <span>sewwe</span>
-    <span>sewwe</span>
-    <span>sewwe</span>
+
+<div class="test1">
+    css选择器p+span, .test1 p+span
+    <p>紧挨着p</p>
+    <span>span1 命中</span>
+    <span>span2 未命中</span>
 </div>
+<div class="test2">
+    css选择器p~span, .test2 p~span
+    <p>p后面</p>
+    <span>span1 命中</span>
+    <span>span2 命中</span>
+    <a href="javascript:;">a标签</a>
+    <span>span5,命中</span>
+</div>
+<div class="test3">
+    css选择器last-child, .test3 :last-child
+    <span>span1</span>
+    <span>span2</span>
+    <a href="javascript:;">a标签,满足条件</a>
+</div>
+<div class="test4">
+    css选择器last-child, .test4 span:last-of-type
+    <span>span1</span>
+    <span>span2，命中</span> <!-- 希望这个变红 -->
+    <a href="javascript:;">a标签,未命中</a>
+</div>
+
 
 </body>
 <style>
-    span:not(:last-child)::after {
-        content: '|';
+    .test1 p+span, .test2 p~span, .test3 :last-child, .test4 span:last-of-type {
+        color: red;
+    }
+    div, p ,span {
         padding-left: 10px;
+    }
+    p {
+        display: inline-block;
     }
 </style>
 

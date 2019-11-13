@@ -106,4 +106,47 @@
 
     }
 </script>
+
+    git branch [--color[=<when>] | --no-color] [-r | -a]
+        [--list] [-v [--abbrev=<length> | --no-abbrev]]
+    [--column[=<options>] | --no-column] [--sort=<key>]
+    [(--merged | --no-merged) [<commit>]]
+    [--contains [<commit]] [--no-contains [<commit>]]
+    [--points-at <object>] [--format=<format>] [<pattern>...]
+    git branch [--track | --no-track] [-l] [-f] <branchname> [<start-point>]
+    git branch (--set-upstream-to=<upstream> | -u <upstream>) [<branchname>]
+    git branch --unset-upstream [<branchname>]
+    git branch (-m | -M) [<oldbranch>] <newbranch>
+    git branch (-c | -C) [<oldbranch>] <newbranch>
+    git branch (-d | -D) [-r] <branchname>...
+    git branch --edit-description [<branchname>]
+
+    git branch [branchName] [origin/branchName]
+    拉取远程分支并创建本地分支（自动关联），省略远程分支则以当前分支为基础创建本地分支
+
+    git branch [-d|--delete] [branchName] 删除本地分支（当前分支或者有未提交的commit时不能删除）
+git branch [-D|-d --force] [branchName] 强制删除
+    git branch --list [pattern] 展示满足pattern模式的本地分支
+    git branch [-a|--all] 展示本地远和程所有分支
+    git branch [-v|--verbose] 展示本地分支列表及最后一次提交信息
+    git branch -vv 本地分支列表、最后一次信息、及远程追踪关系
+    git branch [-r|--remotes] 远程分支列表
+    git branch [-m|--move]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>
