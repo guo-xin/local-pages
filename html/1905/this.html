@@ -9,32 +9,38 @@
 <body>
     <div>
         <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
-        <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
+        <button type="button" style="height: 100px" onclick="getClick()">重置</button>
         <button type="button" id="eve" style="background-color: red">事件监听</button>
     </div>
     <span>箭头函数的指向</span>
     <p>普通函数的指向</p>
 </body>
 <script>
-    // 事件绑定
+    /**
+     * @desc: 事件绑定的this指向问题
+    */
+    // 定义事件，this指向window
     function getClick(e){
         this.name = 'guoxin';
         // this相当于window，event是点击事件对象
         console.log(this, 555, e, 6666);
         // this.close();
-    }
+    };
 
+    /**
+     * @desc: 绑定事件，this指向绑定标签
+    */
     // 事件绑定
     document.querySelector('div').onmouseover = function(e) {
         // 此时this指向事件绑定标签div
         console.log(this, 7777, e, 8888);
-    }
+    };
 
-    // 事件监听
+    // 事件监听，this指向绑定标签
     document.querySelector("div").addEventListener('click', function(e) {
         // this指向事件绑定标签div，e是点击事件对象
         console.log(this, 111, e, 2222);
-    })
+    });
 
     let span = document.querySelector('span');
     let obj = {
@@ -62,29 +68,44 @@
     obj1.getName();
 </script>
 <script>
-    var x = 0;
-    function test() {
-        console.log(this.x);
-    }
+    /**
+     * @desc: 对象的属性，this指向对象
+    */
+    let x = 0;
+    obj2 = {
+        x: 1,
+        m() {
+            console.log(this, 2232323212, this.x);// obj2 23 1
+        }
+    };
 
-    var obj2 = {};
-    obj2.x = 1;
-    obj2.m = test;
-    obj2.m() // 0
+    obj2.m(); // this指向的是obj2，打印1
 </script>
 <script>
-    var name = 'window';
-    var obj = {
+    /**
+     * @desc: 对象中箭头函数与普通函数this指向问题
+    */
+    let name = 'window';
+    let obj3 = {
         name: 'obj',
-        getName: function () {
-            console.log(this, 888);
-            this.name = '2222';
+        getName: function (val) {
+            console.log(this, 888); // this指向obj3 {name: obj, getName: f}   888
+            this.name = val; // obj3，name改变
             return () => {
-                console.log(this, 999)
+                console.log(this, 999, this.name); // this指向上下文obj3 {name: text this, getName: f}，name为修改后的值text
+            }
+        },
+        getLocation (val) {
+            console.log(this, 1111); // this指向obj3 1111
+            this.name = val; // 改变name值
+            // 区别在这里
+            return function () {
+                console.log(this, 2222); // this指向window window 2222
             }
         }
-    }
+    };
 
-    obj.getName('s')();
+    obj3.getName('text this')(); // 箭头函数
+    obj3.getLocation('text this1')(); // 普通函数
 </script>
 </html>

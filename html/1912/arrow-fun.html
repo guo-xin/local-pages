@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>不能用箭头函数的情况</title>
+</head>
+<body>
+    <div>箭头函数及不能用箭头函数的情况</div>
+    <button id="myButton">测试this</button>
+</body>
+<script>
+    /**
+     * @desc: 箭头函数不能使用的场景
+    */
+
+    /**
+     * @desc: 调用对象上的某个属性
+    */
+    // 这里let var有些不同，let时window访问不到
+    var arr = [1, 2, 3];
+    const obj1 = {
+        arr: [4, 5],
+        sun: () => {
+            console.log(this, 1111, this.arr); // window 1111 [1, 2, 3]
+        }
+    };
+    obj1.sun(); // obj1是window调用，所以obj1的this指向window，sun箭头函数this指向同obj1
+
+    // 修改之后
+    const obj2 = {
+        arr: [4, 5],
+        sun() {
+            console.log(this, 2222, this.arr); // obj2 2222 [4, 5]
+        }
+    };
+    obj2.sun();
+
+
+    /**
+     * @desc: 调用原型上的方法
+    */
+    function myFunc(name){
+        this.name = name;
+        console.log(this, 3333); // myFunc 3333
+    }
+    myFunc.prototype.sayName = ()=>{
+        console.log(this, 4444);  // window 4444
+    };
+    const me = new myFunc('hanson');
+    me.sayName(); // sayName上下文this指向window
+
+    // 修改之后
+    function myFunc1(name){
+        this.name = name;
+        console.log(this, 5555); // myFunc 3333
+    }
+    myFunc1.prototype.sayName = function() {
+        console.log(this, 6666);  // myFunc 4444
+    };
+    const me1 = new myFunc1('hanson');
+    me1.sayName(); // sayName是me1调用，所以this指向me1
+
+
+    /**
+     * @desc: 动态上下文的回调函数
+    */
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', ()=>{
+        console.log(this, 7777); // this指向window
+    });
+
+    // 修改之后
+    button.addEventListener('click', function() {
+        console.log(this, 9999); // this指向button
+    });
+
+    /**
+     * @desc: 构造函数new的时候不能用箭头函数，否则会报错
+    */
+    const Message1 = (text) => {
+        console.log(this, 1122);
+    };
+    // const msg1 = new Message1('text message'); // 报错
+
+    // 修改之后
+    const Message2 = function (text) {
+        console.log(this, 3344, text); // this指向了实例化之后的一个新对象
+    };
+    const msg2 = new Message2('test 2222');
+</script>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jquery对象和dom对象的转换</title>
+    <script src="../../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<div>jquery对象和dom对象的转换</div>
+<div id="jquery" class="text">测试jquery转化为dom</div>
+<div id="dom" class="text">测试dom转化为jquery</div>
+</body>
+
+<script>
+    /**
+     * @desc: jquery对象与DOM对象的相互转换
+     * @author guoxin
+     * @date 2019/12/27
+     */
+
+    /**
+     * @desc: jquery对象转化为DOM对象
+     */
+    let jq = $('#jquery');
+    console.log(jq, 1111); // jquery对象 1111
+    console.log(jq[0], 2222); // div 2222
+    console.log(jq.get(0), 3333); // div 3333
+    console.log(jq.get()[0], 4444); // div 3333
+
+
+    /**
+     * @desc: DOM对象转化为jquery对象
+     */
+    let dom = document.querySelector('#dom');
+    console.log(dom, 5555); // div 4444
+    console.log($(dom), 6666); // jquery对象 5555
+
+    let dom1 = document.getElementsByClassName('text'); // 类数组node list
+    console.log(dom1, 7777); //
+</script>
+
+<script>
+    /**
+     * @desc: reduce模拟map
+     */
+    let arr = [1, 3, 4, 5];
+
+    let res = arr.reduce((pre, item) => {
+        return [...pre, item]
+    }, []); // pre为数组
+    console.log(res, 7777); // [1, 3, 4, 5] 7777
+</script>
+</html>

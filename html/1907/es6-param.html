@@ -25,8 +25,14 @@
     function c({a} = {a: '默认值'}) {
         console.log(a, 777);
     }
+    // 解构
+    function c1({a, b, c}) {
+        console.log(a, b, c);
+    }
     c({a: 1, b: 2, c: 3}); // 1 777
     c(); // '默认值' 777
+
+    c1({a: 1, b: 2, c: 3}); // 1 2 3
 
     // 结构赋值
     let obj = {

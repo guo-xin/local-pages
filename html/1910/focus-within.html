@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>focus-within</title>
+</head>
+<body>
+    <div style="text-align: center">
+        <button>focus-within</button>
+        <p>选择文本样式</p>
+        <p class="truncate-text-multiline">
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+            labore et.
+        </p>
+        <div class="donut"></div>
+    </div>
+</body>
+<style>
+    div:focus-within {
+        background-color: red;
+    }
+    p::selection {
+        background: aquamarine;
+        color: red;
+    }
+    .truncate-text-multiline {
+        overflow: hidden;
+        display: block;
+        height: 109.2px;
+        margin: 0 auto;
+        font-size: 26px;
+        line-height: 1.4;
+        width: 400px;
+        position: relative;
+    }
+    .truncate-text-multiline:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 150px;
+        height: 36.4px;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0), #f5f6f9 50%);
+    }
+
+    @keyframes donut-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .donut {
+        display: inline-block;
+        border: 4px solid rgba(0, 0, 0, 0.1);
+        border-left-color: #7983ff;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: donut-spin 1.2s linear infinite;
+    }
+    /*a标签顺序link,visited,hover,active*/
+</style>
+</html>
