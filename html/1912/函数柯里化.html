@@ -56,7 +56,7 @@
      */
     function contain(fn, ...rest1) {
         return function (...rest2) {
-            
+
             return fn.apply(null, rest1.concat(rest2));
         }
     };
@@ -73,4 +73,5 @@
 
 
 </script>
+
 </html>
