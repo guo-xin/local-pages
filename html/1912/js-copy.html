@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript 深浅拷贝</title>
+</head>
+<body>
+<div>javascript 深浅拷贝</div>
+</body>
+<script>
+    /**
+     * @desc: 普通赋值只是一个指针的复制
+     * 而不复制对象本身，新旧对象还是共享同一块内存
+     */
+    let obj1 = { a: 10, b: 20, c: 30 };
+    let obj2 = obj1; // 共用了一个指针
+    obj2.b = 100; // obj1也会被改变
+    console.log(obj1); // { a: 10, b: 100, c: 30 }
+    console.log(obj2); // { a: 10, b: 100, c: 30 }
+
+    /**
+     * @desc: 浅拷贝,复制一层对象（深层没有复制）
+     * 但是对象里面还有对象，此时共用的还是一个指针
+     * 对象方法：扩展运算符、Object.assign
+     * 数组方法：扩展运算符、slice、concat
+    */
+    // 对象
+    let obj3 = { a: 10, b: 20, c: [1, 2, 3] };
+    let obj4 = {...obj3};
+    // obj4.c = 1; // 不能直接赋值，直接赋值指针会发生改变
+    obj4.c.push(4); // 同时改变，没有深拷贝上
+    obj4.d = 'test'; // 只有obj4改变
+    console.log(obj3, 11, obj4);
+    // { a: 10, b: 20, c: [1, 2, 3 ,4] } 11 { a: 10, b: 20, c: [1, 2, 3 ,4], d: 'test' }
+
+
+    // 数组
+    let arr1 = [1, 2, 3, 4, {a: 1}];
+    let arr2 = arr1.slice();
+    arr2[4].b = 2; // 同时改变，没有被深拷贝上
+    arr2.push(5); // 只有arr2改变
+    console.log(arr1, 222, arr2);
+    // [1, 2, 3, 4, {a: 1, b: 2}] 22 [1, 2, 3, 4, {a: 1, b: 2}, 5]
+
+
+    /**
+     * @desc: 深拷贝，对象完全复制
+     * 常见方法：数组对象都可以 JSON.stringify > JSON.parse
+     * 自己写递归方法
+     *
+     * JSON.stringify缺点
+     * 1，循环引用会报错
+     * 2，无法拷贝函数
+     * 3，无法拷贝原型链上的属性和方法（RegExp,Date,Set,Map），拷贝之后都会变成Object
+     * 4，会抛弃对象的constructor
+    */
+
+    // JSON.stringify
+    let arr3 = [3, {a: 1}];
+    let arr4 = JSON.parse(JSON.stringify(arr3));
+    arr4.push(4); // arr4改变
+    arr4[1].b = 2; // arr4改变，实现了深拷贝
+    console.log(arr3, 333, arr4);
+    // [3, {a: 1}] 333 [3, {a: 1, b: 2}, 4]
+
+    /**
+     * @desc: 递归方法，需要解决循环引用问题
+     * 使用map解决循环引用的问题
+     * 使用WeakMap弱引用关系
+    */
+    const deepClone =  (source, map = new WeakMap()) => {
+        if (map.get(source) || !(source instanceof Object)) {
+            return source;
+        }
+        map.set(source, true);
+
+        let target = Array.isArray(source) ? [] : {};
+
+        for (let item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = deepClone(source[item], map);
+            }
+        }
+        return target;
+    };
+
+    let arr5 = [1, 3, undefined, [4, 5], {a: 1}];
+    let arr6 = deepClone(arr5);
+    arr6[3].push(6);
+    arr6[4].b = 2;
+    console.log(arr5, 444, arr6);
+    // [1, 3, undefined, [4, 5], {a: 1}] 444 [1, 3, undefined, [4, 5, 6], {a: 1, b: 2}]
+
+
+
+</script>
+</html>

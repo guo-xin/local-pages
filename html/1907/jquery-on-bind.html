@@ -30,12 +30,12 @@
         // 动态创建标签
         $("#foo").click(function(){
             $(`<input class="rule6" type="button" value='新添加的按钮'>`).insertAfter(this);
-        })
+        });
 
         // on绑定多个事件相同函数
         $(".on-some").on('click mouseover mouseenter', function() {
             console.log('多个事件相同函数');
-        })
+        });
 
         // on绑定多个事件不同函数
         $(".on-every").on({
@@ -45,20 +45,22 @@
             click: function() {
                 console.log('多个事件不同函数2');
             }
-        })
+        });
 
-        $("#off").click(function () {
+        // 解除绑定事件
+        $("#off").on('click', function () {
             // 移除on-some上所有的click事件函数
             // $(".on-some").off('click');
 
             // 移除on-some上所有的事件函数
             $(".on-some").off();
-        })
+        });
+
 
         // bind绑定多个事件相同函数并传递参数
         $(".bind-some").bind('click mouseover mouseenter', '传递参数', function(event) {
             console.log('多个事件相同函数', 2222, event.data);
-        })
+        });
 
         // bind绑定多个事件不同函数
         $(".bind-every").bind({
@@ -68,7 +70,7 @@
             click: function() {
                 console.log('多个事件不同函数2');
             }
-        })
+        });
     })
 </script>
 </html>

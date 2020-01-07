@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for each循环的return</title>
+</head>
+<body>
+    <div>数组相关函数的return</div>
+</body>
+<script>
+    /**
+     * @desc: forEach的return
+    */
+    let arr = Array.from('12345678zxcasd');
+    arr.forEach((item) => {
+        // 没有跳出循环
+        if (item === 'x') {
+           return;
+        }
+        // 后面继续执行
+        console.log(item, 1111);
+    });
+
+    // some返回true就会跳出循环
+    arr.some((item) => {
+        if (item === 'x') {
+            return true;
+        }
+        // 后面不会执行
+        console.log(item, 22222);
+    });
+
+    // every返回false就会跳出循环
+    arr.every((item) => {
+        if (item === 'x') {
+            return false;
+        }
+        // 后面不会执行
+        console.log(item, 3333);
+    })
+</script>
+</html>

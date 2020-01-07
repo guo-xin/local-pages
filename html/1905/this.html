@@ -17,9 +17,17 @@
 </body>
 <script>
     /**
-     * @desc: 事件绑定的this指向问题
+     * @desc: onload事件，this指向window
     */
-    // 定义事件，this指向window
+    window.onload = function(e) {
+        // e是窗口事件对象，this是指向window
+        console.log(e, 3333, this, 444)
+    };
+
+    /**
+     * @desc: 标签中事件绑定
+     * this指向window
+    */
     function getClick(e){
         this.name = 'guoxin';
         // this相当于window，event是点击事件对象
