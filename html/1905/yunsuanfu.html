@@ -9,22 +9,104 @@
 <div>js中常见的运算符</div>
 </body>
 <script>
-    // i++先赋值再加1，++1先加1后赋值
-    var i = 12;
-    var b = i++ + ++i + ++i*2 + i-- + i--;
+    /**
+     * @desc: i++先赋值再加1，++1先加1后赋值
+     * let b = i++;等价于let b = i;i = i + 1
+     * let b = ++i;等价于i = i + 1;let b = i
+    */
+    let i = 12;
+    let b = i++ + ++i + ++i*2 + i-- + i--;
     // i 13 14 15   14 13
-    // b 12 14 15*2 14 13
-    console.log(b, i, 888); //83 13
+    // b 12 14 15*2 15 14
+    console.log(b, i, 888); //85 13
 
-    var a = 3,c = 7;
-    var d = a & 7;
-    console.log(d, '&'); // 3
+    /**
+     * @desc: 按位与运算符&
+     * 先转换为2进制进行比较，比较完成后，再转换为10进制
+     * 应用：判断奇偶数 num & 1（负数也适用）
+     */
+    let a = 3,c = 7;
+    let d = a & 7;
+    console.log(d, '&'); // 3 11+111=11
 
+    /**
+     * @desc: 逻辑与运算符&&
+     * 返回第一个false/‘falsy’的值
+     * 当所有的操作数都是true时，将返回最后一个表达式的结果
+    */
+    console.log(0 && false); // 0
+    console.log(2 && 3); // 3
+    console.log(3 && false); // false
+    console.log(3 && 2 && false); // false
     console.log(a && c, '&&'); // 3
 
+    /**
+     * @desc: 按位或运算符|
+     * 先转换为2进制，计算之后转换为10进制
+     * 应用：n | 0,取整（负数也适用）
+    */
+    console.log(2 | 3, '位或'); // 3 10+11=11
+    console.log(a | 10, '位或'); // 11  11+1010=1011
+
+    /**
+     * @desc: 逻辑或||
+     *运算符将返回第一个true/‘truthy’的值
+     * 当所有的操作数都是false时，将返回最后一个表达式的结果
+     */
+    console.log(1 | 2 | 0, '逻辑或'); // 1
+    console.log(0 | 2, '逻辑或'); // 2
+    console.log(false | 0 | 3, '逻辑或'); // 3
+
+    /**
+     * @desc: 位异或
+     * 先转换为2进制，比较不同的，然后返回，转换为十进制
+    */
+    console.log(2 ^ 3, '位异或'); // 1 10+11=01
+    console.log(4 ^ 1, '位异或'); // 5 100+1=101
+    console.log(10 ^ 3, '位异或'); // 9 1010+11=1001
+
+    /**
+     * @desc: 逻辑非!
+     * 将值强制转换为布尔类型，然后取反值
+     * !!两次取反，相当于将原数值转换为布尔类型
+     */
     console.log(!a, '!'); // false
     console.log(!!a, '!!'); // true
 
-    console.log(a | 10, '|'); // 11
+    /**
+     * @desc: 求幂
+     * Math.pow(val, num)
+     * es6新特性，**
+    */
+    console.log(Math.pow(2, 3), 'Math.pow'); // 8
+    console.log(2 ** 3, '**'); // 8
+
+    /**
+     * @desc: 按位不运算符~
+     * ~n = -n -1
+    */
+    console.log(~16, '~'); // -17 -16-1=-17
+
+    /**
+     * @desc: <<,乘2的多少倍
+     * 3 << 4 = 3 * (2 ** 4) = 3 * 16 = 48
+    */
+    console.log(3 << 4, '<<'); // 48
+
+    /**
+     * @desc: >>,除2的多少倍
+     * 20 >> 2 = 20 / (2 ** 2) = 20 / 4 = 5
+    */
+    console.log(20 >> 2, '>>'); // 5
 </script>
+
+<script>
+    let list = {a:1,b:2};
+    let obj = {};
+    for(let item in list){
+        obj[`info.${item}`] = list[item];
+    }
+    console.log(obj, 44444)
+</script>
+
 </html>

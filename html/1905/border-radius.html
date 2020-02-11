@@ -18,26 +18,32 @@
     div {
         margin-bottom: 20px;
     }
+    /*圆*/
     .circle {
         width: 100px;
         height: 100px;
-        border: 1px solid #1975ff;
+        border: 4px solid #1975ff;
         border-radius: 50%;
     }
+    /*椭圆*/
     .tuoyuan {
         width: 200px;
         height: 100px;
         border: 1px solid red;
         border-radius: 100px / 50px;
+        /*border-radius: x / y;*/
         /*border-radius: 50%;*/
     }
+    /*叶子*/
     .leaf {
         width: 100px;
         height: 100px;
         background: green;
         border: 1px solid #25ff2d;
         border-radius: 100% 0;
+        /*border-radius: 左上右下 右上左下;*/
     }
+    /*半圆*/
     .half {
         width: 200px;
         height: 100px;
@@ -57,11 +63,13 @@
         border: 1px solid rgb(98, 254, 244);
         border-radius: 40px 40px 0 0 / 20px 20px 0 0;
     }
+    /*四分之一饼*/
     .sifen1 {
-        width: 200px;
+        width: 100px;
         height: 100px;
         border: 1px solid rgb(75, 254, 189);
         border-radius: 100% 0 0;
+        /*border-radius: 左上100%;*/
     }
 </style>
 <script>

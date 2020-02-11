@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js判断是数组还是对象</title>
+</head>
+<body>
+<div>js判断是数组还是对象</div>
+</body>
+<script>
+    /**
+     * @desc: 判断数组和对象，typeof返回的都是'object'
+     * 四种方式 Object.prototype.toString.call、Array.isArray、constructor、instanceof
+     * 首选 Object.prototype.toString.call、es6的Array.isArray
+    */
+
+    // Object.prototype.toString.call()
+    console.log(Object.prototype.toString.call({})); // '[object Object]'
+    console.log(Object.prototype.toString.call([])); // '[object Array]'
+
+    // Array.isArray()
+    console.log(Array.isArray([])); // true
+    console.log(Array.isArray({})); // false
+
+    // constructor
+    console.log([].constructor === Array); // true
+    console.log({}.constructor === Object); // true
+    console.log([].constructor === Object); // false
+    console.log({}.constructor === Array); // false
+
+    // instanceof,判断array不准确
+    console.log([] instanceof Array); // true
+    console.log({} instanceof Object); // true
+    console.log([] instanceof Object); // true，不准确
+    console.log({} instanceof Array); // false
+
+</script>
+</html>

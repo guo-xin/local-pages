@@ -9,6 +9,24 @@
     <div style="font-size: 20px">js中数据类型及相关判断方法</div>
 </body>
 <script>
+    /**
+     * @desc: js中有5种简单数据类型（也称为基本数据类型）
+     * Null,Undefined,Number,String,Boolean，es6增加symbol类型
+     * symbol不需要new定义，let test = Symbol('test symbol'),所以instanceof不能判断它
+     * 1种复杂的数据类型(引用类型)Object,Object本质上是由一组无序的键值对组成的
+     * Object,Array,Function,Date,RegExp则属于引用类型
+    */
+
+    /**
+     * @desc: 判断数据类型
+     * 首选Object.prototype.toString.call()
+     * 其它方式typeof、constructor、instanceof，有些不准确
+     */
+
+    /**
+     * @desc: Object.prototype.toString.call
+     * 比较准确
+    */
     console.log('%cObject.prototype.toString.call-----------', "font-size: 20px; color: red;");
     console.log('symbol:', Object.prototype.toString.call(Symbol())); // "[object Symbol]"
     console.log('Math:', Object.prototype.toString.call(Math)); // "[object Math]"
@@ -34,7 +52,12 @@
     console.log('Array:', Object.prototype.toString.call(Array)); // "[object Function]"
     console.log('Object:', Object.prototype.toString.call(Object)); // "[object Function]"
 
-    console.log('%ctypeof---------', 'font-size: 20px; color: red;');
+    /**
+     * @desc: typeof返回字符
+     * 返回结果number, string, object, function, undefined, boolean, symbol七种数据类型
+     * null和array不准确，返回的是'object'
+    */
+    console.log('%cTypeof---------', 'font-size: 20px; color: red;');
     console.log('number:', typeof 2); // "number"
     console.log('NaN:', typeof NaN); // "number"
     console.log('string:', typeof ''); // "string"
@@ -54,7 +77,18 @@
     console.log('Date:', typeof Date); // "function"
     console.log('Number:', typeof Number); // "function"
 
-    console.log('%cinstanceof----------', 'font-size: 20px; color: red;');
+    /**
+     * @desc: instanceof
+     * 判断A是否是B的实例，用来测试一个对象在其原型链中是否存在一个构造函数的prototype属性
+     * 即能在实例的 原型对象链 中找到该构造函数的prototype属性所指向的 原型对象
+     * instance.[__proto__...] === instance.constructor.prototype
+     * array不准确，认为是Object，symbol也不能准确判断
+     * 不能检测null和undefined
+     * number，string，boolean判断比较严格，没有通过new关键字实例化定义的判断不了
+     * 可以用来检测引用数据类型
+     *
+    */
+    console.log('%cInstanceof----------', 'font-size: 20px; color: red;');
     console.log('[]Array:', [] instanceof Array); // true
     console.log('[]Object:', [] instanceof Object); // true
     console.log('{}Object:', {} instanceof Object); // true
@@ -67,6 +101,7 @@
     console.log('new Boolean:', new Boolean() instanceof Boolean); // true
     console.log('true:', true instanceof Boolean); // false
     console.log('new Error:', new Error() instanceof Error); // true
+    console.log('Symbol:', Symbol() instanceof Symbol); // false 不准确
 
     console.log('new Array:', new Array() instanceof Array); // true
     console.log('new Array:', new Array() instanceof Object); // true
@@ -77,7 +112,11 @@
     console.log('Object:', Object instanceof Function); // true
     console.log('Function:', Function instanceof Object); // true
 
-    console.log('%cconstructor---------', 'font-size: 20px; color: red;');
+    /**
+     * @desc: constructor
+     * 不能判断null和undefined
+    */
+    console.log('%cConstructor---------', 'font-size: 20px; color: red;');
     console.log('[]', [].constructor === Array); // true
     console.log('[]', [].constructor === Object); // false
     console.log('{}', {}.constructor === Object); // true
@@ -90,5 +129,6 @@
     console.log('string', String(2).constructor === String); // true
     console.log('String', String.constructor === Function); // true
     console.log('Error', Error.constructor === Function); // true
+    console.log('Symbol', Symbol().constructor === Symbol); // true
 </script>
 </html>

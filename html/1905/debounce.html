@@ -8,7 +8,7 @@
 <body>
 <div>
     <span>js事件防抖</span>
-    <button type="button" onclick="getClick()">重置</button>
+    <button type="button" onclick="getClick()">防抖点击</button>
 </div>
 
 </body>
@@ -30,24 +30,32 @@
     }
 </style>
 <script>
-    // 事件防抖
+    /**
+     * @desc: 事件防抖
+     * 闭包的思想实现
+     * 定时器
+    */
     var get = function (fn, delay) {
+        // 初始化时就会执行
         var timeIn;
         return function () {
+            // 触发事件时马上执行
             let self = this, args = arguments;
 
             timeIn && clearTimeout(timeIn);
             timeIn = setTimeout(function () {
+                // 延迟delay后执行
                 fn.apply(self,args);
                 // 释放
                 timeIn = null;
-                console.log(8888);
+                console.log(1111);
             }, delay)
         }
-    }
+    };
     // 频繁点击
     var getClick = get(function () {
-        console.log('鼠标点击2s', 222)
+        // fn执行的内容
+        console.log('鼠标点击2s', 2222);
     }, 2000);
 
     // 滚动事件

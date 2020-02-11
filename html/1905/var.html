@@ -24,7 +24,9 @@
     }
 </script>
 <script>
-    // 变量和函数表达式
+    /**
+     * @desc: 变量和函数表达式
+    */
     console.log(a, 111); // undefined 111
     var a = 2;
     console.log(a, 222); // 2 222
@@ -72,16 +74,19 @@
     var b = 5;
     console.log(b, 666); // 5 666
 </script>
+
 <script>
-    // 函数需要执行里面的代码才会起作用
+    /**
+     * @desc: 函数需要执行里面的代码才会起作用
+    */
     var num = 4;
     function a() {
         console.log(num, 777); // 不打印
         num = 7;
     }
-
     // 没有执行函数，里面代码也没有生效
     console.log(num, 888); // 4 888
+
 
     var num1 = 4;
     function a1() {
@@ -89,11 +94,11 @@
         num1 = 7;
         console.log(num1, 888); // 7 888
     }
-
     // 执行函数，里面代码生效
     a1();
     console.log(num1, 999); // 7 999
 </script>
+
 <script>
     /**
      * @Description: 函数表达式var
@@ -107,31 +112,6 @@
     }
 </script>
 
-    git branch [--color[=<when>] | --no-color] [-r | -a]
-        [--list] [-v [--abbrev=<length> | --no-abbrev]]
-    [--column[=<options>] | --no-column] [--sort=<key>]
-    [(--merged | --no-merged) [<commit>]]
-    [--contains [<commit]] [--no-contains [<commit>]]
-    [--points-at <object>] [--format=<format>] [<pattern>...]
-    git branch [--track | --no-track] [-l] [-f] <branchname> [<start-point>]
-    git branch (--set-upstream-to=<upstream> | -u <upstream>) [<branchname>]
-    git branch --unset-upstream [<branchname>]
-    git branch (-m | -M) [<oldbranch>] <newbranch>
-    git branch (-c | -C) [<oldbranch>] <newbranch>
-    git branch (-d | -D) [-r] <branchname>...
-    git branch --edit-description [<branchname>]
-
-    git branch [branchName] [origin/branchName]
-    拉取远程分支并创建本地分支（自动关联），省略远程分支则以当前分支为基础创建本地分支
-
-    git branch [-d|--delete] [branchName] 删除本地分支（当前分支或者有未提交的commit时不能删除）
-git branch [-D|-d --force] [branchName] 强制删除
-    git branch --list [pattern] 展示满足pattern模式的本地分支
-    git branch [-a|--all] 展示本地远和程所有分支
-    git branch [-v|--verbose] 展示本地分支列表及最后一次提交信息
-    git branch -vv 本地分支列表、最后一次信息、及远程追踪关系
-    git branch [-r|--remotes] 远程分支列表
-    git branch [-m|--move]
 
 
 

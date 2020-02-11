@@ -14,7 +14,7 @@
 
     // 扩展运算符和concat递归操作
     function flat1(ary) {
-        // [].concat(...[[x, x], x])
+        // [].concat(...[[x, x], x]) = [].concat([x, x], x) = 一维数组
         return [].concat(...ary.map(item => Array.isArray(item) ? flat1(item) : item));
     }
     let list1 = flat1(arr);

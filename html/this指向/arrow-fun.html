@@ -22,9 +22,19 @@
         arr: [4, 5],
         sun: () => {
             console.log(this, 1111, this.arr); // window 1111 [1, 2, 3]
+        },
+        test() {
+            console.log(this); // obj1
+            return function() {
+                console.log(this, '匿名函数window'); // window
+            };
+            // return () => {
+            //     console.log(this, '匿名函数window'); // obj1
+            // };
         }
     };
     obj1.sun(); // obj1是window调用，所以obj1的this指向window，sun箭头函数this指向同obj1
+    obj1.test()(); // test是obj1调用，this指向obj1。return函数是window调用，this指向window
 
     // 修改之后
     const obj2 = {

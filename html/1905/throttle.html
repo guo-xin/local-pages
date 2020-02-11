@@ -8,7 +8,7 @@
 <body>
 <div>
     <span>js事件节流</span>
-    <button type="button" onclick="getClick()">重置</button>
+    <button type="button" onclick="getClick()">节流点击</button>
 </div>
 
 </body>
@@ -30,23 +30,33 @@
     }
 </style>
 <script>
-    // 事件节流，使用定时器实现
+    /**
+     * @desc: 事件节流
+     * 闭包的思想
+     * 定时器、时间戳两种方式
+    */
+
+    // 定时器实现
     var get = function (fn, delay) {
+        // 初始化时就会执行
         var flag;
         return function () {
+            // 触发事件时马上执行
             let self = this, args = arguments;
             if(!flag) {
                 flag = setTimeout(function () {
+                    // 延迟delay后执行
                     fn.apply(self,args);
                     flag = null;
-                    console.log(8888);
+                    console.log(1111);
                 }, delay)
             }
         }
-    }
+    };
     // 频繁点击
     var getClick = get(function () {
-        console.log('点击', 222)
+        // fn执行
+        console.log('点击', 222);
     }, 1000);
 
     // 滚动事件
@@ -61,12 +71,10 @@
     var getTime = function(fn, delay) {
         var start = Date.now();
         return function () {
-            console.log(2222);
             let self = this, args = arguments;
             if(Date.now()  - start >= delay) {
                 start = Date.now();
                 fn.apply(self,args);
-                console.log(8888);
             }
         }
     };

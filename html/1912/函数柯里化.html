@@ -52,7 +52,7 @@
 
 <script>
     /**
-     * @desc: 函数柯里化
+     * @desc: 函数柯里化，基本应用
      */
     function contain(fn, ...rest1) {
         return function (...rest2) {
@@ -72,6 +72,18 @@
     curryShowMsg2('香蕉');
 
 
-</script>
+    /**
+     * @desc:
+     *
+    */
 
+</script>
+<script>
+    var isMatch = function(s, p) {
+        let reg = new RegExp('^' + p + '$', 'g');
+        console.log(reg,3333)
+        return reg.test(s);
+    };
+    console.log(isMatch('aab', 'c*a*b'));
+</script>
 </html>
