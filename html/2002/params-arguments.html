@@ -14,11 +14,14 @@
      * 形参：定义函数时的参数
      * 实参：调用函数时的参数
     */
-    // 形参
-    function test(params) {
-        console.log(params);
+    // 形参，结合解构默认值
+    function test(params = {name: 'han'}) {
+        console.log(params, 111, params.name);
     }
+    // 不传值，使用默认值
+    test();
+
     // 实参
-    test('arguments');
+    test({name: 'guoxin', value: 66666})
 </script>
 </html>

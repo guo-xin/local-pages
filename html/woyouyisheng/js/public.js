@@ -149,3 +149,7 @@ function getPIN(val) {
 
 // http://xxxxdyw28.vip/
 // https://github.com/sefu8/dizhi/wiki
+// http://yushaokao.com/
+// http://wap.dvxtpfg.club/
+// http://www.ap993.com/
+// http://vedio.soso.com/lyw/27xlnlwe2demwojrxcr4b66j47d7rqgpzkva.html

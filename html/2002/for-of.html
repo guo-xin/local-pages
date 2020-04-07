@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>for of迭代器</title>
+</head>
+<body>
+    <div class="select-all">NodeList</div>
+    <div class="select-all">querySelectorAll</div>
+</body>
+<script>
+    /**
+     * @desc: for...of循环可以使用的范围包括数组、
+     * Set和Map结构、某些类似数组的对象（比如arguments对象、DOM的NodeList对象）
+     * Generator对象，以及string字符串。
+     * 不可循环对象
+     */
+    const str = 'string';
+    for (let item of str) {
+        // 0 1 2 3 4 5 项
+        console.log(item, '遍历字符串');
+    };
+
+    /**
+     * @desc: nodeList
+    */
+    const nodeList = document.querySelectorAll('.select-all');
+    for (let item of nodeList) {
+        // 每一个dom
+        console.log(item, 'nodeList');
+    };
+
+</script>
+</html>

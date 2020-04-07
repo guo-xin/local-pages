@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串的相关操作</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * @desc: substring
+     * stringObject.substring(start,stop)，返回字符串,原对象值不变
+     * 1到2个参数
+     * 当只有一个数值的时候，取该数值到字符串末尾
+     * 当start>stop时，自动交换两参数位置
+    */
+    const subString = 'substring';
+    const subString1 = subString.substring(1, 2); // 'u'
+    const subString2 = subString.substring(2); // 'bstring'
+    console.log(subString1, 'substring', subString2);
+
+
+    /**
+     * @desc: substr
+     * stringObject.substr(start,length)
+     * 它可以替代substring和slice来使用。原对象值不变
+     * start必需，可为负数，如果为负数，从数组尾部开始计算
+     * length可选,无的话到字符串末尾
+    */
+    const subStr = 'substring';
+    const subStr1 = subStr.substr(1, 2); // 'ub'
+    const subStr2 = subStr.substr(2); // 'bstring'
+    console.log(subStr1, 'substr', subStr2);
+
+
+    /**
+     * @desc: slice
+     * stringObject.slice(start,end)
+     * 返回字符串，原对象值不变
+     * 也可以操作数组，返回删除项，原数组不变
+     * start是必需，可以为负数，如果为负数，从数组尾部开始计算
+     * end可选,无的话到字符串末尾
+    */
+    const slices = 'slice';
+    const slice1 = slices.slice(1, 2); // 'l'
+    const slice2 = slices.slice(2); // 'ice'
+    console.log(slice1, 'slcie', slice2);
+
+    /**
+     * @desc: 循环 for in 和 for of
+    */
+
+    /**
+     * @desc: for in 下标
+     */
+    const str = 'string';
+    for (let item in str) {
+        // 0 1 2 3 4 5
+        console.log(item, '下标');
+    };
+
+    /**
+     * @desc: for of 每一项
+     */
+    for (let item of str) {
+        // s t r i n g
+        console.log(item, '每一项');
+    };
+</script>
+</html>

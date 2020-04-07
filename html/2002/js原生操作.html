@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js原生的一些操作</title>
+</head>
+<body>
+    <div class="select-all">测试querySelectorAll1</div>
+    <div class="select-all" name="test-name">测试querySelectorAll2</div>
+    <div class="select" name="test-name">测试querySelector</div>
+    <div id="test-id">测试id</div>
+</body>
+
+<script type="text/javascript">
+    /**
+     * @desc: 选择器
+     * querySelectorAll取所有NodeList
+     * querySelector获取第一个
+    */
+    const selectAll = document.querySelectorAll('.select-all');
+    const select = document.querySelector('.select');
+    console.log(selectAll, 'selectAll', selectAll[0], select, 'select');
+
+    /**
+     * @desc: 根据id,获取一个
+     * document.querySelector("”)
+    */
+    const testId = document.getElementById('test-id');
+    console.log(testId, 'testId');
+
+    /**
+     * @desc: 根据class,NodeList
+     * document.getElementsByClassName("")
+    */
+    const testClass = document.getElementsByClassName('select-all');
+    console.log(testClass, 'testClass');
+
+    /**
+     * @desc: 根据name,NodeList
+     * document.getElementsByName("")
+    */
+    const testName = document.getElementsByName('test-name');
+    console.log(testName, 'testName');
+
+    /**
+     * @desc:
+    */
+</script>
+
+<!--document.querySelector默认获取第一个  document.querySelectorAll取所有-->
+<!--1,根据id,document.getElementById("")  document.querySelector("#”)，一个-->
+<!--2,根据class,document.getElementsByClassName("”);NodeList-->
+<!--document.querySelector(".”)  一个-->
+<!--document.querySelectorAll(".”) NodeList-->
+<!--3,根据name,document.getElementsByName("");NodeList-->
+<!--4,根据标签,节点,document.getElementsByTagName("");NodeList-->
+<!--5,查找子节点,obj.childNodes,NodeList-->
+<!--children ：返回一个实时的 HTMLCollection ，子节点都是Element，IE9以下浏览器不支持；-->
+<!--childNodes ：返回一个实时的 NodeList ，表示元素的子节点列表，注意子节点可能包含文本节点、注释节点等；-->
+<!--firstChild ：返回第一个子节点，不存在返回null，与之相对应的还有一个 firstElementChild ；-->
+<!--lastChild ：返回最后一个子节点，不存在返回null，与之相对应的还有一个 lastElementChild-->
+<!--6,查找父节点,obj.parentNode,一个-->
+<!--parentNode ：每个节点都有一个parentNode属性，它表示元素的父节点-->
+<!--5,查找前一个兄弟节点,obj.previousSibling-->
+<!--5,查找后一个兄弟节点,obj.nextSibling-->
+<!--6,创建元素  createElement-->
+<!--// 原生方法-->
+<!--var elem = document.createElement("div");-->
+<!--elem.className = 'test guoxin';-->
+<!--elem.style = 'color: red,height:100px';-->
+<!--elem.innerHTML = '我是新创建的节点';-->
+<!--document.body.appendChild(elem);-->
+<!--7,创建文本节点  createTextNode-->
+<!--var node = document.createTextNode("我是文本节点");-->
+<!--document.body.appendChild(node)-->
+<!--8,替换节点-->
+<!--parent.replaceChild(newChild, oldChild);-->
+<!--9，添加，插入，删除节点-->
+<!--target.appendChild(newChild) newChild作为target的子节点插入最后的一子节点之后-->
+<!--target.insertBefore(newChild,existingChild)  newChild作为target的子节点插入到existingChild节点之前, existingChild为可选项参数，当为null时其效果与appendChild一样-->
+<!--target.remove(); 删除节点-->
+<!--target.removeChild(Node); 删除子节点-->
+<!--10，getAttribute(name)返回指定的特性名相应的特性值，如果不存在，则返回null：-->
+<!--setAttribute(name, value) 设置属性，removeAttribute(name)删除某个属性-->
+
+
+<!--document.querySelector('button').setAttribute('name', 'good');-->
+
+<!--document.querySelector('button’).getAttribute('name’);  // ‘good'-->
+<!--11，直接修改元素的样式-->
+<!--elem.style.color = 'red';-->
+<!--elem.style.setProperty('font-size', '16px');-->
+<!--加important，使用setProperty的第三个参数-->
+<!--elem.style.setProperty('font-size', '16px', 'important');-->
+<!--删除样式-->
+<!--elem.style.removeProperty('color');-->
+<!--setAttribute，设置一些特定的样式-->
+<!--elem.setAttribute('height', '100px');-->
+<!--12，动态添加样式规则-->
+<!--var style = document.createElement('style');-->
+<!--style.innerHTML = 'body{color:red} #top:hover{background-color: red;color: white;}';-->
+<!--document.head.appendChild(style);-->
+<!--13，获取css样式-->
+<!--window.getComputedstyle(元素, 伪类);-->
+<!--window.getComputedstyle($0, ‘hover’);-->
+<!--14，getBoundingClientRect 用来返回元素的大小以及相对于浏览器可视窗口的位置，用法如下：-->
+<!--element.getBoundingClientRect();-->
+<!--窗口大小  document.documentElement.getBoundingClientRect().width-->
+
+</html>

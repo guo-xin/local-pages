@@ -26,11 +26,17 @@
     }
     .auto1 {
         width: 500px;
+        background-size: auto;
+    }
+    .auto2 {
+        width: 400px;
+        background-size: auto auto;
     }
 </style>
 <body>
-    <div class="auto">auto，图片只会缩小不会放大，图片可能会被裁剪，图片不会变形</div>
-    <div class="auto1">auto，两个auto，图片显示本身大小，图片可能会被裁剪，图片不会变形</div>
+    <div class="auto">auto，默认值，图片只会缩小不会放大（图片比背景区域大时），图片可能会被裁剪，图片不会变形</div>
+    <div class="auto1">一个auto，图片只会缩小不会放大（图片比背景区域大时），图片可能会被裁剪，图片不会变形</div>
+    <div class="auto2">两个auto，图片显示本身大小，图片可能会被裁剪，图片不会变形</div>
     <div class="cover">cover， 图片可能会被裁剪，图片不会变形</div>
     <div class="contain">contain，图片不会被裁剪，图片不会变形</div>
     <div class="percent">percent， 图片可能会被裁剪，图片可能会变形</div>
