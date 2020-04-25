@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /**
+     * @desc: 类数组对象的Array.from
+    */
+    let a = Array.from(new Set([2, 3, 5]), (item, index) => {
+        console.log(item, 111, index,2222)
+        return item + 1;
+    });
+    console.log(a, 4444);
+
+    /**
+     * @desc: object.assign可以实现一层的拷贝
+    */
+    let obj1 = {name: 'guoxin'};
+
+    let obj = Object.assign({}, obj1);
+    obj.location = '北京';
+
+    console.log(obj, 1111, obj1, 22222);
+    // {name: 'guoxin', location: '北京'} 1111 {name: 'guoxin'}
+
+
+</script>
+</html>

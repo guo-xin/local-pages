@@ -31,7 +31,7 @@
     }
 </style>
 <script>
-    var xhr;
+    let xhr;
     if(XMLHttpRequest) {
         //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
         xhr = new XMLHttpRequest();
@@ -40,17 +40,23 @@
         xhr=new ActiveXObject("Microsoft.XMLHTTP");
     };
 
-//    function get() {
-//        // open(method,url,async)
-//        xhr.open('get', '../mock/info.json', false);
-//        // 设置请求头setRequestHeader(header,value)
-//        xhr.setRequestHeader('Cache-Control', 'private');
-//        xhr.setRequestHeader('lang', 'en');
-//        xhr.send();
-//        console.log(xhr, 8888)
-//        document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText).name;
-//    };
+    /**
+     * @desc: 同步请求
+    */
+   // function get() {
+   //     // open(method,url,async)
+   //     xhr.open('get', '../mock/info.json', false);
+   //     // 设置请求头setRequestHeader(header,value)
+   //     xhr.setRequestHeader('Cache-Control', 'private');
+   //     xhr.setRequestHeader('lang', 'en');
+   //     xhr.send();
+   //     console.log(xhr, 8888)
+   //     document.getElementById("myDiv").innerHTML = JSON.parse(xhr.responseText).name;
+   // };
 
+    /**
+     * @desc: get请求
+    */
     function get() {
         xhr.onreadystatechange = function() {
             console.log(xhr, 9999)
@@ -65,6 +71,9 @@
     };
 
 
+    /**
+     * @desc: post请求
+    */
     function post() {
         xhr.onreadystatechange = function() {
             console.log(xhr, 9999)

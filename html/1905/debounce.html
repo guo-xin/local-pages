@@ -37,7 +37,8 @@
     */
     var get = function (fn, delay) {
         // 初始化时就会执行
-        var timeIn;
+        // let var 是一样的效果，闭包思想
+        let timeIn;
         return function () {
             // 触发事件时马上执行
             let self = this, args = arguments;

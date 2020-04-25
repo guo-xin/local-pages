@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    /**
+     * @desc: css常见的引用方式有三种
+     * 行内样式
+     * 页面内部样式
+     * 外部引用link（推荐）和@import形式
+     * link方式是xhtml的方式，link放在body上面是在dom加载之前加载，放在body下面，是在dom加载之后加载
+     * @import 是css2的方式，是在dom加载之后加载
+     */
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>css常见引用方式</title>
+    <style>
+        @import "test.css";
+        p {
+            color: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="test.css">
+</head>
+
+<body>
+    <p>测试css样式优先级</p>
+</body>
+<link rel="stylesheet" href="test.css">
+</html>

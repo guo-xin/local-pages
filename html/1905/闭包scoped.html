@@ -42,16 +42,36 @@
     outer();// 0 1 2 3 4 5 6 7 8 9
 
 </script>
+
+<script>
+    /**
+     * @desc:
+    */
+    function a() {
+        console.log(111111111111)
+        var a = 1;
+        b();
+        function b() {
+            a++;
+            console.log(a, 99999999999)
+        }
+    }
+
+
+
+</script>
+
 <script>
     var a = 100;
     function ac() {
-        console.log(a);
+        console.log(a); // undefined
         var a = 10;
-        console.log(a);
+        console.log(a); // 10
     }
     ac();
-    console.log(a);
+    console.log(a); // 100
     console.error('------------');
+
     function dubble(arr) {
         var len = arr.length;
         var tmp;

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组对象操作方法对比</title>
+</head>
+<body>
+    <p>数组对象操作方法对比</p>
+</body>
+<script>
+    /**
+     * @desc: 数组操作方法
+     *
+    */
+    // 新建
+    let ary1 = new Array(); // 空数组
+    let ary2 = new Array(length); // [empty*length]
+    let ary3 = [1, 2, 3]; // [1, 2, 3]
+
+    // 增加
+    ary1.push(4, 5); // 尾部
+    ary1.unshift(6, 7); // 头部
+
+    // 删除
+    ary1.pop(); // 尾部
+    ary1.shift(); // 头部
+
+    //ary1.splice(start, deleteCount, val1, val2);
+
+    // delete ary1[index]; // 会显示undefined,不建议使用
+
+    // 取值
+    // ary1[index];
+
+    /**
+     * @desc: 循环遍历
+     * for each,for in,for of(不可循环对象)
+     * map,reduce,find,filter,some,every,
+    */
+
+    for(let item of arr1) {
+        // item值
+    };
+    for(let item in arr1) {
+        // item下标
+    };
+    ary1.forEach((item, index, array)=>{
+        console.log(item, index, array); // 值 下标 数组
+    });
+    for (let i = 0; i < ary1.length; i++) {
+        // i下标
+    };
+
+    /**
+     * @desc: 对象操作方法
+    */
+    // 新建
+    let obj1 = new Object();
+    let obj2 = {};
+
+    // 增加
+    obj1[a] = value;
+    obj.b = value; // (key为string)
+    Object.assign(a,b);  //a对象值改变，b对象值不变
+    Object.assign({},a,b); //a，b值都不改变
+
+    // 删除
+    delete obj1[a]; // 返回值为boolean
+
+    // 遍历
+    for (let item in obj1) {
+        // item为key，取值obj1[item]
+    }
+</script>
+</html>

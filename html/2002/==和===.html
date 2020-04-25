@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js中==与===的区别</title>
+</head>
+<body>
+<p>==是值的比较</p>
+<p>===是值和类型的比较</p>
+</body>
+<script>
+    /**
+     * @desc: ==是值的比较，类型不同则先转换再比较值
+     * ===是值和类型的比较，先比较类型，类型不同直接返回false
+    */
+    console.log(false == 0); // true
+    console.log(2 == '2'); // true
+    console.log(2 == new Number(2)); // true
+
+    console.log(false === 0); // false
+    console.log(2 === '2'); // false
+
+    /**
+     * @desc: 构造函数实例化的过程：
+     1，创建新对象
+     2，把该对象的内置属性指向构造函数的原型对象
+     （person.__proto__ = Person.prototype），将构造函数的作用域赋给新对象（this指向了新对象）
+     3，执行构造函数代码（用该对象调用构造函数，为这个新对象添加属性）
+     4，返回新对象
+     */
+    // 实例化出来的是一个对象
+    console.log(2 === new Number(2)); // false
+
+
+    /**
+     * @desc: 引用类型值比较的是堆内存中地址是否相等
+     * 也就是栈中的引用地址是否相等
+    */
+    let person1 = {};
+    let person2 = {};
+    console.log(person1 === person2); // false
+
+    let a = {};
+    let b = a;
+    console.log(a === b); //true
+
+
+</script>
+</html>
