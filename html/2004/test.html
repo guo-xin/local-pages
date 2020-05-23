@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>let</p>
+</body>
+
+<script>
+    // let a = 1;
+    // function func() {
+    //     let a = 2;
+    //     console.log(a, 111111); // 2
+    // }
+    //
+    // console.log(a, 2222); // 1
+    // func();
+
+
+    function buildList(list) {
+        var result = [];
+        for (var i = 0; i < list.length; i++) {
+            var item = 'item' + i;
+            result.push( function() {
+                console.log(item + ' ' + list[i])
+            });
+        }
+        return result;
+    }
+
+    function testList() {
+        var fnlist = buildList([1,2,3]);
+
+        for (var j = 0; j < fnlist.length; j++) {
+            fnlist[j]();
+        }
+    }
+
+    testList();
+
+    /**
+     * @desc: 作用域和变量提升
+    */
+    var b = 2;
+    function f(b) {
+        //相当于var b = 1; var b = function() {}; var b;
+        console.log(b, 2222); // function
+        // b = 3;
+        var b = 3;
+        console.log(b, 3333); // 3
+        function b() {
+
+        }
+    };
+    f(1);
+
+    /**
+     * @desc:
+    */
+</script>
+</html>

@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单的this指向及实例化</title>
+</head>
+
+<body>
+    <p>简单的this指向及实例化,实例化之后返回的是一个对象</p>
+</body>
+<script>
+    var firstName = '1';
+    var lastName = '2';
+
+    function a(firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        
+        console.log(this, 4444);
+
+        this.changeName = changeName;
+
+        function changeName(firstName) {
+            console.log(this, 8888); // a
+            
+            this.firstName = firstName;
+        }
+    }
+
+    a1 = new a(firstName, lastName);
+
+    a1.changeName(3);
+
+    console.log(a1.firstName, a1.lastName, 1111); // 3 2
+    console.log(firstName, lastName, 22222);// 1 2
+
+</script>
+
+<script>
+    /**
+    * @desc: 实例化返回的是一个对象
+    * 如果构造函数返回的是一个对象，则会覆盖实例化返回的对象
+    * @author guoxin
+    * @date 2020/05/15
+    */
+    var a = function() {
+        this.name = 'p'
+        this.location = 'beijing';
+
+        // 实例化的时候就会执行
+        console.log(2222222222);
+        
+        // 打印b,返回的就是这个对象
+        return {
+            name: 'b'
+        }
+
+        // 打印p，对b无影响
+        // return 'c';
+    }
+
+    var b = new a();
+    // b.name = 'test'; // 打印test
+    console.log(b, 33333333333333);
+    
+
+</script>  
+
+</html>

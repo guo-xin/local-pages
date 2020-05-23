@@ -10,21 +10,41 @@
 
 <script>
     /**
-     * @desc:
+     * @desc: 闭包
+     * 变量被引用，所以不能被释放，形成闭包
     */
     function a() {
-        console.log(111111111111)
-        var a = 1;
+        console.log(111111111111);
+        var b = 1;
+        // let也是一样
+        // let b = 1;
 
         return function() {
-            a++;
-            console.log(a, 99999999999)
+            b = b + 1;
+            console.log(b, 99999999999)
         }
     }
 
-a()();
+    // 这种不会形成闭包
     a()();
     a()();
+
+    // 形成闭包
+    let scope = a();
+    scope(); // 2
+    scope(); // 3
+
+
+    let func = null;
+    {
+        let test = 1;
+        func = function() {
+            test++;
+            return test;
+        }
+    }
+    console.log(func(), 222); // 2
+    console.log(func(), 222); // 3
 
 </script>
 

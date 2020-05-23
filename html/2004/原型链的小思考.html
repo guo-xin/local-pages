@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+  /**
+  * @description: 原型链的就近原则
+  * @author: guoxin
+  * @params: 
+  * @date: 2020-05-12
+  */
+   function A(a) {
+       // 没有这句就是指向的1
+       this.a = a;
+       console.log(a); // 3
+       
+   }
+
+   function B() {
+       // 2
+   }
+   A.prototype.a = 1;
+   B.prototype.a = 2;
+
+   var a = new A(3);
+   var b = new B();
+
+   console.log(a, 1111, b.a);
+   
+
+    
+</script>
+</html>

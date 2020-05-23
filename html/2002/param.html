@@ -1,19 +1,21 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>形参和实参</title>
+    <title>js函数参数问题及形参实参</title>
 </head>
 <body>
-    <p>形参params和实参arguments</p>
+<div>
+    <p>js函数参数问题及形参实参</p>
+</div>
 </body>
 <script>
     /**
      * @desc: 形参params和实参arguments
      * 形参：定义函数时的参数
      * 实参：调用函数时的参数
-    */
+     */
     // 形参，结合解构默认值
     function test(params = {name: 'han'}) {
         console.log(params, 111, params.name);
@@ -23,5 +25,20 @@
 
     // 实参
     test({name: 'guoxin', value: 66666})
+
+
+    // 普通函数
+    function a(...a) {
+        console.log(arguments); // [1, 2, 3]
+        console.log(a); // [1, 2, 3]
+    }
+    a(1, 2, 3);
+
+    // 箭头函数，没有arguments
+    var b = (...b) => {
+        console.log(arguments); // 报错
+        console.log(b); // [2, 3, 4]
+    };
+    b(2, 3, 4);
 </script>
 </html>

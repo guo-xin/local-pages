@@ -42,6 +42,17 @@
     console.log(arr1, 222, arr2);
     // [1, 2, 3, 4, {a: 1, b: 2}] 22 [1, 2, 3, 4, {a: 1, b: 2}, 5]
 
+    /**
+     * @desc: object.assign可以实现一层的拷贝
+     */
+    let obj1 = {name: 'guoxin'};
+
+    let obj = Object.assign({}, obj1);
+    obj.location = '北京';
+
+    console.log(obj, 1111, obj1, 22222);
+    // {name: 'guoxin', location: '北京'} 1111 {name: 'guoxin'}
+
 
     /**
      * @desc: 深拷贝，对象完全复制

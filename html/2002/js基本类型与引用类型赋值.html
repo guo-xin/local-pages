@@ -8,15 +8,51 @@
     <p>基本类型与引用类型赋值区别</p>
 </body>
 
-
 <script>
     /**
      * @desc: 基本类型与引用类型赋值区别
      * 引用类型的赋值其实是对象保存在栈区地址指针的赋值，因此两个变量指向同一个对象，任何的操作都会相互影响
+     * 引用类型的赋值其实就是一个浅拷贝
      * 基本类型保存在栈内存中，相互独立
     */
+    let a = 1;
+    let b = a;
+    console.log(a, b, 11111); // 1 1
+    b = 2;
+    console.log(a, b, 22222); // 1, 2
+
+    let obj1 = {};
+    let obj2 = obj1;
+    console.log(obj1 === obj2, 3333); // true {}
+    obj2.name = 'guo';
+    console.log(obj1 === obj2, 4444); // true {name: 'guo'}
+    // 栈内存中创建了一个新的指针，指向堆内存中一个新地址
+    obj2 = {};
+    console.log(obj1 === obj2, 5555); // false {name: 'guo'} {}
+
+    const obj3 = {};
+    // 不允许，直接就报错了
+    //obj3 = {name: 'guo'};
+
+    // 可以这样
+    obj3.name = 'guo';
 
 
+    /**
+    * @description: 当做参数的时候也是一样
+    * @author: guoxin
+    * @date: 2020-05-12
+    */
+    function a1(b1, c1, d1) {
+        b1 = 3;
+        c1.push(3);
+        d1.value = 333;
+        console.log(b1, c1, d1, 2222); // 3 [1, 2 ,3] {name, value}
+    }
+    var b1 = 1, c1 = [1 ,2], d1 = {name: 'guoxin'};
+
+    a1(b1, c1, d1);
+    console.log(b1, c1, d1, 1111); // 1 [1, 2 ,3] {name, value}
 
 </script>
 

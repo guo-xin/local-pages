@@ -39,6 +39,7 @@
     // 定时器实现
     var get = function (fn, delay) {
         // 初始化时就会执行
+        // let var 是一样的效果，闭包思想
         var flag;
         return function () {
             // 触发事件时马上执行

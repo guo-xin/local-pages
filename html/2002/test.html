@@ -12,13 +12,16 @@
      * @desc: 类数组对象的Array.from
     */
     let a = Array.from(new Set([2, 3, 5]), (item, index) => {
-        console.log(item, 111, index,2222)
+        // 处理的是set
+        console.log(item, 111, index,2222); // 项  下标
         return item + 1;
     });
-    console.log(a, 4444);
+    console.log(a, 4444); // 3 4 6
+
+
 
     /**
-     * @desc: object.assign可以实现一层的拷贝
+     * @desc: object.assign可以实现一层的深拷贝
     */
     let obj1 = {name: 'guoxin'};
 

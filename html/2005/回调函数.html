@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回调函数</title>
+</head>
+<body>
+    回调函数的使用
+</body>
+<script>
+     /**
+    * @desc: 回到函数
+    * @author guoxin
+    * @date 2020/05/18
+    */
+    function a(cb) {
+        cb('参数');
+        // 可以改变this指向
+        // cb.call('2', '3');
+    }
+
+    a(function(res) {
+        // this指向window
+        console.log(res, this, 111111);
+    });
+</script>
+</html>

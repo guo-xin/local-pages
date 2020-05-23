@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../../mock/listData.js"></script>
+    <title>引用本地js数据文件</title>
+</head>
+<style>
+    button {
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid #928687;
+        display: inline-block;
+        cursor: pointer;
+    }
+    button:link, button:visited, button:hover, button:active, button:focus {
+        outline: none;
+    }
+
+    button:hover, button:active {
+        transform: scale(1.1);
+        background-color: #e6e6e6;
+    }
+
+    button:last-of-type {
+        margin-left: 20px;
+    }
+
+</style>
+<body>
+    <p>引用本地js数据文件</p>
+    <button onClick="changePage('pre')">上一页</button>
+    <button onClick="changePage('next')">下一页</button>
+
+    <select name="test" id="test" onChange="changeSize(this.value)">
+        <option value="2">2</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+    </select>
+    <section></section>
+</body>
+<script>
+    /**
+     * @desc: 原生用法是通过script标签引过来，js里面定义变量，这边使用
+     * es6和common js的写法是用过export和import来操作
+    */
+
+    let page = 1, size = 2;
+
+    /**
+     * @desc: 页面初始化时
+    */
+    window.onload = function() {
+        setContent();
+    };
+
+    /**
+     * @desc: 设置内容
+    */
+    function setContent() {
+        let start = (page - 1) * size;
+        let end = page * size;
+        let list = listData.slice(start, end);
+
+        const section = document.querySelector('section');
+        section.innerHTML = '';
+        for(let item of list) {
+            let obj = document.createElement('p');
+            obj.innerHTML = `姓名：${item.name}, 值：${item.value}，第${page}页，每页${size}条数据`;
+            section.appendChild(obj);
+        }
+    };
+
+    /**
+     * @desc: 分页
+    */
+    function changePage(type) {
+        if (type === 'pre') {
+            if (page <= 1) {
+                alert('已经是第一页了');
+                return;
+            }
+             page--;
+        } else {
+            if (page * size >= listData.length) {
+                alert('最后一页了');
+                return;
+            }
+            page++;
+        }
+        setContent();
+    };
+
+    /**
+     * @desc: 改变每页条数
+    */
+    function changeSize(value) {
+        size = value;
+        page = 1;
+        setContent();
+    }
+</script>
+</html>

@@ -9,27 +9,63 @@
 <div>promise</div>
 </body>
 <script>
-function a () {
-    console.log(44444);
-    return new Promise((resolve, reject) => {
-        console.log(5555);
-        setTimeout(() => {
-            resolve(true);
-            console.log(6666);
-        }, 2000);
-        console.log(7777);
-    })
-}
-async function b () {
-    let val = await a();
-    console.log(val, 111);
+// function a () {
+//     console.log(44444);
+//     return new Promise((resolve, reject) => {
+//         console.log(5555);
+//         setTimeout(() => {
+//             resolve(true);
+//             console.log(6666);
+//         }, 2000);
+//         console.log(7777);
+//     })
+// }
+// async function b () {
+//     let val = await a(); // true
+//     console.log(val, 111);
 
-}
+// }
 
-console.log(2222);
-b();
-console.log(33333);
+// console.log(2222);
+// b();
+// console.log(33333);
 
 // 2 4 5 7 3 6 (true 1)
+</script>
+
+<script>
+    /**
+    * @desc: promise与setTimeout
+    * @author guoxin
+    * @date 2020/05/13
+    */
+   setTimeout(() => {
+       console.log(11111);
+       
+       new Promise((resolve, reject) => {
+           console.log(222222);
+           
+           resolve();
+       }).then((res) => {
+           console.log(res, 3333333);
+           
+       })
+   }, 10);
+
+
+   new Promise((resolve, reject) => {
+       console.log(55555555555);
+       
+       setTimeout(() => {
+           console.log(44444);
+        
+           resolve();
+       }, 10);
+   }).then((res) => {
+       console.log(res, 66666666);
+       
+   });
+
+   // 5 1 2 3 4 6
 </script>
 </html>

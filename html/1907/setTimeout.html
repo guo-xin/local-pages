@@ -18,28 +18,29 @@ for(var i = 0; i < 10; i++) {
     })(i), 1000)
 }
 // 取的是执行的时候的值
+// for(let i = 0; i < 10; i++) { // 这里用let就不会
 for(var i = 0; i < 10; i++) {
     setTimeout((() => {
-        console.log(i, 1111) // 9 9 9 9 9 9 9 9 9 9
+        console.log(i, 2222) // 9 9 9 9 9 9 9 9 9 9
     }), 1000)
 }
-console.error(i, 11) // 10
+console.error(i, 33333) // 10
 
 // setTimeout传参的方式，函数调用时的值
 for(var i = 0; i < 10; i++) {
     var se = setTimeout(function(index){
-        console.log(index, 3333) // 0 1 2 3 4 5 6 7 8 9
+        console.log(index, 44444) // 0 1 2 3 4 5 6 7 8 9
     }, 1000, i)
-    console.log(se, 4444) // 10
+    console.log(se, 55555) // 10
 }
-console.error(i, 33)
+console.error(i, 6666)
 
 for(var i = 0; i < 10; i++) {
     setTimeout((function(){
-        console.log(i, 2222) // 0 1 2 3 4 5 6 7 8 9
+        console.log(i, 7777) // 0 1 2 3 4 5 6 7 8 9
     })(i), 1000)
 }
-console.error(i, 22) // 10
+console.error(i, 8888) // 10
 
 </script>
 </html>
