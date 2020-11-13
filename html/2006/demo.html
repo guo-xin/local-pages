@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+</body>
+<script>
+    let objList = {
+        name: 'guoxin',
+        value: '666',
+        location: 'beijing'
+    };
+    delete objList['name'];
+
+    console.log(objList, 222);
+
+    function a({ value = 4 } = {}) {
+        console.log(value);
+    }
+    a({ name: 5 });
+
+
+    function toThousands(num) {
+        let result = '', counter = 0;
+        num = (num || 0).toString();
+        if (num.indexOf('.') > -1) {
+            result = '.' + num.split('.')[1];
+            num = num.split('.')[0]
+        }
+        for (let i = num.length - 1; i >= 0; i--) {
+            result = num.charAt(i) + result;
+            counter++;
+            if (!(counter % 3) && i != 0) { result = ',' + result; }
+        }
+        return result;
+    }
+
+
+</script>
+
+</html>

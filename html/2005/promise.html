@@ -1,43 +1,66 @@
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
 <script>
-    /**
-    * @desc: promise
-    * @author guoxin
-    * @date 2020/05/23
-    */
-    let a = new Promise((resolve, reject) => {
-        console.log(2222222);
-        setTimeout(() => {
-            console.log(33333333333);
-            
-            resolve('response');
-        }, 1000);
-    });
+	/**
+	 * @desc: promise
+	 * @author guoxin
+	 * @date 2020/05/23
+	*/
+	let a = new Promise((resolve, reject) => {
+		console.log(11111);
 
-    a.then((res) => {
-        console.log(res, 44444444);
-        
-    }).catch(() => {
-        console.log(45555555555);
-        
-    })
+		setTimeout(() => {
+			console.log(22222);
+			// resolve('resolve');
+			reject('reject');
+		}, 1000);
+	});
 
-    let arr = [1, 3, 2, 4, 6 ,5, 9];
-    // let b = arr.forEach((item, index, arr) => {
-    //     console.log(index, 33333333);
-    //     return 1;
-    // });
-    // console.log(b, 5);
-    
-    
+	a.then((res) => {
+		console.log(res, 3333);
+	}, (res) => {
+		// 优先级比catch高，有它就不执行catch
+		console.log(res, 4444);
+	}).catch((res) => {
+		// 有错误的时候执行catch
+		console.log(res, 55555);
+
+	})
+
+	// catch之后还是可以执行后面的then，因为前面返回的是一个promise对象
+	a.then((res) => {
+		console.log(res, 6666);
+	}).catch((res) => {
+		// 有错误的时候执行catch
+		// 'reject'
+		console.log(res, 25555);
+		return 'test Catch';
+	}).then((res) => {
+		// test Catch
+		console.log(res, 77777);
+	})
+
+
+
+	let arr = [1, 3, 2, 4, 6, 5, 9];
+	// forEach没有返回值
+	let b = arr.forEach((item, index, arr) => {
+		console.log(index, 33333333);
+		return 1;
+	});
+	console.log(b, 5);
+
+
 
 </script>
+
 </html>

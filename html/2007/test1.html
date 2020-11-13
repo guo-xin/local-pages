@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title></title>
+</head>
+
+<body>
+    <button>测试</button>
+</body>
+
+<script>
+    var name = 'window'
+    var aHello = {
+        name: "hello",
+        showName: function () {
+            console.log(this);
+        }
+    }
+    // aHello.showName(); // 指向aHello
+
+    // 指向的button
+    document.querySelector('button').onclick = aHello.showName;
+
+    // f(0)=0,f(1)=1
+    // 0 1 2 3 4 5 6
+    // 0 1 1 2 3 5 8
+    function fn(n) {
+        if (n <= 2 ) {
+            return 1
+        }
+
+        return arguments.callee(n - 1) + arguments.callee(n - 2)
+    }
+    console.log(fn(10), 111)
+
+    // 下台阶的问题f(1)=1,f(2)=2
+    // 1 2 3 4 5 6  7  8
+    // 1 2 3 5 8 13 21 34
+    function fn1(n) {
+            if (n === 2) {
+                return 2;
+            }
+            if (n === 1) {
+                return 1
+            }
+
+            return arguments.callee(n - 1) + arguments.callee(n - 2)
+        }
+        console.log(fn1(10), 2222)
+</script>
+
+</html>

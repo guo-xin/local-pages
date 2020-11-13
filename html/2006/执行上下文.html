@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<body>
+
+</body>
+
+<script>
+    /**
+     * @desc: 形成了闭包
+     * 函数的引用，指针
+     * @author guoxin
+     * @date 2020/06/30
+     * https://mp.weixin.qq.com/s/fTKWV0NGDQHbdNf1wt14mw
+     */
+    var scope = "global scope";
+    function checkScope() {
+        var scope = "local scope";
+        function f() {
+            scope += 's';
+            return scope;
+        }
+        return f;
+    }
+    let ch = checkScope();
+    console.log(ch(), 55); // local scopes
+    console.log(ch(), 66); // local scopess
+    console.log(ch(), 66); //local scopesss
+
+
+    /**
+     * @desc: 没有形成闭包
+     * @author guoxin
+     * @date 2020/06/30
+     */
+    function checkScope1() {
+
+        var scope = 'local scope';
+        function f() {
+            scope += 't';
+            return scope;
+        }
+        return f();
+    }
+    console.log(checkScope1(), 77);
+    console.log(checkScope1(), 88);
+
+
+
+
+    /**
+     * @desc: setTimeout
+     * @author guoxin
+     * @date 2020/06/30
+     */
+    function test() {
+        console.log(2222);
+
+    }
+    // 这里可以直接写函数名称
+    setTimeout(test, 1000);
+
+    (function dada() {
+        let a = 1;
+        function da() {
+            console.log(a, 111);
+        };
+
+        function run(fn) {
+            let a = 100;
+            fn();
+        }
+        a = 2;
+        // 函数定义地方的变量在调用地方的值
+        run(da); // 2
+    })();
+
+    (function dada() {
+        let a = 1;
+        function da() {
+            console.log(a, 222);
+        };
+
+        function run(fn) {
+            a = 100; // 这里不用let
+            fn();
+        }
+        a = 2;
+        // 函数定义地方的变量在调用地方的值
+        run(da); // 100
+    })();
+
+
+    let a = 1;
+    function da() {
+        console.log(a, 333);
+    };
+    (function dada() {
+        function run(fn) {
+            let a = 100;
+            fn();
+        }
+        let a = 2;
+        // 函数定义地方的变量在调用地方的值
+        run(da); // 1
+    })();
+</script>
+
+</html>

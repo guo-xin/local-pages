@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height">
     <title>setTimeout和setInterval</title>
 </head>
+
 <body>
-<div>
-    setTimeout和setInterval
-</div>
+    <div>
+        setTimeout和setInterval
+    </div>
 </body>
 <script>
-// 函数传参的方式，取的是调用的时候的值
-for(var i = 0; i < 10; i++) {
-    setTimeout((() => {
-        console.log(i, 1111) // 0 1 2 3 4 5 6 7 8 9
-    })(i), 1000)
-}
-// 取的是执行的时候的值
-// for(let i = 0; i < 10; i++) { // 这里用let就不会
-for(var i = 0; i < 10; i++) {
-    setTimeout((() => {
-        console.log(i, 2222) // 9 9 9 9 9 9 9 9 9 9
-    }), 1000)
-}
-console.error(i, 33333) // 10
+    // 函数传参的方式，取的是调用的时候的值
+    for (var i = 0; i < 10; i++) {
+        setTimeout((() => {
+            console.log(i, 1111) // 0 1 2 3 4 5 6 7 8 9
+        })(i), 1000)
+    }
+    // 取的是执行的时候的值
+    // for(let i = 0; i < 10; i++) { // 这里用let就不会
+    for (var i = 0; i < 10; i++) {
+        setTimeout((() => {
+            console.log(i, 2222) // 9 9 9 9 9 9 9 9 9 9
+        }), 1000)
+    }
+    console.error(i, 33333) // 10
 
-// setTimeout传参的方式，函数调用时的值
-for(var i = 0; i < 10; i++) {
-    var se = setTimeout(function(index){
-        console.log(index, 44444) // 0 1 2 3 4 5 6 7 8 9
-    }, 1000, i)
-    console.log(se, 55555) // 10
-}
-console.error(i, 6666)
+    // setTimeout传参的方式，函数调用时的值
+    for (var i = 0; i < 10; i++) {
+        var se = setTimeout(function (index) {
+            console.log(index, 44444) // 0 1 2 3 4 5 6 7 8 9
+        }, 1000, i)
+        console.log(se, 55555) // 10
+    }
+    console.error(i, 6666)
 
-for(var i = 0; i < 10; i++) {
-    setTimeout((function(){
-        console.log(i, 7777) // 0 1 2 3 4 5 6 7 8 9
-    })(i), 1000)
-}
-console.error(i, 8888) // 10
+    for (var i = 0; i < 10; i++) {
+        setTimeout((function () {
+            console.log(i, 7777) // 0 1 2 3 4 5 6 7 8 9
+        })(i), 1000)
+    }
+    console.error(i, 8888) // 10
+
+
+    /**
+     * @desc: 清除定时器
+     * @author guoxin
+     * @date 2020/08/01
+     */
+    let a = 60;
+    let testTime = setInterval(() => {
+        a--;
+        if (a <=0) clearInterval(testTime)
+        console.log('test', a);
+    }, 500);
+
 
 </script>
+
 </html>

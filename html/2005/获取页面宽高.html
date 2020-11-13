@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>获取页面宽高</title>
+</head>
+<style>
+    html {
+        /* overflow: hidden; */
+        /* overflow: scroll; */
+        height: 1200px;
+        width: 2000px;
+        margin: 10px;
+    }
+</style>
+
+<body>
+    <p>获取页面的各种宽高</p>
+</body>
+<script>
+    /**
+     * @desc: 获取页面宽高
+     * 兼容IE
+     * 可见区域宽度，不包括滚动宽度，包括滚动条的宽度
+     * window.innerHeight,在IE8及其以下版本是undefined;IE8以上版本支持
+     * 
+     * document.body.clientHeight,可见区域的宽高，不包含滚动条宽度
+     * 
+     * document.documentElement.clientHeight,html文档的宽高,在IE5情况下是0
+     * 
+     * document.body.scrollWidth,包括滚动宽高,不包含滚动条宽度
+     * 
+     * jq的方式$(window).width();在IE5环境下面失效，计算出来的长度，宽度为0
+     * $(document).width()
+     * @author guoxin
+     * @date 2020/05/31
+     */
+    function getWindow() {
+        return {
+            // 可见区域宽度，不包括滚动宽度，它包含元素的内边距,边框，外边距，滚动条宽度
+            'innerWidth': window.innerWidth,
+            // 可见区域宽度，不包括滚动宽度也不包括滚动条的宽度，包含元素的内边距,边框，外边距
+            'body-clientWidth': document.body.clientWidth,
+            // 不包括内边距、滚动条、边框和外边距
+            'offsetWidth': document.documentElement.offsetWidth,
+            // 可见区域宽度，不包括滚动宽度也不包括滚动条的宽度
+            'doc-clientWidth': document.documentElement.clientWidth,
+            // 包括滚动宽度,不包括滚动条的宽度
+            'scrollWidth': document.body.scrollWidth,
+
+            // 可见区域宽度，不包括滚动宽度，包括滚动条的宽度
+            'innerHeight': window.innerHeight,
+            // 可见区域高度，不包括滚动高度也不包括滚动条的宽度
+            'body-clientHeight': document.body.clientHeight,
+            // 不包括内边距、滚动条、边框和外边距
+            'offsetHeight': document.documentElement.offsetHeight,
+            // 包括滚动宽高和滚动条宽度,不包含元素的内边距,边框，外边距
+            'doc-clientHeight': document.documentElement.clientHeight,
+            // 包括滚动宽高和滚动条宽度,它包含元素的内边距,边框，外边距，滚动条宽度
+            'scrollHeight': document.body.scrollHeight,          
+        };
+        
+    }
+    console.table(getWindow());
+
+</script>
+
+</html>

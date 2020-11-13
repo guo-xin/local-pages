@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+</body>
+<script>
+    /**
+     * @desc: 数组最大重复次数项
+     * @author guoxin
+     * @date 2020/06/28
+     */
+    function repeat() {
+        let [max, obj] = [this[0], {}];
+        for (const item of this) {
+            if (obj[item]) {
+                ++obj[item];
+                if (obj[item] > obj[max]) {
+                    max = item;
+                }
+            } else {
+              obj[item] = 1;  
+            }
+        }
+        // return max;
+        console.log(max, 111, obj[max]);
+        
+    }
+
+    Array.prototype.repeat = repeat;
+
+    const arr = [1, 3, 2, 1, 2, 3, 4, 34, 2, 3];
+    arr.repeat()
+</script>
+
+</html>

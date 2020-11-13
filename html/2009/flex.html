@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="t1">1</div>
+        <div class="t2">2</div>
+        <div class="t3">3</div>
+    </div>
+
+</body>
+
+<style>
+    .parent {
+        width: 150px;
+        display: flex;
+    }
+
+    .t1 {
+        background-color: red;
+        width: 10px;
+    }
+
+    .t2 {
+        width: 20px;
+        background-color: green;
+    }
+
+    .t3 {
+        width: 30px;
+        background-color: pink;
+    }
+
+    /* 都10 20 30,不放大，展示本身大小 */
+
+
+    /* 加上flex：1, 都是50px */
+    .parent>div {
+        flex: 1;
+        /* 加上flex-grow=1,10+30=40,20+30=50,30+30=60平均分配剩余空间 */
+        /* flex-flow: 1; */
+    }
+</style>
+
+</html>

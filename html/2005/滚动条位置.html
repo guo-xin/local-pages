@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取页面滚动位置</title>
+</head>
+<style>
+    body {
+        height: 1200px;
+        width: 2000px;
+    }
+
+    .button1 {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+    }
+
+    .button2 {
+        position: fixed;
+        top: 40px;
+        left: 10px;
+    }
+</style>
+
+<body>
+    <p>获取页面滚动位置</p>
+    <button class="button1" onclick="getLocation()">获取</button>
+    <button class="button2" onclick="toTop()">滚动到顶部</button>
+</body>
+<script>
+    /**
+     * @desc: 获取滚动条位置
+     * 兼容IE
+     * @author guoxin
+     * @date 2020/05/31
+     */
+    function getLocation() {
+        const top = document.body.scrollTop || document.documentElement.scrollTop;
+        const left = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+        console.log('top', top, 'left', left);
+    };
+
+    /**
+     * @desc: 滚动到页面顶部
+     * @author guoxin
+     * 1,scrollIntoView()
+     * 2,scrollTop
+     * 3,window.scrollTo(x, y),scroll(x, y)，滚动到
+     * 4,window.scrollBy(x, y),滚动的高度
+     * 参数都可以用options，{top, left, behavior}
+     * @date 2020/06/01
+     */
+    function toTop() {
+        // document.body.scrollIntoView();
+
+        // document.body.scrollTop = document.documentElement.scrollTop = 0;
+
+        // scrollTo(0, 0);
+        // window.scrollTo(0, 0);
+        // scroll(0, 0);
+
+        const top = document.body.scrollTop || document.documentElement.scrollTop;
+        const left = document.body.scrollLeft || document.documentElement.scrollLeft;
+        // scrollBy(-left, -top);
+        window.scrollBy({
+            left: -left,
+            top: -top,
+            behavior: "smooth",
+        });
+    }
+</script>
+
+
+
+</html>

@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>js算法</title>
 </head>
+
 <body>
-<div>
-    <p>js算法，数组去重、冒泡、快排、计数、插入排序</p>
-</div>
+    <div>
+        <p>js算法，数组去重、冒泡、快排、计数、插入排序</p>
+    </div>
 </body>
 
 <script>
@@ -23,19 +25,19 @@
     */
 
     // 数组去重
-    repeat(a) {
+    function repeat(a) {
         // let i, arr = [], len = {};
         // eslint-disable-next-line
         let [i, arr, len] = [, [], {}];
         console.log(i, arr, len, 555)
-        for(i of a) {
-            if(!len[i]) {
+        for (i of a) {
+            if (!len[i]) {
                 arr.push(i);
                 len[i] = 1;
             }
         }
         console.log(arr, 666);
-    },
+    }
 
     // // 计数排序
     // countSort(a) {
@@ -217,4 +219,5 @@
     //
     // }
 </script>
+
 </html>

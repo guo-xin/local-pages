@@ -35,18 +35,17 @@
      * 闭包的思想实现
      * 定时器
     */
-    var get = function (fn, delay) {
+    const get = function (fn, delay) {
         // 初始化时就会执行
         // let var 是一样的效果，闭包思想
         let timeIn;
-        return function () {
+        return function (delay) {
             // 触发事件时马上执行
             let self = this, args = arguments;
-
             timeIn && clearTimeout(timeIn);
             timeIn = setTimeout(function () {
                 // 延迟delay后执行
-                fn.apply(self,args);
+                fn.apply(self, args);
                 // 释放
                 timeIn = null;
                 console.log(1111);

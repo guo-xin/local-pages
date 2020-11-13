@@ -9,36 +9,35 @@
 </body>
 <script>
     /**
-     * @desc: forEach的return
+     * @desc: forEach的return没有用处
      * 高阶函数的return是不会跳出当前循环的
+     * 因为它们本身就是一个回调函数
      * some和every返回目标值的时候会跳出
     */
     let arr = Array.from('12345678zxcasd');
-    arr.forEach((item) => {
-        // 没有跳出循环
-        if (item === 'x') {
-           return;
-        }
-        // 后面继续执行
-        console.log(item, 1111);
-    });
 
-    // some返回true就会跳出循环
-    arr.some((item) => {
-        if (item === 'x') {
-            return true;
-        }
-        // 后面不会执行
-        console.log(item, 22222);
+    const b = arr.forEach(item => {
+        console.log(item, 2222);
+        // return没有用，循环继续执行
+        return 333;
+        // 跳出了当前回调函数，这里不会执行
+        console.log(55555);
+        
     });
-
-    // every返回false就会跳出循环
-    arr.every((item) => {
-        if (item === 'x') {
-            return false;
+    // undefined
+    console.log(b, 4444);
+    
+    
+    function a() {
+        // 这里可以使用const
+        for(const item of arr) {
+            console.log(item, 111);
+            // 跳出函数
+            return 2;    
         }
-        // 后面不会执行
-        console.log(item, 3333);
-    })
+    }
+    // 2
+    console.log(a() ,3333);
+    
 </script>
 </html>

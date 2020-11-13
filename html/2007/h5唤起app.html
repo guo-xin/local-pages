@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 不缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>唤起App或者下载App</title>
+</head>
+
+<body>
+    <button onclick="openApp()">唤起App</button>
+</body>
+
+<script>
+    /**
+     * @desc: h5唤起app
+     * @author guoxin
+     * @date 2020/08/18
+     */
+    function openApp() {
+        // 也可以使用a标签来调整，click更灵活，可以处理业务逻辑
+        window.location.href = 'newcar://openapi/openTab?tab=1&ca_i=1216';
+        // 3s后无论结果如何，都跳到下载页
+        setTimeout(function () {
+            window.location.href = 'https://m.maodou.com/www/download/app';
+        }, 3000);
+    }
+
+</script>
+
+</html>

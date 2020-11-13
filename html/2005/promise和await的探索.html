@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise和await的探索</title>
+</head>
+<body>
+    <p>promise和await的探索</p>
+</body>
+<script>
+    /**
+     * @desc: promise和await的探索
+     * 兼容IE
+     * @author guoxin
+     * @date 2020/05/31
+     */
+    const urls = ['http://1', 'http://2', 'http://3', 'http://4', 'http://5'];
+
+    function _fetch(url) {
+        return new Promise(resolve => {
+            console.log('fetching ', url);
+
+            resolve(url);
+        })
+    }
+
+    var requestControl = async function (urls, max) {
+        // your code
+        let count = max;
+
+        while (count > 0 && urls.length) {       
+            count--
+            await _fetch(urls.shift());
+            count++
+        }
+        
+        if (!urls.length && count === max) {
+            // callback()
+        }
+        
+
+    }
+    console.log(requestControl(urls, 2), 333)
+</script>
+</html>

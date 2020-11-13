@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hash</title>
+</head>
+<!-- link引用js，不会执行 -->
+<!-- <link rel="stylesheet" href="../../js/test.js"> -->
+
+<body>
+    <button onclick="test()">location</button>
+</body>
+<script>
+    // 对象，转化为字符
+    function test() {
+        console.log(location.href, 212);
+        const obj = {
+            name: 'guoxin',
+            location: 'beijing'
+        };
+        location.href = `${location.href}?test=${JSON.stringify(obj)}`
+    }
+
+
+    const arr1 = ['a', 'b', 'c', 'd'];
+    const arr2 = [{
+        index: 'a',
+        name: 'as',
+        delay: 1,
+    }, {
+        index: 'b',
+        name: 'vs',
+        delay: 2,
+    }, {
+        index: 'c',
+        name: 'cs',
+        delay: 3,
+    }, {
+        index: 'd',
+        name: 'ds',
+        delay: 4,
+    }];
+
+    let str = '';
+    for (let item of arr1) {
+        for (let i of arr2) {
+            if (i.index == item) {
+                if (str) {
+                    str += `-${i.name}`;
+                } else {
+                    str = i.name;
+                }
+
+                const strs = str;
+                setTimeout(() => {
+                    console.log(strs, i, 111);
+                }, i.delay * 1000);
+                
+            }
+        }
+    }
+</script>
+
+</html>

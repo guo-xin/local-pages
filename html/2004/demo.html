@@ -8,16 +8,21 @@
     
 </body>
 <script>
-    
+    /**
+     * @desc: 参数，也是浅拷贝
+     * @author guoxin
+     * @date 2020/05/29
+     */
     function a(b, c, d) {
         b = 3;
-        c.push(3);
-        d.value = 333;
+        c.push(3); // 同时改变
+        d.value = 333; // 同时改变
         console.log(b, c, d, 2222); // 3 [1, 2 ,3] {name, value}
     }
     var b = 1, c = [1 ,2], d = {name: 'guoxin'};
 
     a(b, c, d);
+    // 同时改变
     console.log(b, c, d, 1111); // 1 [1, 2 ,3] {name, value}
     
 </script>

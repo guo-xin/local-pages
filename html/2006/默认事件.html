@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>js阻止默认事件，阻止事件冒泡</title>
+</head>
+
+<body onclick="test1()">
+	<p>js阻止默认事件，阻止事件冒泡</p>
+	<a href="https://www.baidu.com" onclick="tetsA(event)">跳转</a>
+	<button onclick="test(event)">测试</button>
+</body>
+<script>
+	/**
+	 * @desc: 默认事件，事件冒泡
+	 * @author guoxin
+	 * @date 2020/06/24
+	 */
+
+	/**
+	 * @desc: 事件冒泡指的是事件触发之后往上冒泡执行的过程
+	 * 从子节点往上到父节点，直到根节点
+	 * @author guoxin
+	 * @date 2020/06/28
+	 */
+	function test(e) {
+		// 先触发test，不阻止怕冒泡的话，test1也会执行
+		if (e && e.stopPropagation) {
+			e && e.stopPropagation();
+		} else {
+			// 兼容IE
+			window.event.cancelBubble = true;
+		}
+
+		console.log('button', 111);
+	}
+
+	function test1() {
+		console.log('body', 222);
+	}
+
+	/**
+	 * @desc: 默认事件，指的是元素的默认行为
+	 * a标签的跳转，form表单的提交，button在表单中的提交刷新页面
+	 * event.cancelable如果是false的话则不能阻止默认事件
+	 * @author guoxin
+	 * @date 2020/06/28
+	 */
+	function tetsA(e) {
+		// 阻止a标签的默认跳转事件
+		if (e && e.preventDefault) {
+			e && e.preventDefault();
+		} else {
+			// 兼容IE
+			window.event.returnValue = false;
+		}
+
+		console.log('a标签', 3333);
+	}
+
+</script>
+
+</html>

@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input onchange="this.value=formatNumber(this.value)" onfocus="this.value=null" />
+</body>
+<script>
+    /**
+     * @desc: 格式化千位符
+     * 兼容小数
+     * @author guoxin
+     * @date 2020/06/02
+     */
+    function formatNumber(s) {
+        if (!/^(([1-9]\d*)|0)(\.\d+)?$/.test(s)) return "invalid value";
+
+        s = s.replace(/^(\d*)$/, "$1.");
+
+        s = (s + "00").replace(/(\d*\.\d\d)\d*/, "$1");
+        s = s.replace(".", ",");
+        var re = /(\d)(\d{3},)/;
+
+        while (re.test(s)) {
+            s = s.replace(re, "$1,$2");
+        }
+
+        s = s.replace(/,(\d\d)$/, ".$1");
+        return "￥" + s.replace(/^\./, "0.")
+    }
+
+    /**
+     * @desc: 自己写了一个简单的，不能兼容小数
+     * @author guoxin
+     * @date 2020/06/02
+     */
+    function formatValue(val) {
+        val = val + ',';
+
+        const rule = /(\d)(\d{3},)/;
+        while(rule.test(val)) {
+            val = val.replace(rule, '$1,$2');
+        }
+        val = val.replace(/(\d),$/, '$1');
+
+        return val;
+    }
+
+    /**
+     * @desc: const定义的对象可以使用Objet.assign
+     * @author guoxin
+     * @date 2020/06/03
+     */
+    const params = {
+        name: 'guxoin',
+        value: '666'
+    };
+    
+    Object.assign(params, {
+        location: 'beijing'
+    })
+    
+    console.log(params, 66666666);
+
+    let test1 = 1, test2 = 2;
+    if (test1) {
+        console.log(111111111);
+        
+    } else if (test2) {
+        console.log(22222222222);
+        
+    } else {
+        console.log(33333333333);
+        
+    }
+    
+</script>
+
+<script>
+    // 记录一下
+    // content: "{"uid":444157248668491869,"thunbUpFreq":84,"sceneId":446718207421374480}"
+    
+    // content: "{"code":0,"enterCount":164,"groupId":462007680698794030,"liveTime":5321804,"message":"success","sceneId":587035717533548632,"thunbUpFreq":125,"userCount":4386}"        
+</script>
+</html>

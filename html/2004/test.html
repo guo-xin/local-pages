@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>let作用域和变量提升</title>
 </head>
 <body>
-    <p>let</p>
+    <p>let作用域和变量提升</p>
 </body>
 
 <script>
@@ -56,8 +56,21 @@
     };
     f(1);
 
-    /**
-     * @desc:
-    */
+
+let obj = {
+    name: 'guoxin',
+    value: 222,
+}
+
+const st = {
+    expertId: 1,
+    channelCode: 1005,
+    cityId: 113,
+}
+    "/pages/addConsultant/addConsultant?newJsonValue={}&&type=0"
+
+let str = encodeURIComponent(`/pages/addConsultant/addConsultant?newJsonValue=${JSON.stringify(st)}&expertId=2&channelCode=1005&cityId=113`);
+    str += '&type=0'
+console.log(str, 99);
 </script>
 </html>

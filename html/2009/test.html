@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    
+    const test = {
+        name: 'guoxin'
+    }; 
+
+    let test1 = 3;
+
+    function a(val, val1) {
+        console.log(val.age, 1111, val1);
+    }
+
+    // 放在这里执行test也是改变之后的，但是值访问不到，很奇怪
+    // a(test, test1);
+    test.value = 6666;
+    test.age = 16;
+
+    test1 = 4;
+
+    a(test, test1);
+</script>
+
+
+<script>
+    /**
+     * @desc: 1开始报数，7的倍数和尾数是7淘汰
+     * @author guoxin
+     * @date 2020/09/25
+     */
+    let arr = [];
+
+    for (let i = 1; i <= 100; i++) {
+        arr.push(i);
+    }
+
+    function result() {
+        let count = 0;
+        let target = 1;
+        while (arr.length > 1) {
+            arr = arr.filter(item => {
+                count++;
+                target = item;
+                return !(count % 7) && count % 10 !== 7;
+            });
+            console.log(arr, 111);
+        }
+        return arr.length ? arr.shift() : target;
+    }
+
+    console.log(result(), 222);
+</script>
+
+</html>
