@@ -1,0 +1,47 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // 传参的形式
+    for (var i = 0; i < 10; i++) {
+        setTimeout((a) => { console.log(a, 111); }, 1000 * i, i);
+    }
+
+    // 用let或者const定义一个块级作用域
+    for (var i = 0; i < 10; i++) {
+        let item = i;
+        setTimeout(() => { console.log(item, 222); }, 1000 * i);
+    }
+
+
+
+    for (var i = 0; i < 10; i++) {
+        (function (item) {
+            setTimeout(() => {
+                console.log(item, 3333) // 0 1 2 3 4 5 6 7 8 9
+            }, 1000 * item);
+        })(i);
+
+        // 一样的结果，参数覆盖
+        (function (i) {
+            setTimeout(() => {
+                console.log(i, 4444) // 0 1 2 3 4 5 6 7 8 9
+            }, 1000 * i);
+        })(i)
+    }
+
+
+
+
+</script>
+
+</html>

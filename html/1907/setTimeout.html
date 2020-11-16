@@ -13,20 +13,30 @@
     </div>
 </body>
 <script>
-    // 函数传参的方式，取的是调用的时候的值
-    for (var i = 0; i < 10; i++) {
-        setTimeout((() => {
-            console.log(i, 1111) // 0 1 2 3 4 5 6 7 8 9
-        })(i), 1000)
-    }
-    // 取的是执行的时候的值
+    // 取的是执行的时候的值，形成了闭包
     // for(let i = 0; i < 10; i++) { // 这里用let就不会
     for (var i = 0; i < 10; i++) {
         setTimeout((() => {
             console.log(i, 2222) // 9 9 9 9 9 9 9 9 9 9
         }), 1000)
     }
-    console.error(i, 33333) // 10
+    console.error(i, 33333); // 10
+
+    /**
+     * @desc: setTimeout闭包问题及解决办法
+     * @author guoxin
+     * @date 2020/11/16
+     */
+
+    // 自执行函数
+    for (var i = 0; i < 10; i++) {
+        (function (item) {
+            setTimeout(() => {
+                console.log(item, 1111) // 0 1 2 3 4 5 6 7 8 9
+            }, 1000 * item);
+        })(i)
+    }
+
 
     // setTimeout传参的方式，函数调用时的值
     for (var i = 0; i < 10; i++) {
@@ -35,14 +45,22 @@
         }, 1000, i)
         console.log(se, 55555) // 10
     }
-    console.error(i, 6666)
+    console.error(i, 6666); // 10
 
     for (var i = 0; i < 10; i++) {
         setTimeout((function () {
             console.log(i, 7777) // 0 1 2 3 4 5 6 7 8 9
         })(i), 1000)
     }
-    console.error(i, 8888) // 10
+    console.error(i, 8888); // 10
+
+    // 用let或者const定义一个块级作用域
+    for (var i = 0; i < 10; i++) {
+        let item = i;
+        setTimeout(function () {
+            console.log(item, 7777) // 0 1 2 3 4 5 6 7 8 9
+        }, 1000)
+    }
 
 
     /**
@@ -53,7 +71,7 @@
     let a = 60;
     let testTime = setInterval(() => {
         a--;
-        if (a <=0) clearInterval(testTime)
+        if (a <= 0) clearInterval(testTime)
         console.log('test', a);
     }, 500);
 
