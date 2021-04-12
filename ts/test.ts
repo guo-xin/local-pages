@@ -53,17 +53,55 @@ let c3: string = Color2[2]; // Green
 // undefined和null两者各自有自己的类型分别叫做undefined和null。 
 // 和 void相似，它们的本身的类型用处不是很大
 
+// never类型
+// never类型表示的是那些永不存在的值的类型　
+
 // void类型
 // 某种程度上来说，void类型像是与any类型相反，它表示没有任何类型。
-// 当一个函数没有返回值时，你通常会见到其返回值类型是 void
+// 当一个函数没有返回值时，可以使用void
 function test10(params: string): void {
     // 不需要有返回
 }
 
-// never类型
-// never类型表示的是那些永不存在的值的类型　
+// 多种类型时,
+const test11: number | string = '2';
+
+// 对象的赋值及函数的默认参数
+// b为可选属性，可选属性只需要在属性后面加上?，可选参数需定义在必选参数后面
+// 定义返回值类型
+function testParams(obj: { a: string, b?: number }): {color: string}{
+    let { a, b = 1001 } = obj;
+    return {color: a};
+}
+testParams({a: 'test'}); // ok
+
+let myAdd: (baseValue: number, increment: number) => number =
+    function(x: number, y: number): number { return x + y; };
+
+// 接口
+// interface Point {
+//     readonly x: number;
+//     readonly y: number;
+// }
+
+// 只读属性，只能在定义的时候修改，之后不能修改
+let p1: {
+    readonly x: number;
+    readonly y: number;
+} = { x: 10, y: 20 };
+// p1.x = 5; // error
 
 
 
+function  test55(a:string, b:string, c:string="jojo"){
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+test55("xxx","yyy");
 
-console.log(222222, test1)
+// angular http-client
+// get请求
+// this.http.get(url, {params, headers});
+// post请求
+// this.http.post(url, params, options)

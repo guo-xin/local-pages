@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>文件下载</title>
@@ -11,16 +12,19 @@
         color: #2c63ff;
         cursor: pointer;
     }
+
     a {
         text-decoration-line: none;
     }
 </style>
+
 <body>
     <!--a标签默认是跳转，加上download属性就是下载，这种不能跨域下载（出现跨域，图片不是下载而是打开）-->
     <!--download是下载文件的name-->
     <a href="../../img/ex.jpg" download>下载图片</a>
 
     <button onclick="testDownload()">下载测试</button>
+    <button onclick="testDownload1()">下载测试1</button>
 </body>
 <script>
     function testDownload() {
@@ -40,5 +44,14 @@
         // 下载之后销毁a标签，避免往body一直添加a标签
         a.remove();
     }
+
+    /**
+     * @desc: 
+     */
+    function testDownload1() {
+        // 服务的地址
+        window.location.href = '../../img/ex.jpg'
+    }
 </script>
+
 </html>

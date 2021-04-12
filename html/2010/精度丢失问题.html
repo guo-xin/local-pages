@@ -1,0 +1,52 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+<body>
+
+</body>
+<script>
+    /**
+     * @desc: 把小数换成整数避免小数计算的精度问题
+     * 当length比较小的时候，小数会强志转换为整数
+     * @author guoxin
+     * @date 2020/12/02
+     */
+    const float2Int = (float, length = 0) => {
+        let parts = ('' + float).split('.');
+        let result = '';
+
+        if (parts.length === 1) {
+            result = float + new Array(length + 1).join('0');
+        } else {
+            length = Math.max(0, length - parts[1].length);
+            result = parts.join('') + new Array(length + 1).join('0');
+        }
+        return + result;
+    };
+
+
+    /**
+     * @desc: 两数相乘
+     * @author guoxin
+     * @date 2020/12/02
+     */
+    const minus = (arg1, arg2) => {
+        let m = 0;
+        let s1 = arg1.toString();
+        let s2 = arg2.toString();
+
+        try { m += s1.split(".")[1].length } catch (e) { }
+        try { m += s2.split(".")[1].length } catch (e) { }
+
+        return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
+    }
+</script>
+
+</html>

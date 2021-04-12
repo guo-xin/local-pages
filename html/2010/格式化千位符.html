@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>格式化千位符</title>
+</head>
+<style>
+
+</style>
+<body>
+格式化千位符
+</body>
+<script>
+    /**
+     * @desc: 格式化千位符
+     * @author guoxin
+     * @date 2020/12/02
+     */
+    const formatLength = (val) => {
+        let [len, fit] = ['', ''];
+        let num = (val || 0).toString();
+        if (num && num.indexOf('.') > -1) {
+            len = num.split('.')[1];
+            num = num.split('.')[0];
+        }
+        if (num && num.indexOf('-') > -1) {
+            fit = '-';
+            num = num.split('-')[1];
+        }
+
+        let result = '';
+        while (num.length > 3) {
+            result = ',' + num.slice(-3) + result;
+            num = num.slice(0, num.length - 3);
+        }
+        if (num) {
+            result = num + result;
+        }
+        return len ? `${fit}${result}.${len}` : `${fit}${result}`;
+    };
+
+    /**
+     * @desc: 格式化千位符
+     * 兼容小数
+     * @author guoxin
+     * @date 2020/06/02
+     */
+    function formatNumber(s) {
+        if (!/^(([1-9]\d*)|0)(\.\d+)?$/.test(s)) return "invalid value";
+
+        s = s.replace(/^(\d*)$/, "$1.");
+
+        s = (s + "00").replace(/(\d*\.\d\d)\d*/, "$1");
+        s = s.replace(".", ",");
+        var re = /(\d)(\d{3},)/;
+
+        while (re.test(s)) {
+            s = s.replace(re, "$1,$2");
+        }
+
+        s = s.replace(/,(\d\d)$/, ".$1");
+        return "￥" + s.replace(/^\./, "0.")
+    }
+
+    /**
+     * @desc: 自己写了一个简单的，不能兼容小数
+     * @author guoxin
+     * @date 2020/06/02
+     */
+    function formatValue(val) {
+        val = val + ',';
+
+        const rule = /(\d)(\d{3},)/;
+        while (rule.test(val)) {
+            val = val.replace(rule, '$1,$2');
+        }
+        val = val.replace(/(\d),$/, '$1');
+
+        return val;
+    }
+</script>
+
+</html>

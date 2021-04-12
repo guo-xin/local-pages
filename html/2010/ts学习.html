@@ -1,16 +1,41 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
 <script>
     let [first, second] = [1, 2];
     [first, second] = [second, first];
 
     console.log(first, second, 111);
+
+
+    // 冒泡排序,从小到大
+    function bubbleSort(a) {
+        let [i, j, len, tmp] = [0, 0, a.length];
+        for (i = 0; i < len - 1; i++) {
+            for (j = 0; j < len - i - 1; j++) {
+                console.log(222)
+                if (a[j] > a[j + 1]) {
+                    // 这样也是可以的
+                    [a[j], a[j + 1]] = [a[j + 1], a[j]];
+
+                }
+            }
+        }
+        console.log(a, 888)
+        return a;
+    }
+
+    let a, b;
+    true ? (bubbleSort(), bubbleSort()) : a = 3;
+    true && (a = 3, b = 4);
 </script>
+
 </html>

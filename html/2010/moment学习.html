@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/moment.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+</body>
+<script>
+    /**
+     * @desc: moment的相关操作
+     * @author guoxin
+     * @date 2020/12/29
+     */
+
+     // 显示
+     console.log(moment().format()); // 默认是date标准格式
+     console.log(moment().format('YYYY-MM-DD HH:mm:ss')); // "2020-12-29 15:29:14"
+     console.log(moment().format('X')); // 时间戳，秒 "1609226511"
+     console.log(moment().format('x')); // 毫秒时间戳 "1609226509192"
+
+    // 解析，返回的是moment对象
+
+    // 默认是本地模式，无偏移
+    console.log(moment());
+    // utc模式
+    console.log(moment.utc());
+
+    // 解析时间，moment(String)默认当前时间
+    // 可以到毫秒的时间戳，毫秒用逗号或者点 分隔
+    console.log(moment('20130208T080910.123'));
+    // 用指定格式解析 moment(String, String)
+    console.log(moment("12-25-1995", "MM-DD-YYYY"));
+
+    // 解析时间 moment(Number)，毫秒数
+    console.log(moment(1318781876406));
+
+    // moment.unix(Number)，秒数，返回moment对象
+    console.log(moment.unix(1318781876));
+    console.log(moment.unix(1318781876.721)); // 带上毫秒
+
+    // 取值，赋值milliseconds(Number)，别的类似
+    console.log(moment().milliseconds());
+    console.log(moment().milliseconds(20)); // 设置值
+
+</script>
+
+</html>

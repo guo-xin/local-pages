@@ -1,0 +1,21 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试页面跳转</title>
+</head>
+
+<body>
+    <p>测试页面跳转，代码的执行</p>
+</body>
+<script>
+    console.log(11111);
+    setTimeout(() => {
+        console.log(3333333);
+    }, 100);
+    location.href = '../2010/精度丢失问题.html'
+    // 这个还是会执行的，所以代码里面不能这么写
+    alert(22222);
+</script>
+</html>
