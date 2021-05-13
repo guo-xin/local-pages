@@ -11,15 +11,16 @@
 
 </body>
 <script>
-    function test(params) {
-        params.name = 2;
-        params.age = 18
+    function test(x, y) {
+        this.x = x;
+        this.y = y
     }
 
-    const obj = {}
-    test({...obj});
+    var n = new test(1, 1)
+    var m = test(2, 2)
 
-    console.log(obj, 3333);
+    console.log(n, 111);
+    console.log(m, 2222);
 </script>
 
 </html>

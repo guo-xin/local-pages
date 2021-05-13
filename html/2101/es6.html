@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=q, initial-scale=1.0">
+    <title>es6一些用的比较少的特性</title>
+</head>
+
+<body>
+    <p>this</p>
+    <p>includes,padStart,padEnd</p>
+    <p>startsWith, endsWith</p>
+    <p>repeat,replaceAll</p>
+    
+</body>
+
+<script>
+    /**
+     * @desc: this指向：顶层对象
+     * js中window，node环境global
+     */
+
+    /**
+     * @desc: 字符串的一些操作
+     */
+
+    /**
+     * @desc: includes返回布尔值，表示是否找到了参数字符串
+     * startsWith 参数字符串是否在原字符串的头部,返回布尔值
+     * endsWith 参数字符串是否在原字符串的尾部,返回布尔值
+     */
+    // 三个方法都接受两个参数，第一个参数是参数字符串，第二个是开始检索的位置
+    // endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束
+    var str = '我就是守候'
+    str.startsWith('我就是')  // true
+    str.startsWith('我')  // true
+    str.startsWith('是', 2)  // true
+    str.startsWith('守候')  // false
+    str.endsWith('守候')  // true
+    str.endsWith('我就是', 3)  // true
+    str.includes('守候')  // true
+    str.includes('我', 3)  // false
+
+
+    /**
+     * @desc: padStart:如果字符串不够指定长度，在头部补全指定字符
+     * padEnd：如果字符串不够指定长度，在尾部补全指定字符
+     * 第二个参数不写默认为空格，如果字符串达到指定长度，则没有操作
+     */
+    var str = '守候'
+    str.padEnd(10, '123')  // "守候12312312"
+    str.padStart(10, '123')  // "12312312守候"
+    str.padEnd(10)  // "守候        "
+    str.padStart(10)  // "        守候"
+    str.padStart(1)  // "守候"
+    str.padEnd(1)  // "守候"
+
+
+    /**
+     * @desc: repeat方法返回一个新字符串，原字符串不变，表示将原字符串重复n次
+     * 参数如果是小数，会被取整,负数或者Infinity，会报
+     */
+    'x'.repeat(3) // "xxx"
+    'hello'.repeat(2) // "hellohello"
+    'na'.repeat(0) // ""
+    'na'.repeat(2.9) // "nana"
+
+
+    /**
+     * @desc: replaceAll替换所有
+     */
+    'aabbcc'.replace(/b/g, '_')
+    'aabbcc'.replaceAll('b', '_')
+</script>
+
+</html>

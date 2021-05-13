@@ -1,0 +1,79 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../../js/moment.js"></script>
+    <title>js时间的相关操作</title>
+</head>
+
+<body>
+</body>
+<script>
+    // http://www.jb51.net/article/58249.htm
+    /**
+     * @desc: 时间对象
+     * @date 2021/04/27
+     */
+    var d = new Date()
+
+    // 获取get,UTC时间比当前时间小，hour小8
+    console.log(d.getFullYear(), '获取年，完整') // 2020
+    console.log(d.getYear(), '获取年，1900到现在的年数') // 121
+    console.log(d.getMonth(), '获取月，0-11') // 3
+    console.log(d.getDay(), '获取星期1-2-0') // 12345670
+    console.log(d.getDate(), '获取日') // 27
+    console.log(new Date(d.getFullYear(), d.getMonth(), 0).getDate(), '获取上个月天数') // 31
+    console.log(d.getHours(), '小时'); // 20
+    console.log(d.getMinutes(), '分0 ~ 59'); // 42
+    console.log(d.getSeconds(), '秒0 ~ 59'); // 34
+    console.log(d.getMilliseconds(), '毫秒0 ~ 999'); // 333
+
+    // 获取时间戳1970年1月1日至今的毫秒数
+    console.log(Date.parse(d), 'Date.parse') // 到秒
+    console.log(d.valueOf(), 'valueOf') // 到毫秒
+    console.log(d.getTime(), 'getTime') // 到毫秒
+    console.log(Date.now(), 'Date.now') // 当前时间，到毫秒
+
+
+    // 设置set
+    d.setFullYear(2008) //设置年,四位数字
+    d.setMonth(2) // 设置月
+    d.setDate(22) // 设置天
+    d.setHours(22) // 设置小时
+    d.setMinutes(22) // 设置分
+    d.setSeconds(22) // 设置秒
+    d.setMilliseconds(222) // 设置毫秒
+    console.log(d, '设置时间');
+
+    
+    /**
+     * @desc: 时间格式化方法
+     */
+    Date.prototype.Format = function (fmt) {
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+
+    /**
+     * @desc: 获取星期
+     */
+    var weekArray = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+
+    console.log(d.Format("yyyy年MM月dd日 hh:mm") + weekArray[d.getDay()], 111) // 2021年04月27日 15:46星期二
+    console.log(d.Format("yyyy MM dd hh:mm") + weekArray[d.getDay()], 222) // 2021 04 27 15:48星期二
+    
+
+</script>
+
+</html>

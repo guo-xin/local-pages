@@ -48,6 +48,8 @@ enum Color2 {Red = 1, Green = 2, Blue = 4}
 let c2: Color2 = Color2.Green;
 let c3: string = Color2[2]; // Green
 
+// key的类型限制
+const detailInfo: { [key: string]: any } = {};
 
 // null和undefined
 // undefined和null两者各自有自己的类型分别叫做undefined和null。 
