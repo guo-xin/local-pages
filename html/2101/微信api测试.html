@@ -1,0 +1,33 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信环境测试</title>
+</head>
+
+<body>
+    <p>测试微信环境</p>
+
+</body>
+<script>
+    console.log(navigator.userAgent.indexOf('MicroMessenger') !== -1, 3333);
+
+
+    // wx.miniProgram.getEnv(function (res) {
+    //     if (res.miniprogram) {
+    //         // 走在小程序的逻辑
+    //     } else {
+    //         // 走不在小程序的逻辑
+    //     }
+    // })
+
+    // 有效，隐藏了所有的操作
+    // document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    //     // 通过下面这个API隐藏右上角按钮
+    //     WeixinJSBridge.call('hideOptionMenu');
+    // })
+</script>
+
+</html>

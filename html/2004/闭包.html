@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>js闭包</title>
 </head>
+
 <body>
-<p>js闭包</p>
+    <p>js闭包</p>
 </body>
 
 <script>
@@ -19,7 +21,7 @@
         // let也是一样
         // let b = 1;
 
-        return function() {
+        return function () {
             b = b + 1;
             console.log(b, 99999999999)
         }
@@ -38,7 +40,7 @@
     let func = null;
     {
         let test = 1;
-        func = function() {
+        func = function () {
             test++;
             return test;
         }
@@ -46,6 +48,26 @@
     console.log(func(), 222); // 2
     console.log(func(), 222); // 3
 
+
+    /**
+     * @desc: 简单的闭包，return函数
+     */
+    let go = (function () {
+        let v = 'go'
+
+        console.log(22222222); // 执行一次，定义的时候执行
+        return function (val) {
+            console.log(val, 1111);
+            v += val
+            if (val === '1') {
+                return v
+            }
+            return go
+        }
+    }())
+
+    console.log(go('1')); // 'go1'
+    console.log(go('o')('1')); // 'go1o1' 闭包
 </script>
 
 </html>

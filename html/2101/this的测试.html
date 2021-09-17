@@ -1,0 +1,36 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this的测试</title>
+</head>
+
+<body>
+    <p>this的测试</p>
+</body>
+<script>
+    function test(x, y) {
+        this.x = x;
+        this.y = y
+    }
+
+    var n = new test(1, 1)
+    var m = test(2, 2)
+
+    console.log(n, 111); // 指向的是n，{x:1. y:1},构造函数
+    console.log(m, 2222); // 指向的是window
+
+    const person = { name: 'Lydia' }
+
+    function sayHi(age) {
+        console.log(`${this.name} is ${age}`)
+    }
+
+    sayHi.call(person, 21) // Lydia is 21
+    let a = sayHi.bind(person, 21) // bind是稍后执行
+    a() // 这里才会打印
+</script>
+
+</html>

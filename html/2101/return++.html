@@ -1,0 +1,29 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>return和++</title>
+</head>
+
+<body>
+    <p>return和++</p>
+</body>
+<script>
+    let num = 10;
+
+    const increaseNumber = () => num++; // 返回的是+之前的值
+    // const increaseNumber = () => {const i = num++; return i;} // 返回的是+之前的值, num是11
+
+    const increasePassedNumber = number => number++;
+
+    const num1 = increaseNumber(); // 10 num变成了11
+    const num2 = increasePassedNumber(num1); // 10
+
+    console.log(num1, num); // 10 11
+    console.log(num2, num); // 10 11
+
+</script>
+
+</html>

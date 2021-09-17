@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试iframe</title>
+</head>
+
+<body>
+    <p>测试iframe</p>
+    <!-- <iframe src='http://local.dev.gotokeep.com:8888/chaos-cms/marketingManage/package/detail?id=91113602' width='100%'
+        frameborder='0' name="iframe" id="test">
+    </iframe> -->
+    <iframe src='http://127.0.0.1:1024/#/postMessage' width='100%' frameborder='0' name="iframe" id="iframe">
+    </iframe>
+    <p style="height: 800px;">测试iframe</p>
+</body>
+<script>
+    /**
+     * @desc: A B页面消息推送
+     */
+    
+    // const popup = window.open('http://127.0.0.1:1024/#/postMessage', '_blank')
+
+    // // 这里需要延迟执行，要不然B页面的监听事件还没注入
+    // setTimeout(() => {
+    //     // 定向推送
+    //     // popup.postMessage('测试A to B', 'http://127.0.0.1:1024/#/postMessage')
+    //     popup.postMessage('测试A to B', '*')
+    // }, 600);
+    
+</script>
+<script>
+    /**
+     * @desc: 子页面推送父页面
+     */
+    
+    // 监听需要早执行，要不然消息推送的时候接收不到
+
+    // window.addEventListener('message', receiveMessage, false);
+    // //监听子页面的postMessage
+    // function receiveMessage(event) {
+    //     // event.source是消息发送的窗口的引用，可以用它往回定向推送消息
+    //     console.log(event.data, 'parent');
+    // }
+</script>
+<script>
+    /**
+     * @desc: 父页面推送子页面
+     */
+    
+    // 触发机制需要在页面加载完成之后，要不然推送不过去
+    window.onload = function () {
+        const iframe = document.getElementById('iframe').contentWindow;
+        iframe.postMessage('测试parent to children', '*')
+
+        // window.frames[0].postMessage('测试parent to children', '*')
+    }
+</script>
+
+</html>
