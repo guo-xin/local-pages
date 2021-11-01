@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>area</title>
+</head>
+
+<body>
+    <img src="../../img/01.png" border="0" usemap="#testMap" alt="testMap" />
+    <!-- img中的 usemap 属性可引用 <map> 中的 id 或 name 属性（由浏览器决定），所以我们需要同时向 <map> 添加 id 和 name 两个属性 -->
+    <map name="testMap" id="testMap">
+        <!-- area 元素总是嵌套在 <map> 标签中 -->
+        <area shape="circle" coords="180,139,34" onclick="console.log(111111)" alt="Venus" title="111" />
+        <area shape="circle" coords="129,161,30" onclick="console.log(2222)" alt="Mercury" title="222" />
+        <area shape="rect" coords="0,0,110,260" onclick="console.log(3333)" alt="Sun" title="333" />
+    </map>
+</body>
+<style>
+    /* 通过鼠标来判断点击区域 */
+    area {
+        cursor: pointer;
+    }
+</style>
+
+</html>

@@ -97,11 +97,18 @@ function totalPrice() {
     }
     var content = document.querySelector(".normal");
 
-    var s = '<div class="comm-right"><div class="btn-area"><a href="javascript:void(0);" onclick="return false;" class="submit-btn" data-bind="1">去结算<b></b></a></div><div class="price-sum"><div><span class="txt txt-new">总价：</span>' +
+    var s = '<div class="comm-right"><div class="btn-area"><a href="javascript:void(0);" onclick="settle()" class="submit-btn" data-bind="1">去结算<b></b></a></div><div class="price-sum"><div><span class="txt txt-new">总价：</span>' +
         '<span class="price sumPrice"><em>¥' + total + '</em></span></div>' +
         '</div><div class="amount-sum">已选择<em>' + count + '</em>件商品</div></div>';
 
     content.innerHTML = s;
+};
+
+/**
+ * @desc: 结算
+ */
+settle = () => {
+    console.log(localStorage.getItem("list"), 4444, this);
 };
 
 // 全选功能
