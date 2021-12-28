@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>switch</title>
+</head>
+
+<body>
+	switch的用法
+</body>
+<script>
+	/**
+	 * @desc: switch
+	 * case判断是严格相等
+	 */
+	function test(type) {
+		// 基础用法
+		let res = 0
+		switch (type) {
+			// 多个条件
+			case 1:
+			case 2:
+				res = type
+				break;
+			case 3:
+				res = type + 1
+				break;
+			default:
+				break;
+		}
+		return res
+	}
+
+	function test2(type) {
+		// 直接使用return
+		switch (type) {
+			// 多个条件
+			case 1:
+			case 2:
+				return type
+
+			case 3:
+				return type + 1
+
+			default:
+				return 0
+		}
+	}
+
+	console.log(test(2), 22222); // 2
+	console.log(test2(2), 3333); // 2
+
+</script>
+
+</html>

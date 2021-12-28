@@ -1,0 +1,126 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>math的一些方法</title>
+</head>
+
+<body>
+    math的一些方法
+</body>
+<script>
+    /**
+     * @desc: 规范写法是引用Math, Number下相关属性, 不使用全局方法
+     */
+
+    // math的一些方法
+
+    console.error('----------', 'Math.ceil')
+    /**
+     * @desc: Math.ceil() 对一个数进行上取整
+     */
+    console.log(Math.ceil(2.1), 2.1) // 3
+    console.log(Math.ceil(2.6), 2.6) // 3
+    console.log(Math.ceil(-1.1), -1.1) // -1
+
+
+    console.error('----------', 'Math.floor')
+    /**
+     * @desc: Math.floor() 对一个数进行下取整
+     */
+    console.log(Math.floor(2.1), 2.1) // 2
+    console.log(Math.floor(2.6), 2.6) // 2
+    console.log(Math.floor(-1.1), -1.1) // -2
+
+
+    console.error('----------', 'Math.round')
+    /**
+     * @desc: Math.round() 对一个数进行四舍五入取整
+     */
+    console.log(Math.round(2.1), 2.1) // 2
+    console.log(Math.round(2.6), 2.6) // 3
+    console.log(Math.round(-1.1), -1.1) // -1
+
+
+    console.error('----------', 'Math.random')
+    /**
+     * @desc:Math.random() 返回介于0~1之间的随机数
+     */
+    console.log(Math.random(), '0~1')
+    console.log(Math.random() + 1, '1~2')
+    console.log(Math.random() * 100, '0~100')
+
+
+    console.error('----------', 'Math.pow')
+    /**
+     * @desc:Math.pow(x, y) 返回x的y次幂
+     */
+    console.log(Math.pow(3, 4), 81) // 81
+    console.log(Math.pow(10, 3), 1000) // 1000
+    console.log(Math.pow(16, 0.5), 16) // 4
+    console.log(Math.pow(2, -2), 2) // 0.25
+
+
+    console.error('----------', 'Math.sqrt')
+    /**
+     * @desc:Math.sqrt(number) 返回number的开方值
+     * 如果number为负值，值返回NaN
+     */
+    console.log(Math.sqrt(4), 2) // 2
+    console.log(Math.sqrt(3), '根号3') // 1.732..
+
+
+    console.error('----------', 'Math.max')
+    /**
+     * @desc:Math.max(number1, number2...) 返回最大值
+    */
+    console.log(Math.max(4, 2, 3, 6, 1), 6) // 6
+    console.log(Math.max(...[1, 2, 3, 6, 7, 8]), 8) // 8
+
+
+    console.error('----------', 'Math.min')
+    /**
+     * @desc:Math.min(number1, number2...) 返回最小值
+    */
+    console.log(Math.min(4, 2, 3, 6, 1), 1) // 1
+    console.log(Math.min(...[2, 3, 6, 7, 8]), 2) // 2
+
+
+    console.error('----------', 'Math.trunc')
+    /**
+     * @desc:Math.trunc(value) 去除一个数的小数部分，返回整数部分
+    */
+    console.log(Math.trunc(2.3), 2.3) // 2
+    console.log(Math.trunc(-2.4), -2.4) // -2
+
+
+    console.error('----------', 'Math.sign')
+    /**
+     * @desc:Math.sign(value) 函数返回一个数字的符号, 指示数字是正数，负数还是零
+     * 共有5种返回值, 分别是 1, -1, 0, -0, NaN. 代表的各是正数, 负数, 正零, 负零, NaN
+     * 传入该函数的参数会被隐式转换成数字类型
+    */
+    console.log(Math.sign(2.3), 2.3) // 1
+    console.log(Math.sign(-2.4), -2.4) // -1
+    console.log(Math.sign(NaN), NaN) // NaN
+    console.log(Math.sign(0), 0) // 0
+
+
+    console.error('----------', 'Math.abs')
+    /**
+     * @desc:Math.abs(value) 返回指value的绝对值
+     * 传入一个非数字形式的字符串或者 undefined / empty 变量，将返回 NaN
+     * 传入 null 将返回 0
+    */
+    console.log(Math.abs(2.3), 2.3) // 2.3
+    console.log(Math.abs(-2.4), -2.4) // 2.4
+    console.log(Math.abs('-2'), '2') // 2
+    console.log(Math.abs('2d'), '2d') // NaN
+    console.log(Math.abs(null), null) // 0
+
+
+</script>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String和toString的区别</title>
+</head>
+<body>
+    String和toString都是将数据转换成字符类型
+    <p>toString不能转换null和undefined</p>
+</body>
+<script>
+    /**
+     * @desc: String和toString都是将数据转换成字符类型
+     * toString(radix)不能转换null和undefined
+     * radix基数，2~36之间的数字，默认10
+     */
+    console.log(String(0), 0); // '0'
+    console.log(String(null), null); // 'null'
+    console.log(String(undefined), undefined); // 'undefined'
+
+    console.log((0).toString(), 0); // '0'
+    console.log((8).toString(2), 8); // '1000'
+    // console.log(8.toString(2), 8); // 报错，在解析器眼中，Number型表达式出现的第一个点为浮点数分隔符，第二个点才是属性访问器
+    console.log(0.001.toString(36), 0.001); // '0.01anm6c3gez6'
+    // console.log(null.toString(), null); // 报错 Cannot read properties of null (reading 'toString')
+    // console.log(undefined.toString(), undefined); // 报错 Cannot read properties of undefined (reading 'toString')
+
+</script>
+</html>

@@ -8,6 +8,8 @@
 
 <body>
     <p>js精度丢失问题</p>
+    <h3 style="width: 50%;">所有数字都是以64位浮点数形式存储，即便整数也是如此，计算机只识别二进制，用户输入十进制的数字之后，
+        * 计算机将其转化成二进制进行运算，再转化为十进制返回给用户，在这些转化中可能存在一些误差，导致精度丢失</h3>
 </body>
 <script>
     /**
@@ -23,8 +25,8 @@
      * 第13位到第64位：小数部分，52位（即有效数字）
      */
 
-    
-     // 解决精度问题，核心是把小数换成整数避免小数计算的精度问题
+
+    // 解决精度问题，核心是把小数换成整数避免小数计算的精度问题
 
     /**
      * @desc: 单个数字转整
@@ -45,11 +47,20 @@
 
 
     /**
+     * @desc:获得小数的位数
+     */
+    const decimalLength = (str) => {
+        const parts = String(str).split('.');
+        return parts.length === 2 ? parts[1].length : 0;
+    }
+
+
+    /**
      * @desc: 两数相乘
      * 0.2 * 3
      * 0.1 * 3
      */
-    const minus = (arg1, arg2) => {
+    const multiply = (arg1, arg2) => {
         let m = 0;
         let s1 = arg1.toString();
         let s2 = arg2.toString();
@@ -59,13 +70,33 @@
 
         return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
     }
+    console.log(0.2 * 3, '0.2 * 3') // 0.6000000000000001
+    console.log(multiply(0.2, 3), 'multiply(0.2, 3)') // 0.6
 
     /**
      * @desc: 两数相加
      * 0.1 + 0.2
      * 0.1 + 0.7
      */
-    
+    const plus = (arg1, arg2) => {
+        const length = Math.max(decimalLength(arg1), decimalLength(arg2));
+        return (float2Int(arg1, length) + float2Int(arg2, length)) / Math.pow(10, length);
+    }
+    console.log(0.1 + 0.2, '0.1 + 0.2') // 0.30000000000000004
+    console.log(plus(0.1, 0.2), 'plus(0.1, 0.2)') // 0.3
+
+    /**
+     * @desc: 两数相减
+     * 0.3 - 0.1
+     * 0.5- 0.4
+     */
+    const minus = (arg1, arg2) => {
+        const length = Math.max(decimalLength(arg1), decimalLength(arg2));
+        return (float2Int(arg1, length) - float2Int(arg2, length)) / Math.pow(10, length);
+    }
+    console.log(0.3 - 0.1, '0.3 - 0.1') // 0.19999999999999998
+    console.log(minus(0.3, 0.1), 'minus(0.3, 0.1)') // 0.2
+
 </script>
 
 </html>
