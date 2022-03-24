@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+22222
+</body>
+<script>
+    const data = {
+        
+    }
+    const { subList = []} = data.treeData || {}
+    console.log(subList, 33);
+
+
+
+    const myPromise = () => Promise.resolve('I have resolved!')
+
+    function firstFunction() {
+        myPromise().then(res => console.log(res), (res) => { console.log(res, 'reject')})
+        console.log('second')
+    }
+
+    async function secondFunction() {
+        let result = await myPromise().then((res) => {
+            return res
+        })
+        console.log(result, 11)
+        console.log('second')
+    }
+
+    console.log(3333333);
+    firstFunction()
+    console.log(444444);
+    secondFunction()
+    console.log(5555);
+</script>
+
+</html>

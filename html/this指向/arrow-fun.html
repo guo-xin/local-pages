@@ -62,10 +62,10 @@
     // 修改之后
     function myFunc1(name){
         this.name = name;
-        console.log(this, 5555); // myFunc 3333
+        console.log(this, 5555); // myFunc1对象 {} 3333
     }
     myFunc1.prototype.sayName = function() {
-        console.log(this, 6666);  // myFunc 4444
+        console.log(this, 6666);  // myFunc1对象 {} 4444
     };
     const me1 = new myFunc1('hanson');
     me1.sayName(); // sayName是me1调用，所以this指向me1
@@ -86,6 +86,7 @@
 
     /**
      * @desc: 构造函数new的时候不能用箭头函数，否则会报错
+     * 箭头函数不能被实例化
     */
     const Message1 = (text) => {
         console.log(this, 1122);
@@ -94,6 +95,7 @@
 
     // 修改之后
     const Message2 = function (text) {
+        this.test = text;
         console.log(this, 3344, text); // this指向了实例化之后的一个新对象
     };
     const msg2 = new Message2('test 2222');

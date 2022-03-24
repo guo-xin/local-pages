@@ -6,7 +6,7 @@
     <title>js中事件绑定，事件监听，事件委托或事件代理</title>
 </head>
 <body>
-    <div>
+    <div class="test-event">
         <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
         <button type="button" style="height: 100px" onclick="getClick()">重置</button>
         <button type="button" id="add" style="background-color: red">事件监听</button>
@@ -35,17 +35,17 @@
 
     /**
      * @desc: js代码中事件绑定，匿名函数
-     * this指向触发的标签
+     * this指向绑定的标签，e是触发事件的对象
     */
-    document.querySelector('input[type=button]').onmouseover = function(e) {
+    document.querySelector('.test-event').onmouseover = function(e) {
         // 此时this指向button
-        console.log(this, 7777, e, 8888);
+        console.log(this, 7777, e, 8888, e.target);
     };
 
 
     /**
      * @desc: 事件监听， 匿名函数
-     * this指向绑定的标签
+     * this指向绑定的标签，e是触发事件的对象
     */
     document.querySelector("#add").addEventListener('click', function(e) {
         // this指向绑定事件标签div，e是点击事件对象
@@ -67,17 +67,19 @@
 
     /**
      * @desc: 事件监听和事件代理
-     * this指向绑定标签
+     * this指向绑定标签,e是触发事件的对象
     */
     document.querySelector("ul").addEventListener('click', function(e) {
-        // e是点击的事件对象，this指向绑定事件标签ul
+        // e是点击的事件对象,不一定是ul，this指向绑定事件标签ul
         console.log(e.target.textContent, 5555, this, 666);
+        let li = document.createElement("li");
+        li.textContent = '6666';
+        this.appendChild(li)
     });
 
     let li = document.createElement("li");
     li.textContent = '5555';
     // 动态添加的li，也有事件
     document.querySelector("ul").appendChild(li);
-
 </script>
 </html>

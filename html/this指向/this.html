@@ -56,7 +56,7 @@
         age: 39,
         getName: function () {
             span.onclick = () => {
-                console.log(this, 9999);//指向obj，obj调用getName
+                console.log(this, 9999); // 指向obj，obj调用getName
             };
         }
     };
@@ -69,7 +69,7 @@
         getName: function () {
             console.log(this, 222); // obj1
             p.onclick = function() {
-                console.log(this, 1111);//指向触发事件标签p
+                console.log(this, 1111); // 指向触发事件标签p
             };
         }
     };

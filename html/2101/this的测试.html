@@ -11,16 +11,19 @@
     <p>this的测试</p>
 </body>
 <script>
+    
     function test(x, y) {
         this.x = x;
-        this.y = y
+        this.y = y;
+        console.log(this, 'this')
     }
 
-    var n = new test(1, 1)
+    var n = new test(1, 1) // 返回的是一个对象
     var m = test(2, 2)
 
-    console.log(n, 111); // 指向的是n，{x:1. y:1},构造函数
+    console.log(n, 111); // 指向的是n，{x:1. y:1},实例
     console.log(m, 2222); // 指向的是window
+    console.log(this, 444); // n,m,test也在里面
 
     const person = { name: 'Lydia' }
 
@@ -29,8 +32,9 @@
     }
 
     sayHi.call(person, 21) // Lydia is 21
-    let a = sayHi.bind(person, 21) // bind是稍后执行
+    let a = sayHi.bind(person, 22) // bind是稍后执行
     a() // 这里才会打印
+    console.log(this, 66666);
 </script>
 
 </html>

@@ -1,5 +1,4 @@
-
-// 查看某个命令
+**查看某个命令**
 git help [-a | --all] 查看所有可用help的命令和概念
 git help [-g | --guide] 有用的指南列表
 git help [command | accept] = git [command | accept] --help 查看某个命令的help

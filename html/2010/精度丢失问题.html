@@ -42,7 +42,7 @@
             length = Math.max(0, length - parts[1].length);
             result = parts.join('') + new Array(length + 1).join('0');
         }
-        return + result;
+        return Number(result);
     };
 
 

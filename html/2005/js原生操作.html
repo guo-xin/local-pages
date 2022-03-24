@@ -136,8 +136,11 @@
      * @desc: 元素设置样式
      * 加important，使用setProperty的第三个参数
      */
-    console.log(document.body.querySelector('.new').style.setProperty('font-size', '18px'), 'setProperty')
-    console.log(document.body.querySelector('.new').style.color = 'blue', 'style')
+    document.body.querySelector('.new').style.setProperty('font-size', '18px')
+    document.body.querySelector('.new').style.color = 'blue'
+    // cssText 覆盖并且设置单个属性
+    // document.body.querySelector('.new').style.cssText = 'margin-top: 10px;'
+    
     // 删除样式
     // document.body.querySelector('.new').style = ''
     document.body.querySelector('.new').style.removeProperty('color')
