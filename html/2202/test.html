@@ -1,44 +1,47 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-22222
+    <div class="container">
+        <img class="box" src="../../img/test.png" alt="">
+    </div>
+
 </body>
+
 <script>
-    const data = {
-        
-    }
-    const { subList = []} = data.treeData || {}
-    console.log(subList, 33);
+    const handler = {
+            set: () => console.log("Added a new property!"),
+            get: () => console.log("Accessed a property!")
+        };
 
+        const person = new Proxy({}, handler);
 
-
-    const myPromise = () => Promise.resolve('I have resolved!')
-
-    function firstFunction() {
-        myPromise().then(res => console.log(res), (res) => { console.log(res, 'reject')})
-        console.log('second')
-    }
-
-    async function secondFunction() {
-        let result = await myPromise().then((res) => {
-            return res
-        })
-        console.log(result, 11)
-        console.log('second')
-    }
-
-    console.log(3333333);
-    firstFunction()
-    console.log(444444);
-    secondFunction()
-    console.log(5555);
+        person.name = "Lydia";
+        person.name;
 </script>
-
+<style>
+   .container {
+       width: 50px;
+       height: 50px;
+       filter: drop-shadow(60px 0) drop-shadow(120px 0) drop-shadow(240px 0);
+   }
+   .box {
+       width: 100%;
+       height: 100%;
+       animation: test 2s linear infinite alternate;
+   }
+   
+   @keyframes test {
+       0% {
+           transform: rotate(0);
+       }
+        100% {
+           transform: rotate(360deg);
+       }
+   }
+</style>
 </html>

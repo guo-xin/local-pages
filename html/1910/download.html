@@ -21,7 +21,7 @@
 <body>
     <!--a标签默认是跳转，加上download属性就是下载，这种不能跨域下载（出现跨域，图片不是下载而是打开）-->
     <!--download是下载文件的name-->
-    <a href="../../img/ex.jpg" download>下载图片</a>
+    <a href="../../img/panda.png" download>下载图片</a>
 
     <button onclick="testDownload()">下载测试</button>
     <button onclick="testDownload1()">下载测试1</button>
@@ -31,8 +31,8 @@
         let a = document.createElement('a');
         // 也不能跨域，出现跨域会直接打开图片
         // a.href = 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
-        //  也可以a.setAttribute('href', '../../img/ex.jpg');
-        a.href = '../../img/ex.jpg';
+        //  也可以a.setAttribute('href', '../../img/panda.png');
+        a.href = '../../img/panda.png';
         // 属性必须要有，要不然跟普通a标签一样，不会下载，而是打开
         a.download = 'test';
         // 写成空，用默认的文件名
@@ -50,7 +50,7 @@
      */
     function testDownload1() {
         // 服务的地址
-        window.location.href = '../../img/ex.jpg'
+        window.location.href = '../../img/panda.png'
     }
 </script>
 

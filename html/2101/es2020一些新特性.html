@@ -61,6 +61,7 @@
 	console.log(obj.b?.c, '属性') // 输出 bar
 	console.log(obj.d?.c, '属性') // 输出 undefined
 	console.log(obj.func?.(), '方法') // 不报错，输出 undefined
+	console.log(null?.join(''), '方法') // 不报错，输出 undefined
 	console.log(obj?.[0]?.b, '数组') // 不报错，输出 undefined
 	console.log(a?.v, '对象属性'); // 不会报错 undefined
 </script>

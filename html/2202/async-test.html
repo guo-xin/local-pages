@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    22222
+</body>
+<script>
+    async function f() {
+        try {
+            console.log(11111)
+            await Promise.reject('出错了');
+            console.log(22222); // 不会执行
+        } catch (e) {
+            console.log(e, 9999); // 出错了 9999
+        } finally {
+            console.log('finally') // 一直执行
+        }
+        console.log(33333);
+        return await Promise.resolve('hello world'); // 会执行
+    }
+    f().then((res) => {
+        console.log(`${res} good`); // hello world good
+    })
+
+
+    // 这样也行
+    async function f1() {
+        await Promise.reject('出错了1');
+    }
+    f1().then((res) => {
+        console.log(`${res} good1`); // 不执行
+    }).catch((res) => {
+        console.log(`${res} fail1`); // 走这里 出错了1 fail1
+    });
+</script>
+
+</html>
