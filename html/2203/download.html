@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>文件下载</title>
+</head>
+<style type="text/css">
+	button {
+		border-radius: 4px;
+		padding: 10px 20px;
+		color: #2c63ff;
+		cursor: pointer;
+	}
+
+	a {
+		text-decoration-line: none;
+	}
+</style>
+
+<body>
+	<!--a标签默认是跳转，加上download属性就是下载，这种不能跨域下载（出现跨域，图片不是下载而是打开）-->
+	<!--download是下载文件的name-->
+	<a href="../../img/panda.png" download>下载图片</a>
+
+	<button onclick="testDownload()">创建a标签下载</button>
+	<button onclick="testDownload1()">location下载测试</button>
+</body>
+<script>
+	function testDownload() {
+		let a = document.createElement('a');
+		// 也不能跨域，出现跨域会直接打开图片
+		// a.href = 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
+		//  也可以a.setAttribute('href', '../../img/panda.png');
+		a.href = '../../img/panda.png';
+		// 属性必须要有，要不然跟普通a标签一样，不会下载，而是打开
+		a.download = 'test';
+		// 写成空，用默认的文件名
+		// a.download = '';
+		// 改变文件类型，但是大小没变(测试过)
+		// a.download = 'test.png';
+		document.body.appendChild(a);
+		a.click();
+		// 下载之后销毁a标签，避免往body一直添加a标签
+		a.remove();
+	}
+
+	/**
+	 * @desc: location的方法
+	 */
+	function testDownload1() {
+		// 接口服务的地址，静态资源还不行，会直接打开
+		window.location.href = '../../img/panda.png'
+	}
+</script>
+
+</html>

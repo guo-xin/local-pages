@@ -9,7 +9,8 @@
     <div class="test-event">
         <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
         <button type="button" style="height: 100px" onclick="getClick(event)">重置</button>
-        <button type="button" id="add" style="background-color: red">事件监听</button>
+        <button type="button" style="background-color: red">事件监听</button>
+        <button type="button" id="add" style="background-color: red">事件监听button</button>
         <button type="button" style="background-color: pink" onclick="removeClick()">解除事件监听</button>
     </div>
     <ul>
@@ -24,7 +25,6 @@
     /**
      * @desc: 标签上事件绑定
      * this指向window，window触发
-     * event是事件默认回调参数，不需要传
     */
     function getClick(e){
         this.name = 'guoxin';
@@ -38,7 +38,7 @@
      * this指向绑定的标签，e是触发事件的对象
     */
     document.querySelector('.test-event').onmouseover = function(e) {
-        // 此时this指向button
+        // 此时this指向div
         console.log(this, 7777, e, 8888, e.target);
     };
 

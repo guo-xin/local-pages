@@ -14,7 +14,9 @@
 
     .auto1 {
         width: 600px;
-        background: pink url("../../img/01.png") 0% 0% / auto auto no-repeat;
+        /* background: pink url("../../img/01.png") 0% 0% / auto auto no-repeat; */
+        /* 一样的 */
+        background: pink url("../../img/01.png") no-repeat;
         /* background-size: auto auto; */
     }
 
@@ -44,7 +46,7 @@
 </style>
 
 <body>
-    <div class="auto">auto，默认值，两个auto，图片不放大也不缩小。当图片比背景区域大时，图片会被裁剪</div>
+    <div class="auto">auto，默认值，两个auto，图片不放大也不缩小。当图片比背景区域大时，图片会被裁剪。比背景区域小时，会有留白</div>
     <div class="auto1">两个auto，图片显示本身大小，当图片比背景区域大时，图片会被裁剪</div>
     <div class="auto2">一个auto，图片只会缩小不会放大（图片比背景区域大时），图片可能会被裁剪，图片不会变形</div>
     <div class="auto3">一个auto，图片只会缩小不会放大（图片比背景区域大时），图片可能会被裁剪，图片不会变形</div>

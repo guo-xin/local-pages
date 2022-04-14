@@ -1,0 +1,26 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>斐波那契</title>
+</head>
+
+<body>
+	<p>斐波那契数列，n阶台阶问题</p>
+</body>
+<script>
+	/**
+	 * @desc: n阶台阶问题-动态规划及递归
+	 */
+	function jump(n) {
+		if (n === 1 || n === 2) {
+			return n
+		}
+		return arguments.callee(n - 1) + arguments.callee(n - 2)
+	}
+	console.log(jump(10), 111); // 89
+</script>
+
+</html>

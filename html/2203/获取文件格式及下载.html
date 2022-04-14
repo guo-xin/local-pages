@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取文件类型及下载</title>
+</head>
+
+<body>
+  <p>获取文件类型及下载</p>
+</body>
+<script>
+  /**
+   * @desc: 获取文件
+   */
+  function loadFile(url) {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          resolve(xhr)
+        }
+      }
+      xhr.onerror = reject
+      xhr.open('GET', url, true)
+      // xhr.responseType = 'arraybuffer'
+      // 本地下载的话这个得要，要不然文件就乱了
+      xhr.responseType = 'blob'
+      xhr.send('')
+    })
+  }
+
+  /**
+   * @desc: 获取文件内容-下载
+   */
+  function getFileContent(res) {
+    // 给一个默认类型
+    const blob = new Blob([res.response], {
+      type: "image/jpeg"
+    })
+    // const blob = new Blob([res.response])
+
+    //表示一个指定的file对象或Blob对象
+    let url = window.URL || window.webkitURL
+    let objectUrl = url.createObjectURL(blob);
+    console.log(objectUrl, "看一下这是啥");
+    let a = document.createElement("a");
+    document.body.appendChild(a);
+    a.href = objectUrl;
+    // filename名称截取，通过接口时用
+    // let fileName = res.headers["content-disposition"].split(";")[1].split("=")[1]; 
+    // 命名下载名称及类型，不给类型的话，走默认的blob类型，blob也不设置的话默认
+    const fileType = res.response?.type.split('/')[1]
+    a.download = `测试图片.${fileType}`;
+    //点击触发下载
+    a.click();
+    // 下载完成进行释放
+    window.URL.revokeObjectURL(objectUrl);
+    a.remove();
+  }
+
+
+  /**
+   * @desc: 转16进制
+   */
+  function buf2hex(buffer) {
+    return Array.prototype.map.call(new Uint8Array(buffer), x => ('00' + x.toString(16)).slice(-2)).join('')
+  }
+
+  /**
+   * @desc: 传入文件url
+   */
+  function getFileType(url) {
+    loadFile(url).then(res => {
+      console.log(res, 1111)
+      getFileContent(res)
+      // const hex = buf2hex(res.response)
+      // console.log(hex, 4444)
+
+    })
+  }
+
+  // getFileType('https://static2.keepcdn.com/2022/04/02/1648870901447_1000x1393.jpeg?watermark/1/image/aHR0cHM6Ly9zLmdvdG9rZWVwLmNvbS9xSlE=/dx/0/dy/0/ws/1')
+  getFileType('https://static2.keepcdn.com/2022/03/18/1647603686708_286x46.png?watermark/1/image/aHR0cHM6Ly9zLmdvdG9rZWVwLmNvbS9xSlE=/dx/0/dy/0/ws/1')
+</script>
+
+</html>

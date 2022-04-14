@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>文件上传upload</title>
+</head>
+
+<body>
+	<div>
+		<p>.jpg,.jpeg,.png,.gif</p>
+		<!--accept限制选择文件的路径及类型，没有svg类型-->
+		<input type="file" accept=".jpg,.jpeg,.png,.gif" onchange="chooseFile(event)" multiple>
+		<input type="file" onchange="chooseFile(event)" multiple>
+	</div>
+	<div>
+		<p>image/png, image/jpeg</p>
+		<!--限制文件夹，image下面-->
+		<input type="file" accept="image/png, image/jpeg" onchange="chooseFile(event)">
+	</div>
+
+	<div>
+		<p>.xls,.xlsx</p>
+		<!--excel,xls或xlsx`-->
+		<input type="file" accept=".xls,.xlsx" onchange="chooseFile(event)">
+		<!--或者-->
+		<input type="file"
+			accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+			onchange="chooseFile(event)">
+	</div>
+
+</body>
+<script type="text/javascript">
+	function chooseFile(event) {
+		const { files } = event.target
+		// 不管是否支持多选，files都是数组
+		if (files.length) {
+			console.log(files, 11111)
+			for (const item of files) {
+				const { size, type } = item
+				// 图片类型判断
+				if (!/^image\/(jpg|jpeg|png|gif)$/.test(type)) {
+					console.log('类型判断，不是图片')
+				}
+				// 体积判断
+				if (size > 5 * 1024 * 1024) {
+					console.log('体积判断，大于5M')
+				}
+				// 图片压缩，quality0.6
+				// photoCompress(item)
+				// 简单的长宽判断
+				checkImageSize(item)
+			}
+		}
+	}
+
+	/**
+	 * @desc: 校验长宽
+	 */
+	function checkImageSize(file) {
+		const image = new Image()
+		const reader = new FileReader()
+		reader.readAsDataURL(file)
+		reader.onload = () => {
+			const url = reader.result
+			image.src = url
+			image.onload = () => {
+				const w = image.naturalWidth, h = image.naturalHeight
+				// 长宽判断
+				if (w !== 750 || h !== 564) {
+					console.log('长宽判断750*564')
+				}
+			}
+		}
+	}
+
+	/**
+	 * @desc: 图片压缩，原长宽压缩
+	 * canvas重新绘图
+	 */
+	function photoCompress(files, quality = 0.6) {
+		let image = new Image(), canvas = document.createElement("canvas"), ctx = canvas.getContext('2d')
+		let reader = new FileReader() // 读取客户端上的文件
+		reader.readAsDataURL(files) // 转化为base64格式
+		reader.onload = () => {
+			let url = reader.result // 读取到的文件内容.这个属性只在读取操作完成之后才有效,并且数据的格式取决于读取操作是由哪个方法发起的.所以必须使用reader.onload，
+			image.src = url // reader读取的文件内容是base64,利用这个url就能实现上传前预览图片
+			image.onload = () => {
+				// naturalWidth图片原始尺寸
+				let w = image.naturalWidth, h = image.naturalHeight
+				// 长宽判断
+				if (w !== 750 || h !== 564) {
+					console.log('长宽判断')
+				}
+
+				canvas.width = w
+				canvas.height = h
+				ctx.drawImage(image, 0, 0, w, h, 0, 0, w, h)
+
+				// canvas.toDataURL 返回的默认格式就是 image/png，quality0~1
+				let data = canvas.toDataURL("image/jpeg", quality)
+				// dataURL 的格式为 “data:image/png;base64,****”,逗号之前都是一些说明性的文字，我们只需要逗号之后的就行了
+				data = data.split(',')[1]
+				data = window.atob(data)
+				let ia = new Uint8Array(data.length)
+				for (let i = 0; i < data.length; i++) {
+					ia[i] = data.charCodeAt(i)
+				};
+				// 最终图片格式，默认是canvas.toDataURL返回的格式
+				let blob = new Blob([ia], {
+					type: "image/jpeg"
+				});
+
+				console.log(blob, 33333)
+			}
+		}
+
+	}
+</script>
+<style>
+	body {
+		display: flex;
+		align-items: center;
+	}
+</style>
+
+</html>
