@@ -22,19 +22,24 @@
         top: 40px;
         left: 10px;
     }
+
+    .button3 {
+        position: fixed;
+        bottom: 40px;
+        left: 10px;
+    }
 </style>
 
 <body>
     <p>获取页面滚动位置</p>
     <button class="button1" onclick="getLocation()">获取</button>
     <button class="button2" onclick="toTop()">滚动到顶部</button>
+    <button class="button3" onclick="scrollToTop()">滚动到顶部</button>
 </body>
 <script>
     /**
      * @desc: 获取滚动条位置
      * 兼容IE
-     * @author guoxin
-     * @date 2020/05/31
      */
     function getLocation() {
         const top = document.body.scrollTop || document.documentElement.scrollTop;
@@ -70,6 +75,21 @@
             top: -top,
             behavior: "smooth",
         });
+    }
+
+    /**
+     * @desc: 自定义渐进式滚动
+     */
+    function scrollToTop() {
+        const top = document.body.scrollTop || document.documentElement.scrollTop;
+        if (top > 0) {
+            setTimeout(() => {
+                const height = top - 10
+                scrollTo(0, height > 0 ? height : 0);
+                scrollToTop()
+            }, 30);
+
+        }
     }
 </script>
 

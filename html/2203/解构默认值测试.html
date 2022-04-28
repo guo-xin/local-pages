@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解构不会忽略null和0，会忽略undefined</title>
+</head>
+
+<body>
+  <p>解构不会忽略null和0，会忽略undefined</p>
+</body>
+<script>
+  /**
+   * @desc: 覆盖undefined
+   * null和0不会被覆盖
+   */
+  function test(val, name = 6) {
+    console.log(val, 1111, name)
+  }
+
+  function test1(val, name) {
+    console.log(val, 33333, name)
+    test(val, name)
+  }
+  test1(1, 2) // 1 2
+  test1(1, 0) // 1 0 
+  test1(1) // 1 6
+
+  const { a, c = 2, d = 1 } = { a: 1, b: 3, c: null, d: undefined }
+  console.log(c, 11, d, 3333) // null 1
+
+
+  
+</script>
+
+</html>
