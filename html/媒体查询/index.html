@@ -1,0 +1,42 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>33333</p>
+  <div>引入css</div>
+</body>
+<style>
+  /* 不是 打印机并且最小宽度375  */
+  @media not print and (min-width: 375px) {
+    body {
+      background-color: lightgreen;
+    }
+  }
+
+  /* 不是 浏览器并且最小宽度375  */
+  @media not screen and (min-width: 375px) {
+    p {
+      background-color: red;
+    }
+  }
+
+  @media only screen and (min-width: 375px) {
+    p {
+      text-decoration: line-through;
+    }
+  }
+</style>
+
+<style media="(min-width: 375px)">
+  div {
+    color: darkorange;
+  }
+</style>
+
+</html>
