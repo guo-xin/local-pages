@@ -122,4 +122,4 @@
     ├── mobile
     └── pc
 
-## 对应地址 https://guo-xin.github.io/personal/
+## 对应地址 https://github.com/guo-xin/local-pages
