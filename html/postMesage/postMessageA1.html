@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BroadcastChannel-A页面</title>
+</head>
+
+<body>
+    <p>BroadcastChannel-A页面</p>
+    <p>BroadcastChannel是postMessage的一个子集，只能作用在同origin之间，只是不需要open</p>
+</body>
+<script>
+    /**
+     * @desc: A页面推送到B页面
+     */
+    const popup = new BroadcastChannel('demos')
+
+    // 这里需要延迟执行，要不然B页面的监听事件还没注入
+    setTimeout(() => {
+        // 定向推送
+        console.log('postMessage', 111);
+        popup.postMessage('测试A to B')
+        // 关闭BroadcastChannel
+        popup.close()
+    }, 600)
+</script>
+
+</html>

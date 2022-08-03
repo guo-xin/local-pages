@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>postMessage-iframe-父页面</title>
+</head>
+
+<body>
+    <p>postMessage-iframe-父页面</p>
+    <iframe src="http://local.dev.gotokeep.com:91/postMesage/postMessageC1.html" width="100%" frameborder="0"
+        name="iframe" id="iframe">
+    </iframe>
+    <p style="height: 800px">测试iframe</p>
+</body>
+<script>
+    /**
+     * @desc: 父页面监听子页面推送消息
+     */
+
+    // 监听需要早执行，要不然消息推送的时候接收不到
+
+    window.addEventListener('message', receiveMessage, false);
+    //监听子页面的postMessage
+    function receiveMessage(event) {
+        // event.source是消息发送的窗口的引用，可以用它往回定向推送消息
+        console.log(event.data, 'fromChildren');
+    }
+</script>
+
+</html>

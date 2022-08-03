@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>postMessage-iframe-子页面</title>
+</head>
+
+<body>
+    <p>postMessage-iframe-子页面</p>
+    <p style="height: 800px">测试iframe</p>
+</body>
+<script>
+    /**
+     * @desc: 子页面监听父页面推送消息
+     */
+
+    //监听子页面的postMessage
+    function receiveMessage(event) {
+        // event.source是消息发送的窗口的引用，可以用它往回定向推送消息
+        console.log(event, 'fromParent');
+    }
+
+    window.addEventListener("message", receiveMessage, false);
+</script>
+
+</html>

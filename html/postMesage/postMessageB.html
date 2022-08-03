@@ -1,0 +1,34 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>postMessage-B页面</title>
+</head>
+
+<body>
+    <p>postMessage-B页面</p>
+
+</body>
+<script>
+    /**
+     * @desc: 子页面监听父页面推送消息
+     */
+
+    // 监听A页面的postMessage
+    const receiveMessage = (event) => {
+        // event.data:测试A to B
+        const { data, origin } = event;
+        console.log(data, 'B页面', origin)
+        // 接受定向消息推送
+        // if (origin === 'http://local.dev.gotokeep.com:91') {
+        // this.info = data
+        // }
+        this.info = data
+    }
+
+    window.addEventListener('message', receiveMessage, false)
+</script>
+
+</html>

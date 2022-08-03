@@ -37,7 +37,9 @@
 
     // 设置set
     d.setFullYear(2008) //设置年,四位数字
-    d.setMonth(2) // 设置月
+    d.setMonth(2) // 设置月0-11
+    d.setMonth(d.getMonth() - 1) // 设置为上一个月
+    d.setMonth((d.getMonth() || 12) - 1) // 设置为上一个月
     d.setDate(22) // 设置天
     d.setHours(22) // 设置小时
     d.setMinutes(22) // 设置分

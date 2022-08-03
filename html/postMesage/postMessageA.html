@@ -1,0 +1,28 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>postMessage-A页面</title>
+</head>
+
+<body>
+    <p>postMessage-A页面</p>
+    <p>postMessage可以使用在不同origin之间，父子iframe之间</p>
+</body>
+<script>
+    /**
+     * @desc: A页面推送到B页面
+     */
+    const popup = window.open('http://local.dev.gotokeep.com:91/postMesage/postMessageB.html', '_blank')
+
+    // 这里需要延迟执行，要不然B页面的监听事件还没注入
+    setTimeout(() => {
+        // 定向推送
+        // popup.postMessage('测试A to B', 'http://127.0.0.1:1024/#/postMessage')
+        popup.postMessage('测试A to B', '*')
+    }, 600)
+</script>
+
+</html>

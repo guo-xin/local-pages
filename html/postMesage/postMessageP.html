@@ -1,0 +1,30 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>postMessage-iframe-父页面</title>
+</head>
+
+<body>
+    <p>postMessage-iframe-父页面</p>
+    <iframe src="http://local.dev.gotokeep.com:91/postMesage/postMessageC.html" width="100%" frameborder="0"
+        name="iframe" id="iframe">
+    </iframe>
+    <p style="height: 800px">测试iframe</p>
+</body>
+<script>
+    /**
+     * @desc: 父页面推送子页面
+     */
+
+    // 触发机制需要在页面加载完成之后，要不然推送不过去
+    window.onload = function () {
+        const iframe = document.getElementById("iframe").contentWindow;
+        iframe.postMessage("测试parent to children", "*");
+        // window.frames[0].postMessage('测试parent to children', '*')
+    };
+</script>
+
+</html>
