@@ -103,6 +103,7 @@
 13. Vue 3 Snippets-vue 语法提示
 14. Auto Rename Tag-小程序语法高亮
 15. @types/minapp-env-微信 api 提示
+16. open in browser 浏览器打开html
 
 ## 自定义注释
 
@@ -143,3 +144,15 @@
 ```
 
 ## [主题](https://blog.csdn.net/dscn15848078969/article/details/107578108)
+```
+"workbench.colorTheme": "One Dark Pro",
+"workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#fff",
+    "titleBar.activeBackground": "#ff009d",
+    "tab.activeBackground": "#a200ff",
+    "breadcrumb.foreground": "#ff009d",
+    "list.activeSelectionBackground": "#a200ff",
+    "list.inactiveSelectionBackground": "#a200ff",
+    "list.hoverBackground": "#ff009d"
+},
+```
