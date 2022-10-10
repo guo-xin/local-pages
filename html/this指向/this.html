@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=0.667, maximum-scale=1.0, minimum-scale=0.667">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>js中this指向问题</title>
 </head>
+
 <body>
     <div>
         <input type="button" value="按钮" style="height: 100px; -webkit-appearance: button;">
@@ -19,7 +21,7 @@
     /**
      * @desc: onload事件，this指向window
     */
-    window.onload = function(e) {
+    window.onload = function (e) {
         // e是窗口事件对象，this是指向window
         console.log(e, 3333, this, 444)
     };
@@ -28,7 +30,7 @@
      * @desc: 标签中事件绑定
      * this指向window
     */
-    function getClick(e){
+    function getClick (e) {
         this.name = 'guoxin';
         // this相当于window，event是点击事件对象
         console.log(this, 555, e, 6666);
@@ -39,17 +41,21 @@
      * @desc: 绑定事件，this指向绑定标签
     */
     // 事件绑定
-    document.querySelector('div').onmouseover = function(e) {
+    document.querySelector('div').onmouseover = function (e) {
         // 此时this指向事件绑定标签div
         console.log(this, 7777, e, 8888);
     };
 
     // 事件监听，this指向绑定标签
-    document.querySelector("div").addEventListener('click', function(e) {
+    document.querySelector("div").addEventListener('click', function (e) {
         // this指向事件绑定标签div，e是点击事件对象
         console.log(this, 111, e, 2222);
     });
 
+    /**
+     * @desc: 对象上的调用
+     * 
+     */
     let span = document.querySelector('span');
     let obj = {
         name: 'kobe',
@@ -60,7 +66,9 @@
             };
         }
     };
-    obj.getName();
+    obj.getName() // obj的this指向window
+
+    
 
     let p = document.querySelector('p');
     let obj1 = {
@@ -68,27 +76,29 @@
         age: 39,
         getName: function () {
             console.log(this, 222); // obj1
-            p.onclick = function() {
+            p.onclick = function () {
                 console.log(this, 1111); // 指向触发事件标签p
             };
         }
     };
     obj1.getName();
 </script>
+
 <script>
     /**
      * @desc: 对象的属性，this指向对象
     */
     let x = 0;
-    obj2 = {
+    let obj2 = {
         x: 1,
         m() {
-            console.log(this, 2232323212, this.x);// obj2 23 1
+            console.log(this, 2232323212, this.x);// 指向obj2 23 1
         }
     };
 
-    obj2.m(); // this指向的是obj2，打印1
+    obj2.m(); // obj2的this指向window
 </script>
+
 <script>
     /**
      * @desc: 对象中箭头函数与普通函数this指向问题
@@ -103,7 +113,7 @@
                 console.log(this, 999, this.name); // this指向上下文obj3 {name: text this, getName: f}，name为修改后的值text
             }
         },
-        getLocation (val) {
+        getLocation(val) {
             console.log(this, 1111); // this指向obj3 1111
             this.name = val; // 改变name值
             // 区别在这里
@@ -116,4 +126,5 @@
     obj3.getName('text this')(); // 箭头函数
     obj3.getLocation('text this1')(); // 普通函数
 </script>
+
 </html>

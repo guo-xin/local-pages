@@ -62,10 +62,10 @@
     // 修改之后
     function myFunc1(name){
         this.name = name;
-        console.log(this, 5555); // myFunc1对象 {} 3333
+        console.log(this, 5555); // myFunc1对象 {name: 'hanson'} 3333
     }
     myFunc1.prototype.sayName = function() {
-        console.log(this, 6666);  // myFunc1对象 {} 4444
+        console.log(this, 6666);  // myFunc1对象 {name: 'hanson'} 4444
     };
     const me1 = new myFunc1('hanson');
     me1.sayName(); // sayName是me1调用，所以this指向me1

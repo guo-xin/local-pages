@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  const test = () => {
+      console.log(this)
+    }
+
+    var obj = { name: 'tt' }
+    obj.m = test
+    
+    obj.m.apply({ name: 'test' }) // {name: 'test'}
+    
+
+
+    var x = 2
+      let obj1 = {
+        x: this.x, // this指向window
+        m() {
+          console.log(this, this.x) // obj {x: 2} 2
+        }
+      }
+
+      obj1.m() 
+</script>
+</html>

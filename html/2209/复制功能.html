@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复制</title>
+</head>
+<body>
+  <button onclick="copy(this)">复制</button>
+</body>
+<script>
+  function copy(e) {
+    const $textarea = document.createElement('textarea');
+    $textarea.innerHTML = e.innerText
+    document.body.appendChild($textarea)
+    $textarea.select()
+    //复制选中的文字到剪贴板
+    document.execCommand('copy')
+    console.warn('-----复制成功');
+    document.body.removeChild($textarea);
+  }
+  
+</script>
+</html>
