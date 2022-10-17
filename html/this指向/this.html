@@ -68,7 +68,7 @@
     };
     obj.getName() // obj的this指向window
 
-    
+
 
     let p = document.querySelector('p');
     let obj1 = {
@@ -86,13 +86,13 @@
 
 <script>
     /**
-     * @desc: 对象的属性，this指向对象
+     * @desc: 对象的属性
     */
     let x = 0;
     let obj2 = {
         x: 1,
         m() {
-            console.log(this, 2232323212, this.x);// 指向obj2 23 1
+            console.log(this, 2232323212, this.x);// 指向obj2 {}  1
         }
     };
 

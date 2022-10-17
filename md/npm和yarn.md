@@ -6,8 +6,8 @@ sudo chown -R $(whoami) /usr/local/lib/node_modules
 sudo chown -R $(whoami) /usr/local/bin
 ```
 ### dep，dev依赖包说明
-- dependencies：浏览器执行时所需要的包，这些依赖是应用发布后正常执行时所需要的，但是不包含测试时或者本地打包时所使用的包。
-- devDependencies：开发环境依赖，这些包通常是单元测试或者打包工具
+- dependencies：项目运行所依赖的模块。浏览器执行时所需要的包，这些依赖是应用发布后正常执行时所需要的，但是不包含测试时或者本地打包时所使用的包。
+- devDependencies：项目开发所依赖的模块。这些包通常是单元测试或者打包工具
 - peerDependencies：同等依赖或者叫同伴依赖，用于指定当前包（也就是你写的包兼容的宿主版本），当别人使用我们的插件的时候，peerDependencies就会明确告诉使用方，你需要安装该插件的哪个宿主版本。
 -O = --save-optional   安装到optionalDependencies：可选依赖，如果有一些依赖包即使安装失败，项目仍然能够运行或者希望npm继续运行，就可以使用optionalDependencies。另外optionalDependencies会覆盖dependencies中的同名依赖包，所以不要在两个地方都写
 https://www.cnblogs.com/dfyg-xiaoxiao/p/10004392.html
@@ -90,6 +90,7 @@ npm init 创建package.json文件
 npm -v  或则 npm --version   查看npm版本
 npm list  查询安装组件的列表
 npm list name 查看安装组件版本, npm ls name
+npm view name 查看安装包详细信息
 npm search name 查找某个安装包
 npm outdated //检测当前安装的pName是否有更新
 npm outdated name 检测某个安装包是否有更新
@@ -138,17 +139,24 @@ npm info express 返回express包的信息
 
 ### 4. 应用
 ```
-使用npm安装node-sass失败的问题（registry镜像没有用）：
+使用npm安装node-sass失败的问题（npm镜像没有用）：
 1，使用淘宝镜像  2，yarn安装   3，vpn翻墙
 参考链接 https://segmentfault.com/a/1190000010984731?utm_source=tag-newest
 https://github.com/PanJiaChen/vue-element-admin/issues/24
 npm i --registry=https://registry.npm.taobao.org
 
-单次使用淘宝镜像
+2. 单次使用淘宝镜像
 npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
 
-全局设置镜像，以后涉及到node-sass的安装都会走淘宝镜像
+3. 全局设置镜像，以后涉及到node-sass的安装都会走淘宝镜像
 npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+
+4. 类似的还有puppeteer、chromedriver、electron等，可手工在.npmrc文件修改
+sass_binary_site=http://npm.taobao.org/mirrors/node-sass
+chromedriver_cdnurl=http://npm.taobao.org/mirrors/chromedriver
+electron_mirror=http://npm.taobao.org/mirrors/electron/
+puppeteer_download_host=http://npm.taobao.org/mirrors/chromium-browser-snapshots/
+
 ```
 
 ### 5. [nrm](https://github.com/Pana/nrm)
@@ -169,5 +177,16 @@ nrm add taobao1  ttps://registry.npm.taobao.org/
 // 使用某个源---等同于修改npm的配置
 nrm use taobao
 
+// 测速
+nrm test
+nrm test taobao
+
 // npm配置文件/Users/guoxin/.npmrc，可以手动修改
 ```
+
+### 6. npm和yarn安装包方式的异同
+**semver-语义化版本，每个semver 都对应一段版本允许范围，如果两个模块的版本允许范围存在交集，那么就可以得到一个兼容版本，而不必版本号完全一致**
+1. npm 是按照顺序从上到下安装，yarn是并行安装
+2. 在node_modules里面的层级是一样的。首先会扁平化（dedupe）安装的模块，发现有重复的（模块名称相同，并且语semver兼容，就会将重复冗余的模块丢弃）.如果模块名称相同版本不同，后面的模块会保留在被依赖的组件的node_modules里面-可能不同的组件中有相同名称且相同版本的模块，这是因为外层有一个不同的版本，所以组件里面只能各自用自己的版本
+3. lock文件：npm的lock结构和它的node_modules结构几乎一致---复用的组件在lock文件中原始层级还在. 
+yarn的lock是完全扁平化的，相同semver的模块会合并成一个，不同semver的模块会写成多个-相同名称不同版本的也会写成多个

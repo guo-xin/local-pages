@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>字幕循环滚动</title>
+</head>
+<style>
+  .content {
+    margin: 10px;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .group {
+    animation: scroll 10s linear infinite both;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateY(210px);
+    }
+
+    100% {
+      transform: translateY(-210px);
+    }
+  }
+
+  .group:hover {
+    cursor: pointer;
+    animation-play-state: paused;
+  }
+
+  .group div {
+    padding: 10px;
+  }
+  .border {
+    border: 1px solid #2f2f2f;
+    box-shadow: 0 0 2px #1e1e1e;
+  }
+</style>
+
+<body>
+  <marquee class="border" width="100%" behavior="scroll" bgcolor="pink" style="color: #fff;">
+    中秋节，又称祭月节、月光诞、月夕、秋节、仲秋节、拜月节、月娘节、月亮节、团圆节等，是中国民间的传统节日。
+  </marquee>
+  <marquee class="border" height="300px" behavior="scroll" direction="up">
+    <div>1111</div>
+    <div>2222</div>
+    <div>那我也想问问这家公司能否无偿发工资</div>
+    <div>文字滚动的内容文字滚动的内</div>
+    <div>ccxx</div>
+    <div>333</div>
+    <div>44</div>
+    <div>5</div>
+    <div>666</div>
+    <div>7</div>
+    <div>88</div>
+    <div>999999</div>
+  </marquee>
+
+
+  <div class="content border">
+    <div class="group">
+      <div>1111</div>
+      <div>2222</div>
+      <div>那我也想问问这家公司能否无偿发工资</div>
+      <div>文字滚动的内容文字滚动的内</div>
+      <div>ccxx</div>
+      <div>333</div>
+      <div>44</div>
+      <div>5</div>
+      <div>666</div>
+      <div>7</div>
+      <div>88</div>
+      <div>999999</div>
+    </div>
+  </div>
+</body>
+<script>
+
+
+
+</script>
+
+</html>

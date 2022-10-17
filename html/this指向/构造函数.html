@@ -53,6 +53,7 @@
     this.firstName = firstName;
     this.lastName = lastName;
 
+    // 实例化的时候就会执行
     console.log(this, 4444); // b
 
     this.changeName = changeName;
@@ -66,51 +67,9 @@
 
   a1 = new b(firstName, lastName);
 
-  a1.changeName(3);
+  a1.changeName(3)
 
-  console.log(a1.firstName, a1.lastName, 1111); // 3 2
-  console.log(firstName, lastName, 22222);// 1 2
+  console.log(a1.firstName, a1.lastName, 1111) // 3 2
+  console.log(firstName, lastName, 22222) // 1 2
 </script>
-
-
-<script>
-  var name = 'window'
-
-  function Person(name) {
-    console.log(this, 1) // Person {}
-
-    this.name = name;
-    this.show1 = function () {
-      console.log(this.name)
-    };
-    this.show2 = () => console.log(this.name);
-    this.show3 = function () {
-      console.log(this.name, 2)
-      return function () {
-        console.log(this.name, 3)
-      }
-    };
-    this.show4 = function () {
-      console.log(this.name, 4)
-      return () => console.log(this.name, 5)
-    };
-    this.show5 = () => {
-      console.log(this.name, 6)
-      return () => console.log(this.name, 7)
-    };
-    this.show6 = () => {
-      console.log(this.name, 8)
-      return function () {
-        console.log(this.name, 9)
-      }
-    }
-  }
-
-  var personA = new Person('personA')
-  var personB = new Person('personB')
-
-
-  
-</script>
-
 </html>

@@ -1,33 +1,48 @@
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
 </head>
-<body>
-  
-</body>
+
+<body></body>
 <script>
-  const test = () => {
-      console.log(this)
+  var name = 'window'
+  var Person2 = function () {
+    console.log(this, 333)
+    this.getName = function () {
+      console.log(this, 999)
     }
+    // Person1.call(this)
+  }
+  var Person1 = function () {
+    this.name = 'Dot'
+    Person2.call(this)
+    console.log(this, 666)
+  }
+  // var person = new Person1()
+  var a = { name: 'xin', value: 666 }
 
-    var obj = { name: 'tt' }
-    obj.m = test
-    
-    obj.m.apply({ name: 'test' }) // {name: 'test'}
-    
+  // person.getName.apply(a)
+  // Person1{name: 'Dot'} 333
+  // Person1{name: 'Dot', getName: f} 666
+  // {name: 'xin', value: 666} 999
+
+  // person.getName()
+  // Person1{name: 'Dot'} 333
+  // Person1{name: 'Dot', getName: f} 666
+  // Person1{name: 'Dot', getName: f} 999
 
 
-    var x = 2
-      let obj1 = {
-        x: this.x, // this指向window
-        m() {
-          console.log(this, this.x) // obj {x: 2} 2
-        }
-      }
+  var person2 = new Person2()
+  person2.getName()
+  // Person2{} 333
+  // Person2{getName: f} 999
+</script>
 
-      obj1.m() 
+<script>
+  
 </script>
 </html>

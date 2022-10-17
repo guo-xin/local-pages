@@ -9,7 +9,7 @@
 1. 普通函数：this 指指向调用它的对象
 2. 箭头函数：this 指向定义它的上下文的 this 指向
 3. 构造函数：this 指向生成的新对象
-4. window 触发：window.onload、标签上的事件触发 this 指向 window
+4. window 触发：window.onload、标签上的事件触发。this 指向 window
 5. 事件绑定：this 指向绑定的标签
 
 ### 1. 纯粹的函数调用
@@ -64,6 +64,18 @@ let obj = {
     }
 
 obj.m() // obj的this指向window
+
+// 注意这种场景，window来调用的
+var x = 2
+let obj = {
+        x: this.x, // this指向window
+        m() {
+            console.log(this, this.x) // window 2
+        }
+    }
+
+const test = obj.m
+test() //window来调用
 ```
 
 ### 3. 作为构造函数调用
@@ -92,6 +104,8 @@ obj.x // 1
 
 **apply()、call、bind 是函数的一个方法，作用是改变函数的调用对象。它的第一个参数就表示改变后的调用这个函数的对象。因此，这时 this 指的就是这第一个参数**
 
+**apply、call、bind并不能直接改变箭头函数this的指向**
+
 ```
 function test() {
 　console.log(this)
@@ -101,7 +115,16 @@ var obj = {name: 'tt'}
 obj.m = test
 obj.m() // obj {name: 'tt'}
 obj.m.apply({name: 'test'}) // {name: 'test'}
-obj.m.apply() // window
+obj.m.apply() // Window
+
+// 箭头函数，不受apply的影响
+const test = () => {
+　console.log(this) // Window
+}
+var obj = {name: 'tt'}
+obj.m = test
+obj.m.apply({name: 'test'}) // Window
+
 ```
 
 **apply()的参数为空时，默认调用全局对象。因此，这时的运行结果为 0，证明 this 指的是全局对象**
@@ -119,9 +142,33 @@ document.querySelector('.test-event').onmouseover = function (e) {
 
 // 如果使用箭头函数，事件绑定和事件兼容函数的this都指向当前函数的上下文this的指向
 document.querySelector('.test-event').onmouseover = () => {
-  // 此时this指向window，e是触发事件的对象
+  // 此时this指向Window，e是触发事件的对象
   console.log(this, 7777, e, 8888, e.target);
 }
 ```
 
 ## 2. 综合应用
+```
+/**
+   * @desc: 调用方式不同
+   * this指向就不同
+   */
+  var a = 1;
+    var obj1 = {
+      a: 2,
+      fn: function () {
+        console.log(this.a)
+      }
+    };
+    var fn1 = obj1.fn;
+    fn1(); // 1 this指向window
+
+
+    var obj2 = {
+      a: 2,
+      fn: function () {
+        console.log(this.a)
+      }
+    };
+    obj2.fn(); // 2 this指向obj2
+```
