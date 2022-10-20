@@ -5,3 +5,14 @@
 console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
 console.log(Number.MIN_SAFE_INTEGER); // -9007199254740991
 ```
+
+http.get(url, {params, headers})
+http.post(url, params, options)
+```
+function a (a: string): void {
+
+}
+const test = (a: string): void => {
+
+}
+```

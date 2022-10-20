@@ -1,4 +1,4 @@
-## 包管理工具yarn和npm的使用
+## 包管理工具yarn和npm、pnpm的使用
 
 **给npm/yarn高级管理权限，避免每次都sudo**
 ```
@@ -132,12 +132,26 @@ npm info pName  返回某个包的信息
 npm info express 返回express包的信息
 ```
 
-### 3. npx
+### 3. pnpm
+```
+// 安装
+pnpm install
+pnpm i
+
+// 添加某个依赖包
+pnpm add
+
+// 运行
+pnpm
+
+```
+
+### 4. npx
 - npx是npm的一个包执行器，重执行，没有某个某块的时候 会先安装再执行，执行完 删除模块
 - npm是重安装，并不具备执行某个模块的能力
 
 
-### 4. 应用
+### 5. 应用
 ```
 使用npm安装node-sass失败的问题（npm镜像没有用）：
 1，使用淘宝镜像  2，yarn安装   3，vpn翻墙
@@ -159,7 +173,7 @@ puppeteer_download_host=http://npm.taobao.org/mirrors/chromium-browser-snapshots
 
 ```
 
-### 5. [nrm](https://github.com/Pana/nrm)
+### 6. [nrm](https://github.com/Pana/nrm)
 #### 1. 安装
 ```
 npm i -g nrm
@@ -184,9 +198,9 @@ nrm test taobao
 // npm配置文件/Users/guoxin/.npmrc，可以手动修改
 ```
 
-### 6. npm和yarn安装包方式的异同
+### 7. npm和yarn安装包方式的异同
 **semver-语义化版本，每个semver 都对应一段版本允许范围，如果两个模块的版本允许范围存在交集，那么就可以得到一个兼容版本，而不必版本号完全一致**
 1. npm 是按照顺序从上到下安装，yarn是并行安装
-2. 在node_modules里面的层级是一样的。首先会扁平化（dedupe）安装的模块，发现有重复的（模块名称相同，并且语semver兼容，就会将重复冗余的模块丢弃）.如果模块名称相同版本不同，后面的模块会保留在被依赖的组件的node_modules里面-可能不同的组件中有相同名称且相同版本的模块，这是因为外层有一个不同的版本，所以组件里面只能各自用自己的版本
+2. 在node_modules里面的层级是一样的。首先会扁平化（dedupe）安装的模块，发现有重复的（模块名称相同，并且与semver兼容，就会将重复冗余的模块丢弃）.如果模块名称相同版本不同，后面的模块会保留在被依赖的组件的node_modules里面-可能不同的组件中有相同名称且相同版本的模块，这是因为外层有一个不同的版本，所以组件里面只能各自用自己的版本
 3. lock文件：npm的lock结构和它的node_modules结构几乎一致---复用的组件在lock文件中原始层级还在. 
 yarn的lock是完全扁平化的，相同semver的模块会合并成一个，不同semver的模块会写成多个-相同名称不同版本的也会写成多个
