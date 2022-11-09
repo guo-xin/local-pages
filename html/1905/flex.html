@@ -18,14 +18,14 @@
     .first {
         /*flex默认0 1 auto*/
         width: 100px;
+        /*内容宽度，可伸缩*/
+        flex:auto;
         background: red;
     }
     .second {
-        /*flex: 1;*/
+        /* flex: 1; */
         /*内容宽度，可伸不可缩，所以最小为200px*/
         flex: 1 0 200px;
-        /*内容宽度，可伸缩，所以最小为100px*/
-        /*flex:auto;*/
         background: blue;
     }
     .third {

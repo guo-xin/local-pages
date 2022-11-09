@@ -88,6 +88,7 @@ sudo npm i npm -g
 ```
 npm init 创建package.json文件
 npm -v  或则 npm --version   查看npm版本
+npm run 查看当前项目的npm脚本列表
 npm list  查询安装组件的列表
 npm list name 查看安装组件版本, npm ls name
 npm view name 查看安装包详细信息
@@ -108,7 +109,6 @@ npm update pName  //更新包,package.json文件有修改时或者pName有更新
 npm un pName //卸载pName包
 npm star pName 标星某个包
 npm unstar pName 取消标星某个包
-npm run 查看当前项目的npm脚本列表
 ```
 
 #### 3. lock文件
