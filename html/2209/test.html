@@ -15,11 +15,15 @@
     }
   </style>
   <script>
-    const arr = [1, , ,2]
-    let test = arr.map((item) => {
-      console.log(item, 2222)
-      return item > 2
-    })
-    console.log(test, 3333)
+    function hello(thing) {
+  console.log(this + " says hello " + thing);
+}
+
+person = { name: "Brendan Eich" }
+person.hello = hello;
+
+person.hello("world") 
+
+hello("world") 
   </script>
 </html>
